@@ -1,0 +1,15 @@
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    /* position: relative; */
+  }
+  .card-title {
+    font-size: 1.3rem;
+  }
+  .card-title,
+  .card-text {
+    font-family: "Nunito", sans-serif;
+  }

@@ -1,0 +1,194 @@
+.profile-title > h1 {
+  font-family: "Nunito", sans-serif;
+  color: black;
+  font-weight: bold;
+  font-size: 27px;
+}
+.img-profile {
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  object-position: center;
+  position: relative;
+  display: block;
+  margin: 40px auto auto auto;
+}
+.icon-edit {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  left: 54%;
+  margin-top: -7%;
+}
+.profile > h2 {
+  margin-top: 10px;
+  font-family: "Playfair Display", serif;
+  color: black;
+  font-weight: bold;
+  font-size: 28px;
+}
+.profile > p {
+  font-family: "Nunito", sans-serif;
+  color: #a8abb3;
+  font-size: 15px;
+}
+.phone,
+.status {
+  margin-top: -10px;
+}
+.radio-button > .radioButton1,
+.radio-button > .radioButton2 {
+  display: inline-block;
+  position: relative;
+  margin-top: 30px;
+}
+.radio-button > form > .radioButton1 > .radio-label,
+.radio-button > form > .radioButton2 > .radio-label {
+  padding-left: 5px;
+}
+.radio-button > form {
+  text-align: center;
+  margin: 0;
+  width: 100%;
+}
+.contacts > .form-group > form {
+  margin: 0;
+  width: 100%;
+  margin-bottom: 7%;
+}
+.contacts > h3,
+.identity > h3 {
+  font-family: "Nunito", sans-serif;
+  color: #4f5665;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.contacts > h3 {
+  margin-top: 60px;
+}
+.contacts > .form-group > form > .form-label {
+  margin-top: 25px;
+  font-family: "Nunito", sans-serif;
+  color: #9f9f9f;
+  font-size: 1rem;
+}
+.contacts > .form-group > form > .form-control {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid black;
+  margin: 0;
+}
+.identity > form > .row > .space > .form-group > .form-label {
+  font-family: "Nunito", sans-serif;
+  color: #9f9f9f;
+  font-size: 1rem;
+}
+.identity > form > .row > .space > .form-group > .form-control {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid black;
+  margin: 0;
+}
+.identity > form {
+  margin: 0;
+  width: 100%;
+  margin-bottom: 7%;
+}
+.btn-wrapper {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-template-rows: auto;
+  margin-top: -20px;
+}
+.save,
+.edit-pass,
+.cancel {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 20px;
+  height: 45%;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 80px;
+  width: 100%;
+}
+.save {
+  background-color: #ffcd61;
+  color: #393939;
+  border: #ffcd61;
+}
+.save:hover {
+  opacity: 0.9;
+  color: black;
+}
+.edit-pass {
+  background-color: #393939;
+  color: #ffcd61;
+  margin-left: 18%;
+  border: #393939;
+}
+.edit-pass:hover {
+  color: white;
+}
+.cancel {
+  background-color: #e0e2e6;
+  border: #e0e2e6;
+  margin-left: 35%;
+}
+.cancel:hover {
+  background-color: #bbb3b3;
+}
+
+/* Responsive */
+@media (max-width: 425px) {
+  .icon-edit {
+    left: 68%;
+    margin-top: -18%;
+  }
+  .btn-wrapper {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+  }
+  .edit-pass,
+  .cancel {
+    margin-top: -15%;
+    margin-left: 0;
+  }
+  .cancel,
+  .edit-pass {
+    height: 75%;
+  }
+}
+
+@media (max-width: 576px) {
+  .icon-edit {
+    left: 58%;
+    margin-top: -15%;
+  }
+  .btn-wrapper {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+  }
+  .edit-pass,
+  .cancel {
+    margin-top: -12%;
+    margin-left: 0;
+  }
+  .save {
+    height: 40%;
+  }
+  .cancel,
+  .edit-pass {
+    height: 75%;
+  }
+}
+
+@media (max-width: 768px) {
+  .icon-edit {
+    left: 55%;
+    margin-top: -12%;
+  }
+}

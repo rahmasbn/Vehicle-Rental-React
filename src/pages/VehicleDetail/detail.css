@@ -1,0 +1,386 @@
+.header-title {
+  display: grid;
+  grid-template-columns: 5% 5%;
+  grid-template-rows: auto;
+  grid-gap: 3%;
+}
+.img-arrow > a > img {
+  width: 30px;
+  height: 30px;
+}
+.detail-title > h1 {
+  font-size: 2rem;
+  margin-top: -5px;
+  font-family: "Nunito", sans-serif;
+  color: black;
+}
+.vehicle-detail {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+}
+.wrapper-detail {
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 60% 40%;
+}
+.inside-wrapper-detail > img {
+  height: 95%;
+  width: 100%;
+  border-radius: 10px;
+}
+.detail {
+  margin-top: -5%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 10% 40% 40% 10%;
+  grid-template-rows: auto;
+}
+.left-arrow,
+.right-arrow {
+  width: 50%;
+  height: 15%;
+  margin-top: 105px;
+}
+.right-arrow {
+  margin-left: 30px;
+}
+.left-arrow:hover,
+.right-arrow:hover {
+  cursor: pointer;
+}
+.item {
+  border-radius: 10px;
+  height: 60%;
+  width: 90%;
+  margin-top: 50px;
+  margin-left: 13px;
+}
+.content-2 > .div-outer {
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 77% 23%;
+}
+.div-content {
+  margin-left: 100px;
+}
+.div-content > h1 {
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  font-size: 2.7rem;
+}
+.div-content > h2 {
+  font-family: "Playfair Display", serif;
+}
+.div-content > p {
+  font-size: 1.1rem;
+  font-family: "Nunito", sans-serif;
+  margin-left: 5px;
+}
+.div-content > .available {
+  color: #087e0d;
+  margin-top: 25px;
+}
+.div-content > .noPrepayment {
+  color: #9b0a0a;
+  margin-top: -10px;
+}
+.div-content > .capacity {
+  color: #848484;
+  margin-top: 25px;
+}
+.div-content > .type,
+.div-content > .reservation-text {
+  color: #848484;
+  margin-top: -10px;
+}
+.div-content > h3 {
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  text-align: right;
+  font-size: 1.8rem;
+  margin-top: 55px;
+  margin-right: 70px;
+}
+.content-3 {
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto;
+  margin-top: 2%;
+}
+/* .minus,
+.plus {
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-align: center;
+  height: 60px;
+  width: 60px;
+  border-radius: 7px;
+}
+.minus {
+  background-color: #dadce0;
+  margin-left: 110px;
+}
+.plus {
+  background-color: #ffcd61;
+  margin-left: 90px;
+}
+.minus:hover,
+.plus:hover {
+  cursor: pointer;
+}
+.qty {
+  font-size: 2.2rem;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 35px;
+} */
+.btn-group {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-template-rows: auto;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+.button1,
+.button2,
+.button3 {
+  height: 100px;
+  width: 100%;
+}
+.heart-logo {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+.chat,
+.reservation,
+.like {
+  margin-top: 3%;
+  width: 85%;
+  height: 75%;
+  font-family: "Nunito", sans-serif;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 10px;
+}
+.chat,
+.like {
+  background-color: #393939;
+  color: #ffcd61;
+  border: #393939;
+}
+.like {
+  margin-left: 40%;
+}
+.reservation {
+  background-color: #ffcd61;
+  color: #393939;
+  border: #ffcd61;
+  margin-left: 20%;
+}
+.chat:hover,
+.like:hover,
+.reservation:hover {
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .inside-wrapper-detail > img {
+    height: 85%;
+  }
+  .detail {
+    margin-top: -10%;
+    height: 65%;
+  }
+  .content-3 {
+    margin-top: -10%;
+  }
+  .left-arrow,
+  .right-arrow {
+    margin-top: 100px;
+  }
+  .item {
+    height: 70%;
+  }
+  .qty {
+    margin-left: 80%;
+  }
+  .btn-group {
+    margin-top: -5%;
+  }
+}
+
+@media (max-width: 768px) {
+  .item {
+    height: 70%;
+  }
+  .left-arrow,
+  .right-arrow {
+    margin-top: 90px;
+  }
+  .div-content {
+    margin-top: -2%;
+    margin-left: 30%;
+  }
+  .div-content > h1 {
+    font-size: 2.2rem;
+  }
+  .div-content > h2 {
+    font-size: 1.4rem;
+  }
+  .div-content > p {
+    font-size: 0.9rem;
+  }
+  .div-content > .available,
+  .div-content > .capacity {
+    margin-top: 20px;
+  }
+  .div-content > h3 {
+    font-size: 1.4rem;
+    margin-right: 3%;
+    margin-top: 13%;
+  }
+  .detail {
+    margin-top: -15%;
+    height: 75%;
+  }
+  .content-3 {
+    margin-top: -6%;
+  }
+  .minus,
+  .plus {
+    width: 45%;
+    height: 35%;
+  }
+  .minus {
+    margin-left: 50%;
+    font-size: 2rem;
+  }
+  .plus {
+    margin-left: 40%;
+    font-size: 1.8rem;
+  }
+  .qty {
+    margin-left: 45%;
+    font-size: 2rem;
+  }
+  .btn-group {
+    margin-top: -20px;
+    grid-template-columns: 32% 32% 32%;
+  }
+  .reservation {
+    margin-left: 13%;
+  }
+  .like {
+    margin-left: 20%;
+  }
+  .chat {
+    margin-left: 7%;
+  }
+  .button1,
+  .button2,
+  .button3 {
+    height: 80px;
+  }
+  .chat,
+  .reservation,
+  .like {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .detail-title > h1 {
+    font-size: 1.8rem;
+    margin-top: -5px;
+    margin-left: 20px;
+  }
+  .vehicle-detail {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+  }
+  .wrapper-detail {
+    width: 100%;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+  }
+  .inside-wrapper-detail > img {
+    height: 100%;
+  }
+  .detail {
+    margin-top: -3%;
+  }
+  .item {
+    margin-left: 5%;
+  }
+  .right-arrow {
+    margin-left: 50%;
+  }
+  .left-arrow,
+  .right-arrow {
+    width: 50%;
+    height: 15%;
+    margin-top: 95px;
+  }
+  .right-arrow {
+    margin-left: 22px;
+  }
+  .item {
+    height: 75%;
+    width: 90%;
+    margin-left: 7px;
+  }
+  .div-outer {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+  }
+  .div-content {
+    margin-top: 15%;
+    margin-left: 3%;
+  }
+  .div-content > h3 {
+    margin-top: 10%;
+  }
+  .content-3 {
+    margin-top: 10%;
+    margin-left: -13%;
+  }
+  .minus,
+  .plus {
+    width: 35%;
+    height: 45%;
+  }
+  .qty {
+    font-size: 1.7rem;
+    margin-left: 35%;
+    margin-top: 5%;
+  }
+  .btn-group {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    margin-top: 100%;
+    margin-left: -2%;
+  }
+  .chat,
+  .reservation,
+  .like {
+    margin-top: -3%;
+    width: 85%;
+    height: 80%;
+    font-size: 1.2rem;
+  }
+  .like {
+    margin-left: 7%;
+  }
+  .reservation {
+    margin-left: 7%;
+  }
+}

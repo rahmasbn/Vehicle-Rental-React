@@ -1,0 +1,51 @@
+.nav-item {
+    font-family: "Nunito", sans-serif;
+    color: #b8becd;
+    font-size: 14px;
+  }
+  .nav-item:hover {
+    color: #393939;
+  }
+  #menuBar {
+    text-align: center;
+    width: 100%;
+  }
+  .active{
+    color:#8d8484;
+   }
+  .logo {
+    width: 30px;
+    height: 30px;
+  }
+  .brand {
+    padding: 0;
+    margin: 0;
+  }
+  .nav-item > .nav-link > .btn-login,
+  .nav-item > .nav-link > .btn-register {
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: "Nunito", sans-serif;
+    font-size: 14px;
+    color: #393939;
+    margin-top: -5px;
+    padding: 5px 10px;
+  }
+  .nav-item > .nav-link > .btn-register:hover {
+    opacity: 0.8;
+  }
+  .nav-item > .nav-link > .btn-login:hover {
+    background-color: white;
+    opacity: 0.8;
+  }
+  .mail {
+    margin-top: -3px;
+  }
+.profilePic {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100%;
+  }
+  

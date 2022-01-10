@@ -1,0 +1,65 @@
+.search-filter {
+  height: 20vh;
+  background-color: darkkhaki;
+}
+.wrapper-msg-1, .wrapper-msg-2 {
+  margin-top: 2%;
+  border-bottom: 1px solid #d1cccc;
+}
+.img-profile-user > img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+.chat-text {
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+}
+.chat-text > .chat-preview {
+    margin-top: -10px;
+}
+.chat-text > .chat-preview-old {
+    margin-top: -10px;
+    font-weight: normal;
+}
+.msg-time {
+    font-family: 'Poppins', sans-serif;;
+    color: #9A9A9D;
+}
+.qty-msg {
+    color: #393939;
+    width: 20px;
+    height: 20px;
+    background-color: #ffc61f;
+    border-radius: 100%;
+    text-align: center;
+    font-weight: bold;
+    margin-left: 30%;
+}
+
+.last {
+    margin-bottom: 10%;
+}
+
+@media (max-width: 768px) {
+    .msg-time {
+        text-align: right;
+    }
+    .qty-msg {
+        margin-left: 60%;
+    }
+} 
+@media (max-width: 576px) {
+    .qty-msg {
+        margin-left: 40%;
+    }
+} 
+@media (max-width: 425px) {
+    .chat-text {
+        font-size: 0.8rem;
+      }
+      .msg-time {
+          font-size: 0.8rem;
+      }
+}
