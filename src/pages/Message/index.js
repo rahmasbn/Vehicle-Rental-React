@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import "./message.css";
 
 import samanthaPic from "../../assets/images/girl-with-red-clothes.webp";
-import SearchBar from "../../components/SearchBar";
+// import SearchBar from "../../components/SearchBar";
 
 function Message() {
   return (

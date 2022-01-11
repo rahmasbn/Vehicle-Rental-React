@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import leftArrowIcon from "../../assets/images/left-arrow.png";
 import fixieGray from "../../assets/images/fixie-gray.webp";
-import heartIcon from "../../assets/images/yellow-heart.png";
 
 import Header from "../../components/Header/index";
 import Footer from "../../components/Footer";

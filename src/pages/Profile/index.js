@@ -39,7 +39,7 @@ class Profile extends React.Component {
   }
 
   render() {
-    const { name, email, dob, gender, address, phone_number } = this.state.userData;
+    const { name, email, dob, address, phone_number } = this.state.userData;
     const { profilePic } = this.state;
     return (
       <div>
