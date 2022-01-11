@@ -40,7 +40,7 @@ class Header extends Component {
     axios
       .get(URL)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         const image = res.data.result.data[0].image;
         // console.log('photo: ', image);
         if (image !== null) {

@@ -10,7 +10,6 @@ import axios from "axios";
 class Profile extends React.Component {
   state = {
     userData: "",
-    genderSelected: "",
     profilePic: require("../../assets/images/avatar.jpg"),
   };
 

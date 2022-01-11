@@ -22,7 +22,7 @@ import Reservation from "./pages/Reservation";
 import Message from "./pages/Message";
 import NotFound from "./pages/NotFound";
 
-import Counter from "./components/Counter";
+// import Counter from "./components/Counter";
 
 function Main() {
   const token = JSON.parse(localStorage.getItem("vehicle-rental-token"));
