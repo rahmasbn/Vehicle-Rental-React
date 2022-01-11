@@ -18,10 +18,15 @@ function Login(props) {
 
     login(body)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data.result.token);
         const token = res.data.result.token;
+        const idUser = res.data.result.id;
+        const roleUser = res.data.result.roles;
 
         localStorage.setItem("vehicle-rental-token", JSON.stringify(token));
+        localStorage.setItem("vehicle-rental-idUser", JSON.stringify(idUser));
+        localStorage.setItem("vehicle-rental-roleUser", JSON.stringify(roleUser));
+
         props.history.push("/");
         // navigate("/");
       })

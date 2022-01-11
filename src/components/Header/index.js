@@ -6,7 +6,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import React, { Component } from "react";
 import { Navbar, Nav, Button, Container, NavDropdown } from "react-bootstrap";
 import { NavLink, Link } from "react-router-dom";
-import jwtDecode from "jwt-decode";
 
 import "./header.css";
 import axios from "axios";
@@ -16,52 +15,53 @@ class Header extends Component {
     show: true,
     userToken: "",
     isLogin: false,
-    // dataUser: null,
     profilePic: require("../../assets/images/avatar.jpg"),
   };
 
-  onLogout = () => {
+  onLogout = (e) => {
+    e.preventDefault();
     localStorage.removeItem("vehicle-rental-token");
+    localStorage.removeItem("vehicle-rental-idUser");
+    localStorage.removeItem("vehicle-rental-roleUser");
+
     this.setState({
       userToken: "",
       isLogin: false,
     });
+
   };
 
   componentDidMount() {
     const token = localStorage.getItem("vehicle-rental-token");
-    const data = jwtDecode(token);
-    const idUser = data.id;
-    // const image = data.image;
-    // console.log("image", image)
+    const idUser = localStorage.getItem("vehicle-rental-idUser");
     const URL = `http://localhost:8000/users/${idUser}`;
-    // if(token) {
-    // // console.log(URL);
+    // console.log(URL);
+    if(idUser) {
     axios
       .get(URL)
       .then((res) => {
-        // console.log(res.data);
+        console.log(res.data);
         const image = res.data.result.data[0].image;
         // console.log('photo: ', image);
-        if (image !== null && typeof image !== "undefined") {
+        if (image !== null) {
           this.setState({
             profilePic: `http://localhost:8000/${image}`,
           });
         }
         this.setState({
-          isLogin: true,
           userToken: JSON.parse(token),
-          // userData: res.data.result.data[0],
+          isLogin: true,
         });
       })
       .catch((err) => {
         console.error(err);
       });
+    }
   }
 
   render() {
     const { isLogin } = this.state;
-    console.log(isLogin);
+    // console.log(isLogin);
 
     return (
       <Navbar collapseOnSelect bg="white" expand="md" sticky="top">

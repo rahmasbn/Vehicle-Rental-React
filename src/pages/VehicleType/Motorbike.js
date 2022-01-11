@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import ReactPaginate from "react-paginate";
 
 import VehicleCard from "../../components/Card";

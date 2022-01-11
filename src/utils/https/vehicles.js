@@ -1,17 +1,40 @@
 import axios from "axios";
 
 // vehicleType
-// const urlPopular = process.env.REACT_APP_HOST + "/vehicles/popular?order=desc&page=1&limit=4"
-// const urlCar = process.env.REACT_APP_HOST + "/vehicles?page=1&limit=4&type=car"
-// const urlMotorbike = process.env.REACT_APP_HOST + "/vehicles?page=1&limit=4&type=motorbike"
-// const urlBike = process.env.REACT_APP_HOST = "/vehicles?page=1&limit=4&type=bike"
+// const urlPopular =
+//   process.env.REACT_APP_HOST + "/vehicles/popular?order=desc&page=1&limit=4";
+// const urlCar = process.env.REACT_APP_HOST + "/vehicles?page=1&limit=4&type=car";
+// const urlMotorbike =
+//   process.env.REACT_APP_HOST + "/vehicles?page=1&limit=4&type=motorbike";
+// const urlBike = (process.env.REACT_APP_HOST =
+//   "/vehicles?page=1&limit=4&type=bike");
+// // export const vehicleType = () => {
+// //   axios.get(urlPopular);
+// //   axios.get(urlCar);
+// //   axios.get(urlMotorbike);
+// //   axios.get(urlBike);
+// //   return axios
+// //     .all([urlPopular, urlCar, urlMotorbike, urlBike])
+// //     .then((res) => res)
+// //     .catch((err) => console.error(err));
+// // };
+
 // export const vehicleType = () => {
+//   return new Promise((resolve, reject) => {
 //     axios.get(urlPopular);
 //     axios.get(urlCar);
 //     axios.get(urlMotorbike);
 //     axios.get(urlBike);
-//     return axios.all([urlPopular, urlCar, urlMotorbike, urlBike])
-// }
+//     axios
+//     .all([urlPopular, urlCar, urlMotorbike, urlBike], (err, result) => {
+//       if (err) return reject({ err });
+//       resolve({result});
+
+
+//     })
+     
+//     });
+//   };
 
 // popular
 const popularURL = process.env.REACT_APP_HOST + "/vehicles/popular?order=desc";
@@ -38,7 +61,8 @@ export const bike = () => {
 };
 
 // card popular
-const cardURL = process.env.REACT_APP_HOST + "/vehicles/popular?order=desc&page=1&limit=4";
+const cardURL =
+  process.env.REACT_APP_HOST + "/vehicles/popular?order=desc&page=1&limit=4";
 export const popularCard = () => {
   return axios.get(cardURL);
 };

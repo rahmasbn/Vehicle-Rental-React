@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 
 import leftArrowIcon from "../../assets/images/left-arrow.png";
@@ -11,6 +11,7 @@ import Footer from "../../components/Footer";
 import "./reservation.css";
 
 function Reservation() {
+  const ref = useRef();
   return (
     <div>
       <Header />
@@ -32,7 +33,7 @@ function Reservation() {
         <div className="container">
           <div className="reservation-detail">
             <div className="row">
-              <section className="wrapper-reservation-1 col-lg-8">
+              <section className="wrapper-reservation-1 col-lg-7">
                 <img src={fixieGray} alt="fixie-gray" />
               </section>
               <section className="wrapper-reservation-2 col-lg-4">
@@ -46,6 +47,24 @@ function Reservation() {
                   <div className="qty">2</div>
                   <div className="plus">+</div>
                 </div>
+                <div className="div-content-3">
+                  <p>Reservation Date :</p>
+                  <div class="select date">
+                    <input
+                      type="text"
+                      className="form-control date mt-3 py-2"
+                      ref={ref}
+                      placeholder="Select date"
+                      // onChange={(e) => console.log(e.target.value)}
+                      onFocus={() => (ref.current.type = "date")}
+                      onBlur={() => (ref.current.type = "text")}
+                    />
+                  </div>
+                  <select id="days" className="form-select  mt-3 py-2">
+                    <option value="">1 Day</option>
+                    <option value="Bali">2 Days</option>
+                  </select>
+                </div>
               </section>
             </div>
           </div>
@@ -53,23 +72,10 @@ function Reservation() {
       </main>
 
       <div className="container">
-        <div className="btn-group">
-          <div className="button1">
-            <button className="chat" type="button">
-              Chat Admin
-            </button>
-          </div>
-          <div className="button2">
-            <button className="reservation" type="button">
-              Reservation
-            </button>
-          </div>
-          <div className="button3">
-            <button className="like" type="button">
-              <img src={heartIcon} alt="heart" className="heart-logo" />
-              Like
-            </button>
-          </div>
+        <div className="button1 mb-5 mt-n5">
+          <button className="reservation mx-5" type="button">
+            Pay now : Rp.178.000
+          </button>
         </div>
       </div>
 

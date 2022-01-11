@@ -20,7 +20,7 @@ import Bike from "./pages/VehicleType/Bike";
 import ForgotPass from "./pages/ForgotPassword";
 import Reservation from "./pages/Reservation";
 import Message from "./pages/Message";
-import NotFound from "./pages/NotFound"
+import NotFound from "./pages/NotFound";
 
 import Counter from "./components/Counter";
 
@@ -34,15 +34,19 @@ function Main() {
         <Route path="/register" component={Register} />
         <Route path="/forgot-password" component={ForgotPass} />
         <Route exact path="/vehicle-type" component={VehicleType} />
+        <Route path="/vehicle-detail" component={VehicleDetail} />
         <Route path="/vehicle-type/popular" component={Popular} />
         <Route path="/vehicle-type/cars" component={Cars} />
         <Route path="/vehicle-type/motorbikes" component={Motorbike} />
         <Route path="/vehicle-type/bikes" component={Bike} />
-        <Route path="/history" render={(routerProps) => {
+        <Route path="/about" component={About} />
+        <Route
+          path="/history"
+          render={(routerProps) => {
             if (!token) return <Redirect to="/login" />;
             return <History {...routerProps} />;
-          }} />
-        <Route path="/about" component={About} />
+          }}
+        />
         <Route
           path="/profile"
           render={(routerProps) => {
@@ -50,18 +54,23 @@ function Main() {
             return <Profile {...routerProps} />;
           }}
         />
-        <Route path="/message" render={(routerProps) => {
+        <Route
+          path="/message"
+          render={(routerProps) => {
             if (!token) return <Redirect to="/login" />;
             return <Message {...routerProps} />;
-          }} />
-        <Route path="/vehicle-detail" component={VehicleDetail} />
-        <Route path="/reservation" render={(routerProps) => {
+          }}
+        />
+        <Route
+          path="/reservation"
+          render={(routerProps) => {
             if (!token) return <Redirect to="/login" />;
             return <Reservation {...routerProps} />;
-          }} />
-         <Route path="*" component={NotFound} />
+          }}
+        />
+        <Route path="*" component={NotFound} />
 
-        <Route path="/counter" component={Counter} />
+        {/* <Route path="/counter" component={Counter} /> */}
       </Switch>
     </Router>
   );
