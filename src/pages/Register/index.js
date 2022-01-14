@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import google from "../../assets/images/google-logo.png";
+import google from "../../assets/icons/google-logo.png";
 
 import Footer from "../../components/Footer/index";
 import { register } from "../../utils/https/auth";
@@ -35,7 +35,7 @@ function Register(props) {
             </h1>
           </div>
           <div className="text">
-            <p>Do you have an account?</p>
+            <p>Already have an account?</p>
           </div>
           <div className="signIn">
             <Link to="/login">

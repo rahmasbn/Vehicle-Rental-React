@@ -1,0 +1,325 @@
+.payment-header {
+  display: grid;
+  grid-template-columns: 5% 5%;
+  grid-template-rows: auto;
+  grid-gap: 2%;
+}
+.payment-text > h1 {
+  font-size: 1.8rem;
+  margin-top: -2px;
+  font-family: "Nunito", sans-serif;
+  color: black;
+}
+.payment-banner {
+  height: 60vh;
+  background-image: url("../../assets/images/fixie-gray.webp");
+  background-position: center;
+  background-size: cover;
+}
+.vehicle-title {
+  font-family: "Playfair Display", serif;
+  color: white;
+  padding-top: 3%;
+}
+.vehicle-title > h1 {
+  font-weight: bold;
+  font-size: 3rem;
+}
+.vehicle-title > p {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.5rem;
+  padding-top: 15px;
+}
+.btn-payment-deadline {
+  text-align: center;
+  /* width: 50%; */
+}
+.btn-deadline {
+  width: 40%;
+  background-color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #393933;
+  font-family: "Nunito", sans-serif;
+  font-size: 1.1rem;
+  padding: 16px;
+}
+.code-title > p {
+  margin-top: 5%;
+  font-weight: bold;
+  font-size: 1.1rem;
+  font-family: "Nunito", sans-serif;
+}
+.payment-code,
+.booking-code,
+.quantity,
+.reservation-date {
+  height: 70px;
+  border-radius: 8px;
+  border: 1px solid #c4c4bf;
+}
+.code > p {
+  margin-top: 10%;
+  margin-left: 30%;
+  font-weight: bold;
+  font-size: 1.3rem;
+  font-family: "Playfair Display", serif;
+}
+.copy-code {
+  margin-left: 35%;
+  margin-top: 3%;
+}
+.copy-code > button,
+.copy-booking-code > button {
+  width: 100px;
+  border: none;
+  background-color: #393933;
+  color: #ffc61f;
+  font-size: 1rem;
+  font-family: "Nunito", sans-serif;
+  padding: 7px;
+  border-radius: 10px;
+}
+.copy-booking-code {
+  margin-left: 35%;
+  margin-top: 3%;
+}
+h3 {
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 2.2rem;
+  margin-top: 5%;
+  margin-bottom: 3%;
+}
+.quantity,
+.reservation-date {
+  margin-bottom: 5%;
+}
+.quantity > p {
+  margin-top: 5%;
+  margin-left: 32%;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+}
+.reservation-date > p {
+  margin-left: 15%;
+  margin-top: 3%;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+}
+.reservation-date > p > span {
+  font-family: "Poppins", sans-serif;
+  font-weight: normal;
+}
+.price-detail,
+.identity-buyer {
+  height: 200px;
+  border-radius: 8px;
+  border: 1px solid #c4c4bf;
+}
+.price-detail > h4,
+.identity-buyer > h4 {
+  font-size: 1.1rem;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+}
+.price-detail > h4 {
+  margin-top: 13%;
+  margin-left: 20%;
+}
+.price-detail > p {
+  margin-left: 20%;
+  font-family: "Poppins", sans-serif;
+}
+.identity-buyer > h4 {
+  margin-top: 8%;
+  margin-left: 15%;
+}
+.identity-buyer > p {
+  margin-left: 15%;
+  font-family: "Poppins", sans-serif;
+}
+.btn-transfer,
+.btn-cash {
+  margin-top: 5%;
+  margin-bottom: 7%;
+}
+.btn-transfer > button,
+.btn-cash > button {
+  width: 40%;
+  border-radius: 6px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  color: #393933;
+  font-weight: bold;
+  padding: 18px 0;
+}
+.btn-transfer > button {
+  margin-left: 52%;
+  background-color: #ffc61f;
+  border: #ffc61f;
+}
+.btn-cash > button {
+  background-color: #e0e2e6;
+  border: #e0e2e6;
+}
+.btn-finish-payment > button {
+  width: 100%;
+  padding: 20px 0;
+  border-radius: 6px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  color: #ffc61f;
+  background-color: #393933;
+}
+.btn-finish-payment {
+  margin-bottom: 7%;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .btn-payment-deadline {
+    margin-top: 5%;
+  }
+  .btn-deadline {
+    width: 60%;
+  }
+  .copy-code,
+  .copy-booking-code {
+    margin-left: 25%;
+  }
+}
+
+@media (max-width: 768px) {
+  .code > p {
+    margin-top: 15%;
+    font-size: 1.1rem;
+  }
+  .copy-code,
+  .copy-booking-code {
+    margin-left: 25%;
+    margin-top: 5%;
+  }
+  .copy-code > button,
+  .copy-booking-code > button {
+    width: 85px;
+    font-size: 0.9rem;
+    padding: 7px;
+  }
+  h3 {
+    font-size: 1.8rem;
+  }
+  .quantity > p {
+    margin-top: 8%;
+    margin-left: 25%;
+  }
+  .reservation-date > p {
+    margin-top: 5%;
+  }
+  .price-detail,
+  .identity-buyer {
+    height: 150px;
+  }
+  .btn-transfer > button,
+  .btn-cash > button {
+    width: 50%;
+    font-size: 1rem;
+  }
+  .btn-transfer > button {
+    margin-left: 50%;
+  }
+  .btn-finish-payment > button {
+    margin-left: 0;
+    padding: 18px 0;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .copy-code > button,
+  .copy-booking-code > button {
+    width: 100px;
+  }
+  .copy-code,
+  .copy-booking-code {
+    margin-left: 45%;
+    margin-top: 3%;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  .quantity > p {
+    margin-top: 4%;
+    margin-left: 0;
+    text-align: center;
+  }
+  .reservation-date > p {
+    margin-top: 5%;
+    text-align: center;
+    margin-left: 0;
+  }
+  .price-detail,
+  .identity-buyer {
+    height: 150px;
+    margin-bottom: 5%;
+  }
+  .btn-transfer > button,
+  .btn-cash > button {
+    width: 100%;
+  }
+  .btn-transfer > button {
+    margin-left: 0;
+  }
+.btn-cash {
+  margin-top: -2%;
+}
+  .btn-finish-payment > button {
+    margin-top: -2%;
+    font-size: 1rem;
+  }
+  .price-detail > h4 {
+    margin-top: 5%;
+    margin-left: 0;
+    text-align: center;
+  }
+  .price-detail > p {
+    margin-left: 0;
+    text-align: center;
+  }
+  .identity-buyer > h4 {
+    margin-top: 5%;
+    margin-left: 0;
+    text-align: center;
+  }
+  .identity-buyer > p {
+    margin-left: 0;
+    text-align: center;
+  }
+  .vehicle-title > h1 {
+    font-size: 2.5rem;
+  }
+  .vehicle-title > p {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .btn-payment-deadline {
+    margin-top: 10%;
+  }
+  .btn-deadline {
+    width: 70%;
+  }
+  .copy-code,
+  .copy-booking-code {
+    margin-left: 35%;
+  }
+  h3 {
+    margin-top: 10%;
+    font-size: 1.3rem;
+  }
+}

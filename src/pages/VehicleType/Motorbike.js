@@ -20,7 +20,7 @@ class Popular extends React.Component {
     this.handlePageClick = this.handlePageClick.bind(this);
   }
 
-  getVehicles() {
+  componentDidMount() {
     motorbike()
       .then((res) => {
         const vehicleData = res.data.result.data;
@@ -53,10 +53,6 @@ class Popular extends React.Component {
       }
     );
   };
-
-  componentDidMount() {
-    this.getVehicles();
-  }
 
   render() {
     return (

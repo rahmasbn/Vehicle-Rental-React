@@ -1,4 +1,4 @@
-
+/* 
 .search input {
     background-color: white;
     border: 1px solid #c4bbbb;
@@ -7,8 +7,6 @@
     width: 100%
 }
 .searchIcon {
-    /* height: 60px;
-    width: 50px; */
     background-color: white;
     display: grid;
     place-items: center;
@@ -17,4 +15,4 @@
     font-size: 35px;
     margin-left: 90%;
     margin-top: -6%;
-}
+} */

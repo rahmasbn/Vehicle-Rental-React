@@ -1,5 +1,5 @@
-import rightArrow from "../../assets/images/cc-arrow-right-circle-32.png";
-import leftArrow from "../../assets/images/cc-arrow-left-circle-32.png";
+import rightArrow from "../../assets/icons/cc-arrow-right-circle-32.png";
+import leftArrow from "../../assets/icons/cc-arrow-left-circle-32.png";
 import edwardPic from "../../assets/images/man-with-camera.webp";
 import samanthaPic from "../../assets/images/girl-with-red-clothes.webp";
 

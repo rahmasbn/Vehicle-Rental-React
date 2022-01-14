@@ -19,9 +19,9 @@ function NotFound() {
         />
       </div>
       <p className="text-center" style={{ color: "coral", fontSize: "1.5rem" }}>
-        The page you are looking for can't be found. Go home by{" "}
+        The page you are looking for can't be found.{" "}
         <Link to="/" style={{ textDecoration: "none" }}>
-          Clicking here!{" "}
+          Go home!
         </Link>
       </p>
     </>

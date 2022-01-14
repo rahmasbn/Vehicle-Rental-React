@@ -7,7 +7,7 @@ function VehicleCard(props) {
   // console.log("card", vehicleData);
   const card = [];
   for (let idx = 0; idx < vehicleData.length; idx++) {
-    const imgURL = `http://localhost:8000/${vehicleData[idx].image}`;
+    const imgURL = process.env.REACT_APP_HOST + `/${vehicleData[idx].image}`;
     const vehicle = vehicleData[idx].vehicle;
     const city = vehicleData[idx].city;
     const element = (

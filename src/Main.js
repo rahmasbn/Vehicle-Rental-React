@@ -17,9 +17,12 @@ import Popular from "./pages/VehicleType/popular";
 import Cars from "./pages/VehicleType/Cars";
 import Motorbike from "./pages/VehicleType/Motorbike";
 import Bike from "./pages/VehicleType/Bike";
+import AddVehicle from "./pages/AddVehicle";
 import ForgotPass from "./pages/ForgotPassword";
 import Reservation from "./pages/Reservation";
-import Message from "./pages/Message";
+import Message from "./pages/Message/index";
+import ChatDetail from "./pages/Message/ChatDetail";
+import Payment from "./pages/Payment";
 import NotFound from "./pages/NotFound";
 
 // import Counter from "./components/Counter";
@@ -30,9 +33,27 @@ function Main() {
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <Route path="/forgot-password" component={ForgotPass} />
+        <Route
+          path="/login"
+          render={(routerProps) => {
+            if (token) return <Redirect to="/" />;
+            return <Login {...routerProps} />;
+          }}
+        />
+        <Route
+          path="/register"
+          render={(routerProps) => {
+            if (token) return <Redirect to="/" />;
+            return <Register {...routerProps} />;
+          }}
+        />
+        <Route
+          path="/forgot-password"
+          render={(routerProps) => {
+            if (token) return <Redirect to="/" />;
+            return <ForgotPass {...routerProps} />;
+          }}
+        />
         <Route exact path="/vehicle-type" component={VehicleType} />
         <Route path="/vehicle-detail" component={VehicleDetail} />
         <Route path="/vehicle-type/popular" component={Popular} />
@@ -40,6 +61,13 @@ function Main() {
         <Route path="/vehicle-type/motorbikes" component={Motorbike} />
         <Route path="/vehicle-type/bikes" component={Bike} />
         <Route path="/about" component={About} />
+        <Route
+          path="/add-vehicle"
+          render={(routerProps) => {
+            if (!token) return <Redirect to="/login" />;
+            return <AddVehicle {...routerProps} />;
+          }}
+        />
         <Route
           path="/history"
           render={(routerProps) => {
@@ -62,10 +90,24 @@ function Main() {
           }}
         />
         <Route
+          path="/chat-detail"
+          render={(routerProps) => {
+            if (!token) return <Redirect to="/login" />;
+            return <ChatDetail {...routerProps} />;
+          }}
+        />
+        <Route
           path="/reservation"
           render={(routerProps) => {
             if (!token) return <Redirect to="/login" />;
             return <Reservation {...routerProps} />;
+          }}
+        />
+        <Route
+          path="/payment"
+          render={(routerProps) => {
+            if (!token) return <Redirect to="/login" />;
+            return <Payment {...routerProps} />;
           }}
         />
         <Route path="*" component={NotFound} />

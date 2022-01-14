@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import google from "../../assets/images/google-logo.png";
+import google from "../../assets/icons/google-logo.png";
 
 import Footer from "../../components/Footer/index";
 import { login } from "../../utils/https/auth";
@@ -18,14 +18,14 @@ function Login(props) {
 
     login(body)
       .then((res) => {
-        // console.log(res.data.result.token);
+        // console.log(res.data.result.image);
         const token = res.data.result.token;
-        const idUser = res.data.result.id;
+        const photo = res.data.result.image;
         const roleUser = res.data.result.roles;
 
         localStorage.setItem("vehicle-rental-token", JSON.stringify(token));
-        localStorage.setItem("vehicle-rental-idUser", JSON.stringify(idUser));
-        localStorage.setItem("vehicle-rental-roleUser", JSON.stringify(roleUser));
+        localStorage.setItem("vehicle-rental-photoUser", photo);
+        localStorage.setItem("vehicle-rental-roleUser", roleUser);
 
         props.history.push("/");
         // navigate("/");

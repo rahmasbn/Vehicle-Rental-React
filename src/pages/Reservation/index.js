@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 
-import leftArrowIcon from "../../assets/images/left-arrow.png";
+import leftArrowIcon from "../../assets/icons/left-arrow.png";
 import fixieGray from "../../assets/images/fixie-gray.webp";
 
 import Header from "../../components/Header/index";
@@ -32,10 +32,10 @@ function Reservation() {
         <div className="container">
           <div className="reservation-detail">
             <div className="row">
-              <section className="wrapper-reservation-1 col-lg-7">
+              <section className="wrapper-reservation-1 col-lg-7 col-md-7">
                 <img src={fixieGray} alt="fixie-gray" />
               </section>
-              <section className="wrapper-reservation-2 col-lg-4">
+              <section className="wrapper-reservation-2 col-lg-4 col-md-5">
                 <div className="div-content-1">
                   <h1>Fixie - Gray Only</h1>
                   <h2>Yogyakarta</h2>
@@ -48,10 +48,10 @@ function Reservation() {
                 </div>
                 <div className="div-content-3">
                   <p>Reservation Date :</p>
-                  <div class="select date">
+                  <div className="select-date">
                     <input
                       type="text"
-                      className="form-control date mt-3 py-2"
+                      className="form-control date"
                       ref={ref}
                       placeholder="Select date"
                       // onChange={(e) => console.log(e.target.value)}
@@ -61,7 +61,12 @@ function Reservation() {
                   </div>
                   <select id="days" className="form-select  mt-3 py-2">
                     <option value="">1 Day</option>
-                    <option value="Bali">2 Days</option>
+                    <option value="">2 Days</option>
+                    <option value="">3 Days</option>
+                    <option value="">4 Days</option>
+                    <option value="">5 Days</option>
+                    <option value="">6 Days</option>
+                    <option value="">7 Days</option>
                   </select>
                 </div>
               </section>
@@ -71,10 +76,12 @@ function Reservation() {
       </main>
 
       <div className="container">
-        <div className="button1 mb-5 mt-n5">
-          <button className="reservation mx-5" type="button">
-            Pay now : Rp.178.000
-          </button>
+        <div className="pay mb-5">
+          <Link to="/payment">
+            <button className="btn-reservation" type="button">
+              Pay now : Rp.178.000
+            </button>
+          </Link>
         </div>
       </div>
 

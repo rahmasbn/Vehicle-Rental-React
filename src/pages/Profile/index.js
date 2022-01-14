@@ -1,11 +1,11 @@
 import React from "react";
 // import profilePic from "../../assets/images/girl-with-red-clothes.webp";
-import iconEdit from "../../assets/images/edit-profile.png";
+import iconEdit from "../../assets/icons/edit-profile.png";
 
 import Header from "../../components/Header/index";
 import Footer from "../../components/Footer/index";
 import "./profile.css";
-import axios from "axios";
+import { profile } from "../../utils/https/users";
 
 class Profile extends React.Component {
   state = {
@@ -14,26 +14,24 @@ class Profile extends React.Component {
   };
 
   componentDidMount() {
-    const idUser = localStorage.getItem("vehicle-rental-idUser");
-    const URL = `http://localhost:8000/users/${idUser}`;
-    axios
-      .get(URL)
+    const image = localStorage.getItem("vehicle-rental-photoUser");
+
+    profile()
       .then((res) => {
-        // console.log(res.data.result.data[0].dob);
-        const moment = require('moment');
-        let dob = moment(res.data.result.data[0].dob).format('YYYY-MM-DD');
-        const result = {...res.data.result.data[0], dob};
-        const image = res.data.result.data[0].image;
-        
-        // console.log('photo: ', image);
-        if (image !== null) {
+        // console.log(res.data.result[0].dob);
+        const moment = require("moment");
+        let dob = moment(res.data.result[0].dob).format("YYYY-MM-DD");
+        // console.log(dob)
+        const result = { ...res.data.result[0], dob };
+
+        if (image !== "null") {
           this.setState({
-            profilePic: `http://localhost:8000/${image}`,
+            profilePic: process.env.REACT_APP_HOST + `/${image}`,
           });
         }
         this.setState({
-          userData: result
-        })
+          userData: result,
+        });
       })
       .catch((err) => console.error(err));
   }

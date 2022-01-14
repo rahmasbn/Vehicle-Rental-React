@@ -17,4 +17,40 @@
     color: #9e9898;
     font-size: 1rem;
     font-family: "Nunito", sans-serif;
+  } 
+.searchInput {
+  background-color: white;
+  border: 1px solid #c4bbbb;
+  border-radius: 3px;
+  height: 55px;
+  width: 100%
+}
+.searchIcon {
+  background-color: white;
+  display: flex;
+  place-items: center;
+  margin-top: -10px;
+  margin-left: 45%;
+  /* z-index: 2; */
+}
+.searchIcon svg {
+  font-size: 35px;
+  margin-left: 90%;
+    margin-top: -6%;
+}
+
+@media (max-width: 768px) {
+  .searchIcon {
+    margin-left: 20%;
   }
+}
+@media (max-width: 576px) {
+  .searchIcon {
+    margin-left: -5%;
+  }
+}
+@media (max-width: 425px) {
+  .searchIcon {
+    margin-left: -35%;
+  }
+}

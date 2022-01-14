@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import leftArrowIcon from "../../assets/images/left-arrow.png";
+import leftArrowIcon from "../../assets/icons/left-arrow.png";
 import fixieGray from "../../assets/images/fixie-gray.webp";
-import rightArrowIcon from "../../assets/images/right-arrow.png";
-import heartIcon from "../../assets/images/yellow-heart.png"
+import rightArrowIcon from "../../assets/icons/right-arrow.png";
+import heartIcon from "../../assets/icons/yellow-heart.png"
 
 import Header from "../../components/Header/index";
 import Footer from "../../components/Footer";

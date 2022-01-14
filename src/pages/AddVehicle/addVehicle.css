@@ -1,0 +1,103 @@
+.addVehicle-header {
+  display: grid;
+  grid-template-columns: 5% 50%;
+  grid-template-rows: auto;
+  grid-gap: 2%;
+}
+.addVehicle-text > h1 {
+  font-size: 1.8rem;
+  margin-top: -2px;
+  font-family: "Nunito", sans-serif;
+  color: black;
+}
+.add-vehicle-wrapper {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+  width: 100%;
+  height: 80vh;
+}
+.add-item-vehicle {
+  background-color: darkkhaki;
+  border: 1px solid black;
+}
+.add-container {
+  display: grid;
+  height: 100%;
+  grid-template-columns: auto;
+  grid-template-rows: 65% 35%;
+}
+.add-image-vehicle {
+  /* border: 1px solid dodgerblue; */
+  background-color: #e7e7ec;
+  border-radius: 10px;
+  height: 95%;
+}
+.inside-wrapper-add-vehicle {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+}
+.vehicle-slider {
+  border: 1px solid rebeccapurple;
+}
+.cameraIcon,
+.icon-camera {
+  display: block;
+  margin: auto;
+  transform: translate(0, 50%);
+}
+.add-image-vehicle > p {
+  margin-top: 12%;
+  margin-left: 38%;
+  font-family: "Nunito", sans-serif;
+  color: #b8becd;
+}
+.icon-camera {
+  width: 60px;
+  height: 60px;
+}
+.vehicle-slider > p {
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+  color: #b8becd;
+  margin-top: 15%;
+  margin-left: 28%;
+}
+.vehicle-slider > h1 {
+  color: #818386;
+  font-size: 4rem;
+  margin-left: 45%;
+  margin-top: 8%;
+}
+.vehicle-slider > .add-more {
+  margin-top: -3%;
+  margin-left: 40%;
+}
+form.add-vehicle {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+}
+form.add-vehicle > input[type="text"] {
+  border: none;
+  border-radius: 0;
+  margin-top: -1%;
+  border-bottom: 2px solid #6e7070;
+}
+form.add-vehicle > .price-vehicle > .label-price,
+form.add-vehicle > .status-vehicle > .label-status {
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-family: "Playfair Display", serif;
+  margin-top: 5%;
+}
+form.add-vehicle > .price-vehicle > input[type="text"],
+form.add-vehicle > .status-vehicle > input[type="text"] {
+  border: none;
+  background-color: #ccccce;
+}
+form.add-vehicle > .status-vehicle > .label-status {
+  margin-top: 0;
+}

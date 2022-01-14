@@ -1,5 +1,5 @@
-import logo from "../../assets/images/logo.png";
-import mail from "../../assets/images/mail-icon.png";
+import logo from "../../assets/icons/logo.png";
+import mail from "../../assets/icons/mail-icon.png";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 
@@ -8,7 +8,6 @@ import { Navbar, Nav, Button, Container, NavDropdown } from "react-bootstrap";
 import { NavLink, Link } from "react-router-dom";
 
 import "./header.css";
-import axios from "axios";
 
 class Header extends Component {
   state = {
@@ -18,10 +17,9 @@ class Header extends Component {
     profilePic: require("../../assets/images/avatar.jpg"),
   };
 
-  onLogout = (e) => {
-    e.preventDefault();
+  onLogout = () => {
     localStorage.removeItem("vehicle-rental-token");
-    localStorage.removeItem("vehicle-rental-idUser");
+    localStorage.removeItem("vehicle-rental-photoUser");
     localStorage.removeItem("vehicle-rental-roleUser");
 
     this.setState({
@@ -33,29 +31,18 @@ class Header extends Component {
 
   componentDidMount() {
     const token = localStorage.getItem("vehicle-rental-token");
-    const idUser = localStorage.getItem("vehicle-rental-idUser");
-    const URL = `http://localhost:8000/users/${idUser}`;
-    // console.log(URL);
-    if(idUser) {
-    axios
-      .get(URL)
-      .then((res) => {
-        // console.log(res.data);
-        const image = res.data.result.data[0].image;
-        // console.log('photo: ', image);
-        if (image !== null) {
-          this.setState({
-            profilePic: `http://localhost:8000/${image}`,
-          });
-        }
+    const image = localStorage.getItem("vehicle-rental-photoUser");
+
+      if (image !== 'null') {
+        this.setState({
+          profilePic: process.env.REACT_APP_HOST +`/${image}`,
+        });
+      }
+      if(token) {
         this.setState({
           userToken: JSON.parse(token),
           isLogin: true,
         });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
     }
   }
 
@@ -98,6 +85,7 @@ class Header extends Component {
               {isLogin ? (
                 <>
                   <Nav.Link as={Link} to="/message" className="mx-3 mail">
+                    {/* <figcaption>1</figcaption> */}
                     <img src={mail} alt="mail" width={28} height={28} />
                   </Nav.Link>
                   <NavDropdown

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import leftArrowIcon from "../../assets/images/Vector.png";
+import leftArrowIcon from "../../assets/icons/Vector.png";
 
 import Footer from "../../components/Footer";
 import "./forgotPass.css";

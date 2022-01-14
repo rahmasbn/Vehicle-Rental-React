@@ -112,7 +112,7 @@
   grid-template-rows: auto;
   margin-top: 2%;
 }
-/* .minus,
+.minus,
 .plus {
   font-size: 2.2rem;
   font-weight: bold;
@@ -138,7 +138,7 @@
   text-align: center;
   font-weight: bold;
   margin-left: 35px;
-} */
+}
 .btn-group {
   display: grid;
   grid-template-columns: 30% 30% 30%;

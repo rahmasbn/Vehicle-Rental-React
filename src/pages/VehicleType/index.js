@@ -5,7 +5,9 @@ import VehicleCard from "../../components/Card/index";
 import Header from "../../components/Header/index";
 import Footer from "../../components/Footer/index";
 import { Link } from "react-router-dom";
-import SearchBar from "../../components/SearchBar/index";
+// import SearchBar from "../../components/SearchBar/index";
+import { vehicleType } from "../../utils/https/vehicles";
+import SearchIcon from "@material-ui/icons/Search";
 
 class VehicleType extends React.Component {
   state = {
@@ -13,25 +15,10 @@ class VehicleType extends React.Component {
     carsData: [],
     motorbikesData: [],
     bikesData: [],
-    // placeholder: this.props.placeholder,
   };
 
   componentDidMount() {
-    const urlPopular = axios.get(
-      "http://localhost:8000/vehicles/popular?order=desc&page=1&limit=4"
-    );
-    const urlCar = axios.get(
-      `http://localhost:8000/vehicles?page=1&limit=4&type=car`
-    );
-    const urlMotorbike = axios.get(
-      `http://localhost:8000/vehicles?page=1&limit=4&type=motorbike`
-    );
-    const urlBike = axios.get(
-      `http://localhost:8000/vehicles?page=1&limit=4&type=bike`
-    );
-
-    axios
-      .all([urlPopular, urlCar, urlMotorbike, urlBike])
+    vehicleType()
       .then(
         axios.spread((...res) => {
           //   console.log(res[0].data.result.data);
@@ -46,7 +33,6 @@ class VehicleType extends React.Component {
       .catch((err) => console.error(err));
   }
 
-  // const placeholder = props.placeholder;
   render() {
     return (
       <>
@@ -54,7 +40,15 @@ class VehicleType extends React.Component {
         <main className="vehicleType">
           <div className="container">
             <div className="search-bar mt-5">
-              <SearchBar placeholder="Search vehicle (ex. cars, cars name)"/>
+              <div className="searchInput d-flex">
+                <input
+                  type="text"
+                  placeholder="Search vehicle (ex. cars, cars name)"
+                />
+              </div>
+              <div className="searchIcon">
+                <SearchIcon />
+              </div>
             </div>
             <h2>Popular in Town</h2>
             <div className="view-more" style={{ textAlign: "right" }}>
