@@ -1,4 +1,3 @@
-
 .search-chat {
   height: 10vh;
 }
@@ -8,14 +7,9 @@
   border-radius: 0%;
   margin-top: 2%;
 }
-/* .iconSearch svg {
-  font-size: 35px;
-  margin-left: 95%;
-  margin-top: -12%;
-} */
 .iconSearch {
-    margin-left: 95%;
-    margin-top: -6%;
+  margin-left: 95%;
+  margin-top: -6%;
 }
 #messages {
   width: 100%;
@@ -69,11 +63,159 @@
   font-weight: bold;
   margin-left: 30%;
 }
-
 .last {
   margin-bottom: 10%;
 }
 
+/* chat detail */
+.user-info {
+  margin-top: -4%;
+}
+.user-info > img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-left: 7%;
+}
+.user-info > p {
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  color: black;
+  margin-top: 1%;
+  margin-left: 2%;
+}
+.box {
+  position: relative;
+  margin: auto;
+  margin-top: -2%;
+  width: 90%;
+  height: 25vh;
+  border: 1px solid #cac8c8;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+}
+.vehicle-img {
+  padding: 10px 30px 0 20px;
+}
+.vehicle-img > img {
+  width: 70%;
+  border-radius: 10px;
+}
+.vehicle-info {
+  margin-top: 1%;
+  margin-left: -5%;
+}
+.vehicle-info > h1 {
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  font-size: 2rem;
+}
+.vehicle-info > h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+}
+.vehicle-info > h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  font-weight: lighter;
+  color: #087e0d;
+  text-align: left;
+  margin: 0;
+}
+.vehicle-info > h4 {
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  text-align: right;
+  padding-right: 10%;
+  font-size: 1.5rem;
+}
+.chat-content {
+  height: 30vh;
+}
+.right-chat {
+  margin-top: -5%;
+  position: absolute;
+  top: 70%;
+  right: 10%;
+}
+.right-chat > .msg {
+  background-color: #393939;
+  color: #ffc61f;
+  padding: 13px 35px;
+  border-radius: 6px;
+}
+.right-chat > .msg > p,
+.left-chat > .msg > p {
+  margin: 6px 0;
+}
+.right-chat > p.msg-time {
+  text-align: right;
+  margin-top: 5%;
+}
+.left-chat {
+  margin-top: -7%;
+  position: absolute;
+  top: 85%;
+  left: 10%;
+}
+.left-chat > .msg {
+  background-color: #ffc61f;
+  color: #393939;
+  padding: 13px 35px;
+  border-radius: 6px;
+}
+.left-chat > p.msg-time {
+  margin-top: 5%;
+  margin-left: 70%;
+}
+.chat-box {
+  position: absolute;
+  top: 87%;
+  width: 82%;
+}
+.chat-box > input {
+  background-color: #ccccce;
+  height: 10vh;
+}
+.chat-box > img {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: 3%;
+  top: 30%;
+}
+.chat-content {
+  height: 60vh;
+}
+
+@media (max-width: 1024px) {
+  /* chat detail */
+  .info-user > .img-arrow > a > img {
+    margin-left: -2%;
+  }
+  .right-chat {
+    margin-top: 0;
+    top: 55%;
+    right: 5%;
+  }
+  .left-chat {
+    margin-top: 0;
+    top: 70%;
+    left: 5%;
+  }
+  .chat-box {
+    top: 85%;
+    width: 91%;
+  }
+  .vehicle-img > img {
+    width: 100%;
+  }
+  .vehicle-info {
+    position: absolute;
+    left: 40%;
+  }
+}
 @media (max-width: 768px) {
   .msg-time {
     text-align: right;
@@ -81,34 +223,98 @@
   .qty-msg {
     margin-left: 60%;
   }
-  /* .iconSearch svg {
-    font-size: 35px;
-    margin-left: 90%;
-    margin-top: -15%;
-  }
-  .search-icon {
-    margin-left: 100%;
-  } */
   .iconSearch {
     margin-left: 93%;
     margin-top: -10%;
-}
+  }
+
+  /* Chat detail */
+  .user-info {
+    margin-top: -5%;
+    margin-left: 5%;
+  }
+  .user-info > img {
+    width: 50px;
+    height: 50px;
+  }
+  .user-info > p {
+    font-size: 1.3rem;
+  }
+  .vehicle-info > h1 {
+    font-size: 1.7rem;
+  }
+  .vehicle-info > h2 {
+    font-size: 1.4rem;
+  }
+  .vehicle-info > h3 {
+    font-size: 1rem;
+  }
+  .vehicle-info > h4 {
+    font-size: 1.3rem;
+  }
+  .right-chat {
+    top: 65%;
+    right: 5%;
+  }
+  .left-chat {
+    top: 80%;
+  }
+  .chat-box {
+    top: 100%;
+  }
+  .chat-box > img {
+    width: 25px;
+    height: 25px;
+  }
 }
 @media (max-width: 576px) {
   .qty-msg {
     margin-left: 40%;
   }
-  /* .iconSearch svg {
-    margin-left: 87%;
-    margin-top: -25%;
-  } */
   .iconSearch {
     margin-left: 90%;
     margin-top: -15%;
-}
+  }
   .searchBar {
     margin-top: 3%;
     margin-bottom: 5%;
+  }
+
+  /* Chat detail */
+  .info-user > .img-arrow > a > img {
+    margin-left: -5%;
+  }
+  .user-info {
+    margin-top: -7%;
+  }
+  .user-info > p {
+    margin-left: 5%;
+  }
+  .vehicle-info {
+    margin-left: 2%;
+  }
+  .vehicle-info > h1 {
+    font-size: 1.5rem;
+  }
+  .vehicle-info > h2 {
+    font-size: 1.3rem;
+  }
+  .vehicle-info > h3 {
+    font-size: 0.9rem;
+  }
+  .vehicle-info > h4 {
+    font-size: 1.2rem;
+  }
+  .vehicle-img > img {
+    width: 100%;
+    margin-top: 5%;
+  }
+  .right-chat {
+    top: 60%;
+    right: 7%;
+  }
+  .left-chat {
+    top: 77%;
   }
 }
 @media (max-width: 425px) {
@@ -118,11 +324,45 @@
   .msg-time {
     font-size: 0.8rem;
   }
-  /* .iconSearch svg {
-    margin-top: -32%;
-  } */
   .iconSearch {
     margin-left: 87%;
     margin-top: -18%;
-}
+  }
+
+  /* Chat detail */
+  .info-user > .img-arrow > a > img {
+    margin-left: -7%;
+  }
+  .user-info {
+    margin-top: -9%;
+  }
+  .user-info > p {
+    margin-top: 2%;
+  }
+  .vehicle-info {
+    margin-left: 7%;
+  }
+  .vehicle-info > h1 {
+    font-size: 1.3rem;
+  }
+  .vehicle-info > h2 {
+    font-size: 1.1rem;
+  }
+  .vehicle-info > h3 {
+    font-size: 0.8rem;
+  }
+  .vehicle-info > h4 {
+    margin-top: 10%;
+    font-size: 1.1rem;
+  }
+  .right-chat > .msg,
+  .left-chat > .msg {
+    padding: 10px 20px;
+  }
+  .right-chat {
+    top: 58%;
+  }
+  .left-chat {
+    top: 75%;
+  }
 }

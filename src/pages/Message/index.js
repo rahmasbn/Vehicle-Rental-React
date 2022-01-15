@@ -45,7 +45,7 @@ function Message() {
         </section>
 
         <div className="message">
-          <Link to="/chat-detail">
+          <Link to="/room-chat">
             <div className="wrapper-msg-1">
               <div className="row">
                 <div className="img-profile-user col-lg-1 col-md-1 col-sm-1 col-2">

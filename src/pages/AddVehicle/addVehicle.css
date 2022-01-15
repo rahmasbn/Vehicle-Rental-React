@@ -17,20 +17,16 @@
   width: 100%;
   height: 80vh;
 }
-.add-item-vehicle {
-  background-color: darkkhaki;
-  border: 1px solid black;
-}
 .add-container {
   display: grid;
   height: 100%;
   grid-template-columns: auto;
   grid-template-rows: 65% 35%;
 }
-.add-image-vehicle {
-  /* border: 1px solid dodgerblue; */
+.add-image-vehicle > .main-image {
   background-color: #e7e7ec;
   border-radius: 10px;
+  margin-right: 10px;
   height: 95%;
 }
 .inside-wrapper-add-vehicle {
@@ -40,7 +36,9 @@
   grid-template-rows: auto;
 }
 .vehicle-slider {
-  border: 1px solid rebeccapurple;
+  background-color: #e7e7ec;
+  border-radius: 6px;
+  margin: 0 10px 10px 0;
 }
 .cameraIcon,
 .icon-camera {
@@ -48,7 +46,7 @@
   margin: auto;
   transform: translate(0, 50%);
 }
-.add-image-vehicle > p {
+.add-image-vehicle > .main-image > p {
   margin-top: 12%;
   margin-left: 38%;
   font-family: "Nunito", sans-serif;
@@ -78,7 +76,7 @@
 form.add-vehicle {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 0;
+  margin-top: 7%;
 }
 form.add-vehicle > input[type="text"] {
   border: none;
@@ -87,17 +85,259 @@ form.add-vehicle > input[type="text"] {
   border-bottom: 2px solid #6e7070;
 }
 form.add-vehicle > .price-vehicle > .label-price,
-form.add-vehicle > .status-vehicle > .label-status {
+form.add-vehicle > .status-vehicle > p,
+.stock-vehicle > p {
   font-size: 1.1rem;
   font-weight: bold;
   font-family: "Playfair Display", serif;
   margin-top: 5%;
 }
-form.add-vehicle > .price-vehicle > input[type="text"],
-form.add-vehicle > .status-vehicle > input[type="text"] {
+form.add-vehicle > .price-vehicle > input[type="text"] {
   border: none;
   background-color: #ccccce;
 }
-form.add-vehicle > .status-vehicle > .label-status {
+form.add-vehicle > .status-vehicle > p {
   margin-top: 0;
+}
+.number-stock,
+.sub-stock,
+.add-stock {
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: "Nunito", sans-serif;
+}
+.stock-vehicle > p {
+  margin-right: 45%;
+}
+.sub-stock {
+  border: 1px solid #e0e2e6;
+  background-color: #e0e2e6;
+  width: 35px;
+  height: 30px;
+}
+.add-stock {
+  border: 1px solid #ffc61f;
+  background-color: #ffc61f;
+  width: 35px;
+  height: 30px;
+}
+.form-select-status {
+  width: max(100%, 200px);
+  border: none;
+  background-color: #e3e3e7;
+  padding: 12px 0;
+  border-radius: 6px;
+  color: #818386;
+}
+option {
+  background-color: white;
+}
+.form-select-status option:nth-child(2) {
+  color: green;
+}
+.form-select-status option:nth-child(3) {
+  color: red;
+}
+.btn-add-vehicle-wrapper {
+  margin-top: 7%;
+}
+.btn-add-item > select.add-item,
+.btn-add-item > button {
+  width: 100%;
+  padding: 18px 0;
+  border: none;
+  border-radius: 6px;
+  font-family: "Nunito", sans-serif;
+  font-size: 1.2rem;
+}
+.btn-add-item > select.add-item {
+  background-color: #393939;
+  color: #ffc61f;
+  text-align: center;
+}
+.btn-add-item > button {
+  margin-left: 15%;
+  background-color: #ffc61f;
+  color: #393939;
+  font-weight: bold;
+}
+.btn-add-item > select.add-item option {
+  color: black;
+  font-size: 1.1rem;
+}
+.btn-add-item > select.add-item option:nth-child(3),
+.btn-add-item > select.add-item option:nth-child(4),
+.btn-add-item > select.add-item option:nth-child(5),
+.btn-add-item > select.add-item option:nth-child(6) {
+  font-weight: lighter;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .add-container {
+    grid-template-columns: auto;
+    grid-template-rows: 60% 35%;
+  }
+  .add-image-vehicle > .main-image {
+    height: 95%;
+  }
+  .vehicle-slider {
+    margin: 0 10px 20px 0;
+    height: 85%;
+  }
+  .cameraIcon,
+  .icon-camera {
+    transform: translate(0, 65%);
+  }
+  .add-image-vehicle > .main-image > p {
+    margin-top: 20%;
+    margin-left: 35%;
+  }
+  .icon-camera {
+    width: 50px;
+    height: 50px;
+  }
+  .vehicle-slider > img {
+    margin-top: 10%;
+  }
+  .vehicle-slider > p {
+    margin-left: 25%;
+  }
+  .vehicle-slider > h1 {
+    margin-left: 43%;
+  }
+  .vehicle-slider > .add-more {
+    margin-left: 35%;
+  }
+  .stock-vehicle > p {
+    margin-right: 38%;
+  }
+  .btn-add-vehicle-wrapper {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .add-container {
+    grid-template-columns: auto;
+    grid-template-rows: 60% 35%;
+  }
+  .vehicle-slider {
+    height: 80%;
+  }
+  .cameraIcon {
+    width: 85px;
+    height: 85px;
+    transform: translate(0, 85%);
+  }
+  .add-image-vehicle > .main-image > p {
+    margin-top: 25%;
+    margin-left: 30%;
+  }
+  .icon-camera {
+    width: 40px;
+    height: 40px;
+  }
+  .vehicle-slider > p {
+    margin-left: 18%;
+    font-size: 0.8rem;
+  }
+  .vehicle-slider > h1 {
+    font-size: 3.5rem;
+    margin-left: 42%;
+  }
+  .vehicle-slider > .add-more {
+    margin-top: -10%;
+    margin-left: 35%;
+  }
+  form.add-vehicle {
+    margin-top: 0;
+    margin-left: 5%;
+  }
+  .stock-vehicle > p {
+    margin-top: 0;
+    margin-right: 28%;
+  }
+  .btn-add-vehicle-wrapper {
+    margin-top: 3%;
+  }
+}
+
+@media (max-width: 576px) {
+  .addVehicle-header {
+    grid-gap: 5%;
+  }
+  .addVehicle-text > h1 {
+    font-size: 1.7rem;
+    margin-top: 0;
+  }
+  .add-vehicle-wrapper {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 50% 50%;
+    width: 100%;
+    height: 170vh;
+  }
+  .add-image-vehicle > .main-image > p {
+    margin-top: 15%;
+    margin-left: 0;
+    text-align: center;
+  }
+  .icon-camera {
+    width: 40px;
+    height: 40px;
+    transform: translate(10%, 45%);
+  }
+  .vehicle-slider > p {
+    margin-top: 7%;
+    margin-left: 30%;
+    font-size: 0.8rem;
+  }
+  .vehicle-slider > .add-more {
+    margin-top: -7%;
+    margin-left: 38%;
+  }
+  form.add-vehicle {
+    margin-left: 0;
+  }
+  .status-vehicle {
+    margin-top: 3%;
+  }
+  .stock-vehicle > p {
+    margin-top: 3%;
+    margin-right: 55%;
+  }
+  .btn-add-item > button {
+    margin-left: 0;
+    margin-top: -5%;
+  }
+}
+
+@media (max-width: 425px) {
+  .addVehicle-header {
+    grid-gap: 10%;
+  }
+  .addVehicle-header > .img-arrow > a > img {
+    width: 30px;
+    height: 30px
+  }
+  .addVehicle-text > h1 {
+    font-size: 1.5rem;
+  }
+  .add-image-vehicle > .main-image {
+    width: 100%;
+  }
+  .vehicle-slider {
+    margin: 0 5px 5px 0;
+  }
+  .add-image-vehicle > .main-image > p {
+    margin-top: 20%;
+  }
+  .vehicle-slider > p {
+    margin-top: 10%;
+    margin-left: 25%;
+  }
+  .stock-vehicle > p {
+    margin-right: 40%;
+  }
 }

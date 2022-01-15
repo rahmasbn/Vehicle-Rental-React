@@ -12,6 +12,7 @@ import VehicleType from "./pages/VehicleType/index";
 import History from "./pages/History";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
+import EditPass from "./pages/EditPassword"
 import VehicleDetail from "./pages/VehicleDetail";
 import Popular from "./pages/VehicleType/popular";
 import Cars from "./pages/VehicleType/Cars";
@@ -83,6 +84,13 @@ function Main() {
           }}
         />
         <Route
+          path="/edit-pass"
+          render={(routerProps) => {
+            if (!token) return <Redirect to="/login" />;
+            return <EditPass {...routerProps} />;
+          }}
+        />
+        <Route
           path="/message"
           render={(routerProps) => {
             if (!token) return <Redirect to="/login" />;
@@ -90,7 +98,7 @@ function Main() {
           }}
         />
         <Route
-          path="/chat-detail"
+          path="/room-chat"
           render={(routerProps) => {
             if (!token) return <Redirect to="/login" />;
             return <ChatDetail {...routerProps} />;

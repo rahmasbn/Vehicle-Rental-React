@@ -1,0 +1,130 @@
+.form > input {
+  margin-top: 5%;
+  /* background-color: grey; */
+  border: 1px solid #b1b1a9;
+  background-color: #f3f3f3;
+  padding: 16px 20px;
+}
+.form .fa-search {
+  position: absolute;
+  right: 38%;
+  top: 18%;
+  color: rgba(92, 88, 88, 0.8);
+  font-size: 2vw;
+}
+.checkbox {
+  position: absolute;
+  left: 65%;
+  top: 15%;
+  font-size: 1.2rem;
+  font-family: "Poppins", sans-serif;
+}
+.checkbox > input {
+  position: absolute;
+  left: 12%;
+  top: 100%;
+}
+.filter {
+  color: #696363;
+}
+.dropdown > .filter {
+  background-color: rgba(250, 250, 250, 0.9);
+  border: 1px solid #b1b1a9;
+  width: 10%;
+}
+.dropdown-item {
+  text-align: center;
+  font-weight: bold;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-family: "Poppins", sans-serif;
+  font-size: 01rem;
+}
+.card-container {
+  background-color: white;
+  border: 1px solid rgb(230, 227, 227);
+  position: absolute;
+  top: 17%;
+  right: 5%;
+  height: 110vh;
+  border-radius: 5px solid;
+  display: flex;
+  flex-direction: column;
+}
+.card-container > p {
+  padding-top: 14%;
+  font-size: 1.5rem;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  text-align: center;
+}
+.card {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 45%;
+  position: relative;
+  margin-bottom: 10%;
+}
+.card > img {
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card > figcaption {
+  background-color: white;
+  position: absolute;
+  width: 50%;
+  height: 17%;
+  bottom: 0;
+  border-radius: 0 7px 6px 0;
+}
+.history-container {
+  width: 75%;
+  height: 100vh;
+  margin-top: 5%;
+}
+.history-container > p {
+  font-size: 1.3rem;
+  color: #817e7e;
+  font-family: "Nunito", sans-serif;
+}
+.card-history {
+  width: 90%;
+  height: 40%;
+}
+.card-history > .img > img {
+  width: 100%;
+  height: 85%;
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: center;
+}
+.info-history-vehicle, .down {
+  position: absolute;
+  left: 35%;
+  top: 57%;
+  font-family: "Poppins", sans-serif;
+}
+.down {
+    top: 95%;
+  }
+.info-history-vehicle > p.rental-date {
+    margin-top: -7%;
+    margin-bottom: 13%;
+}
+.info-history-vehicle > p.status-history {
+    margin-top: -7%;
+    color: green;
+}
+.select-box {
+    position: absolute;
+    right: 33%;
+    top: 65%;
+}
+.two {
+    position: absolute;
+    right: 33%;
+    top: 100%;
+}

@@ -6,6 +6,7 @@ import Header from "../../components/Header/index";
 import Footer from "../../components/Footer/index";
 import "./profile.css";
 import { profile } from "../../utils/https/users";
+import { Link } from "react-router-dom";
 
 class Profile extends React.Component {
   state = {
@@ -166,9 +167,11 @@ class Profile extends React.Component {
             <button type="submit" className="save ">
               Save Changes
             </button>
-            <button type="button" className="edit-pass">
-              Edit Password
-            </button>
+            <Link to="/edit-pass">
+              <button type="button" className="edit-pass">
+                Edit Password
+              </button>
+            </Link>
             <button type="button" className="cancel">
               Cancel
             </button>
