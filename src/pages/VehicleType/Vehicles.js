@@ -1,13 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactPaginate from "react-paginate";
 
 import VehicleCard from "../../components/Card";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import { cars } from "../../utils/https/vehicles";
+import { vehicles } from "../../utils/https/vehicles";
 import "./vehicleType.css";
 
-class Popular extends React.Component {
+class Vehicles extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,14 +15,35 @@ class Popular extends React.Component {
       vehicleData: [],
       perPage: 8,
       currentPage: 0,
-
+      title: "",
       // pageCount,
     };
     this.handlePageClick = this.handlePageClick.bind(this);
   }
 
   getVehicles() {
-    cars()
+    const { match } = this.props;
+    let URL = "?type="+match.params.category;
+    let category = match.params.category;
+    // console.log('category ',category)
+    // console.log('url ',URL)
+
+
+    if (category === "car") {
+      this.setState({
+        title: "Cars",
+      });
+    } else if (category === "motorbike") {
+      this.setState({
+        title: "Motorbikes",
+      });
+    } else if (category === "bike") {
+      this.setState({
+        title: "Bikes",
+      });
+    }
+
+    vehicles(URL)
       .then((res) => {
         const vehicleData = res.data.result.data;
         // console.log(vehicleData);
@@ -63,9 +84,9 @@ class Popular extends React.Component {
     return (
       <>
         <Header />
-        <main className="Cars">
+        <main className="Popular">
           <div className="container">
-            <h2>Cars</h2>
+            <h2>{this.state.title}</h2>
             <div className="col-12 text-center click-item">
               Click item to see details and reservation.
             </div>
@@ -100,4 +121,4 @@ class Popular extends React.Component {
   }
 }
 
-export default Popular;
+export default Vehicles;

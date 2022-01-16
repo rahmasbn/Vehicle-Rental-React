@@ -70,7 +70,9 @@ function Payment() {
             </div>
           </div>
         </div>
-        <h3>DETAIL ORDER</h3>
+        <div className="title-payment">
+          <h3>DETAIL ORDER</h3>
+        </div>
         <div className="row">
           <div className="detail-wrapper col-lg-5 col-md-5">
             <div className="quantity">
@@ -101,7 +103,9 @@ function Payment() {
             </div>
           </div>
         </div>
-        <h3>PAYMENT METHODS</h3>
+        <div className="title-payment">
+          <h3>PAYMENT METHODS</h3>
+        </div>
         <div className="row">
           <div className="button-payment col-lg-6 col-md-6">
             <div className="btn-transfer ">

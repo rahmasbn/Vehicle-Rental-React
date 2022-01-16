@@ -85,7 +85,7 @@
   margin-left: 35%;
   margin-top: 3%;
 }
-h3 {
+.title-payment > h3 {
   font-family: "Playfair Display", serif;
   font-weight: bold;
   text-align: center;

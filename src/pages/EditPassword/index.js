@@ -6,9 +6,28 @@ import leftArrowIcon from "../../assets/icons/left-arrow.png";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "./editPass.css";
+import axios from "axios";
 
-class editPass extends Component {
-  render() {
+function editPass()  {
+
+ const submitHandler = (e) => {
+    e.preventDefault();
+    const body = {
+      currentPass: e.target.currentPass.value,
+      newPass: e.target.newPass.value,
+    };
+    const URL = process.env.REACT_APP_HOST + "/users/edit-password";
+    const token = JSON.parse(localStorage.getItem("vehicle-rental-token"));
+
+    axios
+      .patch(URL, body, {
+        headers: {
+          "x-access-token": token,
+        },
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.error(err));
+  };
     return (
       <>
         <Header />
@@ -27,25 +46,35 @@ class editPass extends Component {
               </header>
             </div>
             <h1>EDIT PASSWORD</h1>
-            <div className="form-container">
-            {/* <p>INPUT YOUR EMAIL & PASSWORD</p> */}
-            <label htmlFor="currentPass" className="current-pass">Current Password :</label>
-            <input className="form-control current mb-3" type="password" name="current-pass" />
-            <label htmlFor="newPass" className="new-pass">New Password :</label>
-            <input className="form-control new"  type="password" name="new-pass"/>
-            <div className="col-md-12 text-center mt-5 changePass">
-              <button type="button" className="btn btn-warning">
-                Change Password
-              </button>
-            </div>
-          </div>
+            <form className="form-container" onSubmit={submitHandler}>
+              <label htmlFor="currentPass" className="current-pass">
+                Current Password :
+              </label>
+              <input
+                className="form-control current mb-3"
+                type="password"
+                name="currentPass"
+              />
+              <label htmlFor="newPass" className="new-pass">
+                New Password :
+              </label>
+              <input
+                className="form-control new"
+                type="password"
+                name="newPass"
+              />
+              <div className="col-md-12 text-center mt-5 changePass">
+                <button type="submit" className="btn btn-warning">
+                  Change Password
+                </button>
+              </div>
+            </form>
           </div>
         </div>
 
         <Footer />
       </>
     );
-  }
 }
 
 export default editPass;

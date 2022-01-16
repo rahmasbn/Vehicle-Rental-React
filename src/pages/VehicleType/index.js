@@ -60,7 +60,7 @@ class VehicleType extends React.Component {
 
             <h2>Cars</h2>
             <div className="view-more" style={{ textAlign: "right" }}>
-              <Link to="/vehicle-type/cars">View More {">"} </Link>
+              <Link to="/vehicle-type/car">View More {">"} </Link>
             </div>
             <div className="row">
               <VehicleCard vehicleData={this.state.carsData} />
@@ -68,7 +68,7 @@ class VehicleType extends React.Component {
 
             <h2>Motorbikes</h2>
             <div className="view-more" style={{ textAlign: "right" }}>
-              <Link to="/vehicle-type/motorbikes">View More {">"} </Link>
+              <Link to="/vehicle-type/motorbike">View More {">"} </Link>
             </div>
             <div className="row">
               <VehicleCard vehicleData={this.state.motorbikesData} />
@@ -76,7 +76,7 @@ class VehicleType extends React.Component {
 
             <h2>Bikes</h2>
             <div className="view-more" style={{ textAlign: "right" }}>
-              <Link to="/vehicle-type/bikes">View More {">"} </Link>
+              <Link to="/vehicle-type/bike">View More {">"} </Link>
             </div>
             <div className="row mb-5">
               <VehicleCard vehicleData={this.state.bikesData} />

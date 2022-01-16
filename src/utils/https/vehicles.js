@@ -23,23 +23,29 @@ export const popular = () => {
   return axios.get(popularURL);
 };
 
+
+const vehiclesURL = process.env.REACT_APP_HOST + "/vehicles";
+export const vehicles = (URL) => {
+ return axios.get(vehiclesURL+URL)
+}
+
 // motorbike
-const motorbikeURL = process.env.REACT_APP_HOST + "/vehicles?type=motorbike";
-export const motorbike = () => {
-  return axios.get(motorbikeURL);
-};
+// const motorbikeURL = process.env.REACT_APP_HOST + "/vehicles?type=motorbike";
+// export const motorbike = () => {
+//   return axios.get(motorbikeURL);
+// };
 
-// cars
-const carURL = process.env.REACT_APP_HOST + "/vehicles?type=car";
-export const cars = () => {
-  return axios.get(carURL);
-};
+// // cars
+// const carURL = process.env.REACT_APP_HOST + "/vehicles?type=car";
+// export const cars = () => {
+//   return axios.get(carURL);
+// };
 
-// bike
-const bikeURL = process.env.REACT_APP_HOST + "/vehicles?type=bike";
-export const bike = () => {
-  return axios.get(bikeURL);
-};
+// // bike
+// const bikeURL = process.env.REACT_APP_HOST + "/vehicles?type=bike";
+// export const bike = () => {
+//   return axios.get(bikeURL);
+// };
 
 // card popular
 const cardURL =

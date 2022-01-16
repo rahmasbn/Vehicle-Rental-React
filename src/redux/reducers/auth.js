@@ -3,9 +3,9 @@ import { ACTION_STRING } from "../actions/actionString";
 
 const initialState = {
   userData: {
-    token: JSON.parse(localStorage["vehicle-rental-token"]),
-    photo: localStorage["vehicle-rental-photoUser"],
-    role: localStorage["vehicle-rental-roleUser"],
+    token: JSON.parse(localStorage["vehicle-rental-token"] || null),
+    photo: '',
+    role: 0,
   },
 
   isPending: false,
@@ -29,11 +29,17 @@ const authReducer = (prevState = initialState, action) => {
     // case authLogin.concat("_", Fulfilled):
     case authLogin + fulfilled:
       const data = action.payload.data;
+      const userData = {
+        ...prevState.userData,
+        token: data.result.token,
+        photo: data.result.image,
+        role: data.result.roles,
+      };
       return {
         ...prevState,
         isPending: false,
         isFulfilled: true,
-        data,
+        userData,
       };
 
     // case authLogin.concat("_", Rejected):
