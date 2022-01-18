@@ -1,35 +1,79 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import leftArrowIcon from "../../assets/icons/left-arrow.png";
-import fixieGray from "../../assets/images/fixie-gray.webp";
 import rightArrowIcon from "../../assets/icons/right-arrow.png";
 import heartIcon from "../../assets/icons/yellow-heart.png";
 
 import Header from "../../components/Header/index";
 import Footer from "../../components/Footer";
 import "./detail.css";
+import axios from "axios";
 
-const numberFormat = (value) => {
-  new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-  }).format(value);
-}
+// const numberFormat = (value) => {
+//   new Intl.NumberFormat("id-ID", {
+//     style: "currency",
+//     currency: "IDR",
+//   }).format(value);
+// };
 
 class VehicleDetail extends React.Component {
   state = {
     counter: 1,
-    detailVehicle: '',
+    detailVehicle: "",
+    imgVehicle: require("../../assets/images/default-cars.jpeg"),
+    price: 0,
+  };
+
+  addCounter = () => {
+    const newCounter = this.state.counter;
+    const stock = this.state.detailVehicle.stock;
+    const newPrice = this.state.detailVehicle.price;
+    // console.log('stock ', stock)
+    this.setState({
+      counter: newCounter + 1 > stock ? stock : newCounter + 1,
+      price: newPrice * (newCounter + 1 > stock ? stock : newCounter + 1),
+    });
+  };
+
+  subCounter = () => {
+    const newCounter = this.state.counter;
+    const newPrice = this.state.detailVehicle.price;
+    this.setState({
+      counter: newCounter - 1 < 1 ? 1 : newCounter - 1,
+      price: newPrice * (newCounter - 1 < 1 ? 1 : newCounter - 1),
+    });
+  };
+
+  componentDidMount() {
+    const { match } = this.props;
+    const URL = process.env.REACT_APP_HOST + `/vehicles/` + match.params.id;
+    axios
+      .get(URL)
+      .then((res) => {
+        console.log(res.data.result[0]);
+        const image = res.data.result[0].image;
+        if (image !== null && typeof image !== "undefined") {
+          this.setState({
+            imgVehicle: process.env.REACT_APP_HOST + "/" + image,
+          });
+        }
+        this.setState({
+          detailVehicle: res.data.result[0],
+          price: res.data.result[0].price,
+        });
+      })
+      .catch((err) => console.error(err));
   }
 
-  // onClickAdd = () => {
-
-  // }
-  // componentDidMount() {
-  //   const vehicleId 
-  // }
-
   render() {
+    const { name, type, city, capacity } = this.state.detailVehicle;
+    const { imgVehicle } = this.state;
+    const formatPrice = new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+    }).format(this.state.price);
+    // console.log(formatPrice)
+    // console.log(this.state.price)
     return (
       <div>
         <Header />
@@ -52,33 +96,31 @@ class VehicleDetail extends React.Component {
             <div className="vehicle-detail">
               <section className="content-1">
                 <div className="wrapper-detail">
-                  <div className="inside-wrapper-detail">
-                    <img src={fixieGray} alt="fixie-gray" />
+                  <div className="inside-wrapper-main">
+                    {/* <div className="main-img"> */}
+                    <img src={imgVehicle} alt="vehicles-img" />
+                    {/* </div> */}
                   </div>
                   <div className="inside-wrapper-detail">
                     <div className="detail">
-                      <div className="grid-item-detail">
+                      <div className="grid-item-arrow">
                         <img
                           src={leftArrowIcon}
                           alt="left-arrow"
                           className="left-arrow"
                         />
                       </div>
-                      <div className="grid-item-detail">
-                        <img
-                          src={fixieGray}
-                          alt="fixie-gray"
-                          className="item"
-                        />
+                      <div className="grid-item-detail-1">
+                        <div className="item">
+                          <img src={imgVehicle} alt="vehicles-img" />
+                        </div>
                       </div>
-                      <div className="grid-item-detail">
-                        <img
-                          src={fixieGray}
-                          alt="fixie-gray"
-                          className="item"
-                        />
+                      <div className="grid-item-detail-2">
+                        <div className="item">
+                          <img src={imgVehicle} alt="vehicles-img" />
+                        </div>
                       </div>
-                      <div className="grid-item-detail">
+                      <div className="grid-item-arrow">
                         <img
                           src={rightArrowIcon}
                           alt="left-arrow"
@@ -93,23 +135,27 @@ class VehicleDetail extends React.Component {
                 <div className="div-outer">
                   <div className="div-inner">
                     <div className="div-content">
-                      <h1>Fixie - Gray Only</h1>
-                      <h2>Yogyakarta</h2>
+                      <h1>{name}</h1>
+                      <h2>{city}</h2>
                       <p className="available">Available</p>
                       <p className="noPrepayment">No prepayment</p>
-                      <p className="capacity">Capacity : 1 person</p>
-                      <p className="type">Type : Bike</p>
+                      <p className="capacity">Capacity : {capacity} person</p>
+                      <p className="type">Type : {type}</p>
                       <p className="reservation-text">
                         Reservation before 2 PM
                       </p>
-                      <h3>Rp. 78.000/day</h3>
+                      <h3>{formatPrice}/day</h3>
                     </div>
                   </div>
                   <div className="div-inner">
                     <div className="content-3">
-                      <div className="minus">-</div>
-                      <div className="qty">2</div>
-                      <div className="plus">+</div>
+                      <div className="minus" onClick={this.subCounter}>
+                        -
+                      </div>
+                      <div className="qty">{this.state.counter}</div>
+                      <div className="plus" onClick={this.addCounter}>
+                        +
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -126,7 +172,18 @@ class VehicleDetail extends React.Component {
               </button>
             </div>
             <div className="button2">
-              <Link to="/reservation">
+              {/* <Link to="/reservation"> */}
+              <Link
+                to={{
+                  pathname: "/reservation",
+                  state: {
+                    detailVehicle: this.state.detailVehicle,
+                    counter: this.state.counter,
+                    price: this.state.price,
+                    // imgVehicle: this.state.imgVehicle
+                  }
+                }}
+              >
                 <button className="reservation" type="button">
                   Reservation
                 </button>

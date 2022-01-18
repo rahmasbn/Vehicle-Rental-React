@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 
 import leftArrowIcon from "../../assets/icons/left-arrow.png";
 import cameraIcon from "../../assets/icons/camera-icon.png";
+import fixieGray from "../../assets/images/fixie-gray.webp";
+import cancelIcon from "../../assets/icons/cancel.svg";
 
 import Header from "../../components/Header/index";
 import Footer from "../../components/Footer/index";
-import "./addVehicle.css";
+import "../AddVehicle/addVehicle.css";
+import "./editVehicle.css";
 
-function AddVehicle() {
+function EditVehicle() {
   return (
     <>
       <Header />
@@ -34,26 +37,62 @@ function AddVehicle() {
                   <div className="add-main-image-vehicle">
                     <div className="main-image">
                       <img
-                        src={cameraIcon}
-                        alt="camera icon"
-                        className="cameraIcon"
+                        src={fixieGray}
+                        alt="fixie"
+                        className="vehicleImg"
+                        style={{ width: "100%", height: "100%", borderRadius: "6px" }}
                       />
-                      <p>Click to add image</p>
+                      <div className="iconCancel d-flex">
+                        <img
+                          src={cancelIcon}
+                          alt="cancel icon"
+                          style={{
+                            width: "20px",
+                            height: "15px",
+                            position: "absolute",
+                          }}
+                        />
+                      </div>
+                      {/* <p>Click to add image</p> */}
                     </div>
                   </div>
                   <div className="add-image-vehicle">
                     <div className="inside-wrapper-add-vehicle">
                       <div className="vehicle-slider">
                         <img
-                          src={cameraIcon}
-                          alt="camera icon"
-                          className="icon-camera"
+                          src={fixieGray}
+                          alt="fixie"
+                          className="vehicleImg"
+                          style={{ width: "100%", height: "100%", borderRadius: "6px" }}
                         />
-                        <p>Click to add image</p>
+                        <div className="iconCancel-1 d-flex">
+                        <img
+                          src={cancelIcon}
+                          alt="cancel icon"
+                          style={{
+                            position: "absolute",
+                          }}
+                        />
+                      </div>
+                        {/* <p>Click to add image</p> */}
                       </div>
                       <div className="vehicle-slider">
-                        <h1>+</h1>
-                        <p className="add-more">Add more</p>
+                      <img
+                          src={fixieGray}
+                          alt="fixie"
+                          className="vehicleImg"
+                          style={{ width: "100%", height: "100%", borderRadius: "6px" }}
+                        />
+                        <div className="iconCancel-2 d-flex">
+                        <img
+                          src={cancelIcon}
+                          alt="cancel icon"
+                          style={{
+                            position: "absolute",
+                          }}
+                        />
+                      </div>
+                        {/* <p className="add-more">Add more</p> */}
                       </div>
                     </div>
                   </div>
@@ -120,9 +159,9 @@ function AddVehicle() {
                 </div>
               </div>
             </div>
-            <div className="btn-add-vehicle-wrapper d-flex flex-wrap">
-              <div className="btn-add-item mb-5 col-lg-4 col-md-4 col-sm-12 col-12">
-                <select name="add-item" id="add-item" className="add-item">
+            <div className="btn-edit-vehicle-wrapper d-flex flex-wrap">
+              <div className="btn-edit-item mb-5 col-lg-4 col-md-4 col-sm-12 col-12">
+                <select name="edit-item" id="edit-item" className="edit-item">
                   <option value="" disable="true" hidden>
                     Add item to
                   </option>
@@ -143,8 +182,11 @@ function AddVehicle() {
                   </option>
                 </select>
               </div>
-              <div className="btn-add-item mb-5 col-lg-7 col-md-7 col-sm-12 col-12">
-                <button>Save item</button>
+              <div className="btn-edit-item mb-5 col-lg-4 col-md-4 col-sm-12 col-12">
+                <button className="save-changes-vehicles">Save changes</button>
+              </div>
+              <div className="btn-edit-item mb-5 col-lg-3 col-md-3 col-sm-12 col-12">
+                <button className="delete">Delete</button>
               </div>
             </div>
           </form>
@@ -155,4 +197,4 @@ function AddVehicle() {
   );
 }
 
-export default AddVehicle;
+export default EditVehicle;

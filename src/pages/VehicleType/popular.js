@@ -57,6 +57,8 @@ class Popular extends React.Component {
 
   componentDidMount() {
     this.getVehicles();
+  //   const {location} = this.props
+  // console.log(location)
   }
 
   render() {

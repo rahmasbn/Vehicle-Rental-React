@@ -61,9 +61,9 @@
   width: 100%;
   margin-bottom: 5%;
 } */
-input[type="file"] {
+/* input[type="file"] {
   display: none;
-}
+} */
 .contacts > h3,
 .identity > h3 {
   font-family: "Nunito", sans-serif;

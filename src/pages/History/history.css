@@ -128,3 +128,9 @@
     right: 33%;
     top: 100%;
 }
+
+/* @media (max-width:768px) {
+  aside.card-container {
+    display: none;
+  }
+} */

@@ -6,7 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import { Provider } from "react-redux";
-import store  from "./redux/store";
+import store from "./redux/store";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -20,6 +20,7 @@ import EditPass from "./pages/EditPassword";
 import VehicleDetail from "./pages/VehicleDetail";
 import Popular from "./pages/VehicleType/popular";
 import AddVehicle from "./pages/AddVehicle";
+import EditVehicle from "./pages/EditVehicle";
 import ForgotPass from "./pages/ForgotPassword";
 import Reservation from "./pages/Reservation";
 import Message from "./pages/Message/index";
@@ -62,11 +63,19 @@ function Main() {
           <Route path="/vehicle-type/:category" component={Vehicles} />
           <Route path="/vehicle/:id" component={VehicleDetail} />
           <Route path="/about" component={About} />
+          <Route path="/edit-password" component={EditPass} />
           <Route
             path="/add-vehicle"
             render={(routerProps) => {
               if (!token) return <Redirect to="/login" />;
               return <AddVehicle {...routerProps} />;
+            }}
+          />
+          <Route
+            path="/edit-vehicle"
+            render={(routerProps) => {
+              if (!token) return <Redirect to="/login" />;
+              return <EditVehicle {...routerProps} />;
             }}
           />
           <Route
@@ -83,13 +92,13 @@ function Main() {
               return <Profile {...routerProps} />;
             }}
           />
-          <Route
+          {/* <Route
             path="/edit-pass"
             render={(routerProps) => {
               if (!token) return <Redirect to="/login" />;
               return <EditPass {...routerProps} />;
             }}
-          />
+          /> */}
           <Route
             path="/message"
             render={(routerProps) => {

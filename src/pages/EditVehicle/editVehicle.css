@@ -1,0 +1,121 @@
+.btn-edit-vehicle-wrapper {
+  width: 100%;
+  margin-top: 5%;
+  /* background-color: darkgreen; */
+}
+.btn-edit-item > select.edit-item,
+.btn-edit-item > button {
+  width: 100%;
+  padding: 18px 0;
+  border: none;
+  border-radius: 6px;
+  font-family: "Nunito", sans-serif;
+  font-size: 1.2rem;
+}
+.btn-edit-item > select.edit-item {
+  background-color: #393939;
+  color: #ffc61f;
+  text-align: center;
+}
+
+.btn-edit-item > button.save-changes-vehicles {
+  margin-left: 12%;
+  /* margin-right: 50%; */
+  background-color: #ffc61f;
+  color: #393939;
+  font-weight: bold;
+}
+.btn-edit-item > button.delete {
+  margin-left: 33%;
+  background-color: #393939;
+  color: #ffc61f;
+  font-weight: bold;
+}
+
+.btn-edit-item > select.edit-item option {
+  color: black;
+  font-size: 1.1rem;
+}
+
+.btn-edit-item > select.edit-item option:nth-child(3),
+.btn-edit-item > select.edit-item option:nth-child(4),
+.btn-edit-item > select.edit-item option:nth-child(5),
+.btn-edit-item > select.edit-item option:nth-child(6) {
+  font-weight: lighter;
+}
+.add-main-image-vehicle > .main-image > .iconCancel,
+.vehicle-slider > .iconCancel-1,
+.vehicle-slider > .iconCancel-2 {
+  background-color: #ffc61f;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+}
+.add-main-image-vehicle > .main-image > .iconCancel {
+  top: 33%;
+  left: 46%;
+}
+.vehicle-slider > .iconCancel-1 {
+  bottom: 10%;
+  left: 25%;
+}
+.vehicle-slider > .iconCancel-2 {
+  bottom: 10%;
+  left: 46%;
+}
+.vehicle-slider > .iconCancel-1 > img,
+.vehicle-slider > .iconCancel-2 > img {
+    width: 20px;
+    height: 15px;
+}
+
+@media (max-width: 1024px) {
+  .add-main-image-vehicle > .main-image > .iconCancel {
+    top: 29%;
+    left: 45%;
+  }
+  .vehicle-slider > .iconCancel-1 {
+    bottom: 12%;
+    left: 22%;
+  }
+  .vehicle-slider > .iconCancel-2 {
+    bottom: 12%;
+    left: 45%;
+  }
+}
+@media (max-width: 768px) {
+    .add-main-image-vehicle > .main-image > .iconCancel {
+      top: 40%;
+      left: 43%;
+    }
+
+    .vehicle-slider > .iconCancel-1 {
+      bottom: 0;
+      left: 22%;
+      width: 25px;
+      height: 25px;
+    }
+    .vehicle-slider > .iconCancel-1 > img,
+    .vehicle-slider > .iconCancel-2 > img {
+        width: 15px;
+        height: 10px;
+    }
+    .vehicle-slider > .iconCancel-2 {
+      bottom: 0;
+      width: 25px;
+      height: 25px;
+    }
+  }
+@media (max-width: 576px) {
+  .btn-edit-vehicle-wrapper {
+    margin-top: 10%;
+  }
+  .btn-edit-item > button.save-changes-vehicles,
+  .btn-edit-item > button.delete {
+    margin-left: 0;
+    margin-top: -5%;
+  }
+}

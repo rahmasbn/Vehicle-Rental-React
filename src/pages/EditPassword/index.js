@@ -8,7 +8,7 @@ import Footer from "../../components/Footer";
 import "./editPass.css";
 import axios from "axios";
 
-function editPass()  {
+function editPass(props)  {
 
  const submitHandler = (e) => {
     e.preventDefault();
@@ -25,7 +25,10 @@ function editPass()  {
           "x-access-token": token,
         },
       })
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        console.log(res)
+        // props.history.push("/login");
+      })
       .catch((err) => console.error(err));
   };
     return (

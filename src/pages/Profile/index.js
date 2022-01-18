@@ -195,6 +195,7 @@ class Profile extends React.Component {
                   type="file"
                   onChange={this.fileSelectedHandler}
                   ref={this.target}
+                  style={{display: "none"}}
                 />
                 <h3>Contacts</h3>
                 <div className="form-group">
@@ -269,7 +270,7 @@ class Profile extends React.Component {
                   <button type="submit" className="save ">
                     Save Changes
                   </button>
-                  <Link to="/edit-pass">
+                  <Link to="/edit-password">
                     <button type="button" className="edit-pass">
                       Edit Password
                     </button>

@@ -10,20 +10,50 @@
   font-family: "Nunito", sans-serif;
   color: black;
 }
+.add-vehicle-container {
+  width: 100%;
+  height: 105vh;
+  /* background-color: chocolate; */
+  margin: 0;
+}
+.add-vehicle-container > form {
+  margin: 0;
+  width: 100%;
+}
 .add-vehicle-wrapper {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: auto;
   width: 100%;
   height: 80vh;
+  /* background-color: orchid; */
+}
+.add-item-vehicle-1 {
+  width: 100%;
+  height: 100%;
+  /* background-color: palegoldenrod; */
+}
+.add-item-vehicle-2 {
+  /* background-color: cadetblue; */
+  height: 100%;
+  margin-left: 7%;
+  /* width: 100%; */
+}
+.add-main-image-vehicle {
+  width: 100%;
+  height: 100%;
+  /* background-color: crimson; */
+}
+.add-image-vehicle {
+  /* background-color: darkgoldenrod; */
 }
 .add-container {
   display: grid;
-  height: 100%;
+  height: 80vh;
   grid-template-columns: auto;
   grid-template-rows: 65% 35%;
 }
-.add-image-vehicle > .main-image {
+.add-main-image-vehicle > .main-image {
   background-color: #e7e7ec;
   border-radius: 10px;
   margin-right: 10px;
@@ -40,21 +70,26 @@
   border-radius: 6px;
   margin: 0 10px 10px 0;
 }
-.cameraIcon,
+.cameraIcon {
+  width: 20%;
+  height: 35%;
+  margin: auto;
+  transform: translate(220px, 80%);
+
+}
+/* .cameraIcon, */
 .icon-camera {
   display: block;
   margin: auto;
   transform: translate(0, 50%);
+  width: 60px;
+  height: 60px;
 }
-.add-image-vehicle > .main-image > p {
-  margin-top: 12%;
+.add-main-image-vehicle > .main-image > p {
+  margin-top: 17%;
   margin-left: 38%;
   font-family: "Nunito", sans-serif;
   color: #b8becd;
-}
-.icon-camera {
-  width: 60px;
-  height: 60px;
 }
 .vehicle-slider > p {
   font-family: "Nunito", sans-serif;
@@ -73,30 +108,28 @@
   margin-top: -3%;
   margin-left: 40%;
 }
-form.add-vehicle {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 7%;
+.add-vehicle {
+  margin-top: 1%;
 }
-form.add-vehicle > input[type="text"] {
+.add-vehicle > .add-item-vehicle-2 > [type="text"] {
   border: none;
   border-radius: 0;
   margin-top: -1%;
   border-bottom: 2px solid #6e7070;
 }
-form.add-vehicle > .price-vehicle > .label-price,
-form.add-vehicle > .status-vehicle > p,
+.price-vehicle > .label-price,
+.status-vehicle > p,
 .stock-vehicle > p {
   font-size: 1.1rem;
   font-weight: bold;
   font-family: "Playfair Display", serif;
-  margin-top: 5%;
+  /* margin-top: 5%; */
 }
-form.add-vehicle > .price-vehicle > input[type="text"] {
+.add-vehicle > .add-item-vehicle-2 > .price-vehicle > input[type="text"] {
   border: none;
   background-color: #ccccce;
 }
-form.add-vehicle > .status-vehicle > p {
+.add-vehicle > .status-vehicle > p {
   margin-top: 0;
 }
 .number-stock,
@@ -106,6 +139,9 @@ form.add-vehicle > .status-vehicle > p {
   font-weight: bold;
   font-family: "Nunito", sans-serif;
 }
+/* .stock-vehicle {
+  margin-top: 10%;
+} */
 .stock-vehicle > p {
   margin-right: 45%;
 }
@@ -139,7 +175,9 @@ option {
   color: red;
 }
 .btn-add-vehicle-wrapper {
-  margin-top: 7%;
+  width: 100%;
+  margin-top: 5%;
+  /* background-color: darkgreen; */
 }
 .btn-add-item > select.add-item,
 .btn-add-item > button {
@@ -156,7 +194,7 @@ option {
   text-align: center;
 }
 .btn-add-item > button {
-  margin-left: 15%;
+  margin-left: 14%;
   background-color: #ffc61f;
   color: #393939;
   font-weight: bold;
@@ -174,28 +212,35 @@ option {
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .add-container {
-    grid-template-columns: auto;
-    grid-template-rows: 60% 35%;
+  .add-vehicle-container {
+    height: 100vh;
   }
-  .add-image-vehicle > .main-image {
+  .add-main-image-vehicle > .main-image {
     height: 95%;
   }
   .vehicle-slider {
     margin: 0 10px 20px 0;
     height: 85%;
   }
-  .cameraIcon,
+  .cameraIcon {
+    width: 20%;
+    height: 30%;
+    margin: auto;
+    transform: translate(190px, 85%);
+  }
   .icon-camera {
     transform: translate(0, 65%);
   }
-  .add-image-vehicle > .main-image > p {
+  .add-main-image-vehicle > .main-image > p {
     margin-top: 20%;
     margin-left: 35%;
   }
   .icon-camera {
     width: 50px;
     height: 50px;
+  }
+  .add-vehicle {
+    margin-top: 7%;
   }
   .vehicle-slider > img {
     margin-top: 10%;
@@ -218,21 +263,17 @@ option {
 }
 
 @media (max-width: 768px) {
-  .add-container {
-    grid-template-columns: auto;
-    grid-template-rows: 60% 35%;
-  }
   .vehicle-slider {
     height: 80%;
   }
   .cameraIcon {
-    width: 85px;
-    height: 85px;
-    transform: translate(0, 85%);
+    width: 55px;
+    height: 65px;
+    transform: translate(150px, 100%);
   }
-  .add-image-vehicle > .main-image > p {
-    margin-top: 25%;
-    margin-left: 30%;
+  .add-main-image-vehicle > .main-image > p {
+    margin-top: 20%;
+    margin-left: 33%;
   }
   .icon-camera {
     width: 40px;
@@ -250,13 +291,13 @@ option {
     margin-top: -10%;
     margin-left: 35%;
   }
-  form.add-vehicle {
+ .add-vehicle {
     margin-top: 0;
     margin-left: 5%;
   }
   .stock-vehicle > p {
     margin-top: 0;
-    margin-right: 28%;
+    margin-right: 20%;
   }
   .btn-add-vehicle-wrapper {
     margin-top: 3%;
@@ -264,6 +305,9 @@ option {
 }
 
 @media (max-width: 576px) {
+  .add-vehicle-container {
+    height: 100%;
+  }
   .addVehicle-header {
     grid-gap: 5%;
   }
@@ -271,45 +315,56 @@ option {
     font-size: 1.7rem;
     margin-top: 0;
   }
+  .add-item-vehicle-2 {
+    margin-left: 0;
+    margin-top: 2%;
+  }
   .add-vehicle-wrapper {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 50% 50%;
     width: 100%;
-    height: 170vh;
+    height: 100%;
   }
-  .add-image-vehicle > .main-image > p {
-    margin-top: 15%;
+  .add-vehicle {
     margin-left: 0;
-    text-align: center;
+  }
+  .vehicle-slider {
+    padding-bottom: 35px;
+  }
+  .cameraIcon {
+    width: 70px;
+    height: 75px;
+    transform: translate(220px, 100%);
+  }
+  .add-main-image-vehicle > .main-image > p {
+    margin-top: 15%;
+    margin-left: 35%;
   }
   .icon-camera {
     width: 40px;
     height: 40px;
-    transform: translate(10%, 45%);
+    transform: translate(10%, 40%);
+  }
+.add-image-vehicle > .main-image > p {
+    margin-top: 5%;
+    margin-left: 0;
+    text-align: center;
   }
   .vehicle-slider > p {
     margin-top: 7%;
     margin-left: 30%;
     font-size: 0.8rem;
   }
-  .vehicle-slider > .add-more {
-    margin-top: -7%;
-    margin-left: 38%;
-  }
-  form.add-vehicle {
-    margin-left: 0;
-  }
-  .status-vehicle {
-    margin-top: 3%;
-  }
-  .stock-vehicle > p {
-    margin-top: 3%;
-    margin-right: 55%;
+  .btn-add-vehicle-wrapper {
+    margin-top: 10%;
   }
   .btn-add-item > button {
     margin-left: 0;
     margin-top: -5%;
+  } 
+  .stock-vehicle > p {
+    margin-right: 30%;
   }
 }
 
@@ -324,14 +379,17 @@ option {
   .addVehicle-text > h1 {
     font-size: 1.5rem;
   }
-  .add-image-vehicle > .main-image {
+  .add-main-image-vehicle > .main-image {
     width: 100%;
   }
   .vehicle-slider {
     margin: 0 5px 5px 0;
   }
-  .add-image-vehicle > .main-image > p {
+  .add-main-image-vehicle > .main-image > p {
     margin-top: 20%;
+  }
+  .cameraIcon {
+    transform: translate(170px, 100%);
   }
   .vehicle-slider > p {
     margin-top: 10%;
