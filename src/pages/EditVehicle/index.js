@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import leftArrowIcon from "../../assets/icons/left-arrow.png";
-import cameraIcon from "../../assets/icons/camera-icon.png";
+// import cameraIcon from "../../assets/icons/camera-icon.png";
 import fixieGray from "../../assets/images/fixie-gray.webp";
 import cancelIcon from "../../assets/icons/cancel.svg";
 
