@@ -20,7 +20,9 @@ class VehicleDetail extends React.Component {
   state = {
     counter: 1,
     detailVehicle: "",
-    imgVehicle: require("../../assets/images/default-cars.jpeg"),
+    imgVehicle1: require("../../assets/images/default-cars.jpeg"),
+    imgVehicle2: require("../../assets/images/default-cars.jpeg"),
+    imgVehicle3: require("../../assets/images/default-cars.jpeg"),
     price: 0,
   };
 
@@ -50,11 +52,22 @@ class VehicleDetail extends React.Component {
     axios
       .get(URL)
       .then((res) => {
-        console.log(res.data.result[0]);
-        const image = res.data.result[0].image;
-        if (image !== null && typeof image !== "undefined") {
+        // console.log(JSON.parse(res.data.result[0].images)[1]);
+        const image = JSON.parse(res.data.result[0].images);
+        // console.log('image', image[0])
+        if (image[0] !== null && typeof image[0] !== "undefined") {
           this.setState({
-            imgVehicle: process.env.REACT_APP_HOST + "/" + image,
+            imgVehicle1: process.env.REACT_APP_HOST + "/" + image[0],
+          });
+        }
+        if (image[1] !== null && typeof image[1] !== "undefined") {
+          this.setState({
+            imgVehicle2: process.env.REACT_APP_HOST + "/" + image[1],
+          });
+        }
+        if (image[2] !== null && typeof image[2] !== "undefined") {
+          this.setState({
+            imgVehicle3: process.env.REACT_APP_HOST + "/" + image[2],
           });
         }
         this.setState({
@@ -66,8 +79,8 @@ class VehicleDetail extends React.Component {
   }
 
   render() {
-    const { name, type, city, capacity } = this.state.detailVehicle;
-    const { imgVehicle } = this.state;
+    const { name, type, city, capacity, status } = this.state.detailVehicle;
+    const { imgVehicle1, imgVehicle2, imgVehicle3 } = this.state;
     const formatPrice = new Intl.NumberFormat("id-ID", {
       style: "currency",
       currency: "IDR",
@@ -98,7 +111,7 @@ class VehicleDetail extends React.Component {
                 <div className="wrapper-detail">
                   <div className="inside-wrapper-main">
                     {/* <div className="main-img"> */}
-                    <img src={imgVehicle} alt="vehicles-img" />
+                    <img src={imgVehicle1} alt="vehicles-img" />
                     {/* </div> */}
                   </div>
                   <div className="inside-wrapper-detail">
@@ -112,12 +125,12 @@ class VehicleDetail extends React.Component {
                       </div>
                       <div className="grid-item-detail-1">
                         <div className="item">
-                          <img src={imgVehicle} alt="vehicles-img" />
+                          <img src={imgVehicle2} alt="vehicles-img" />
                         </div>
                       </div>
                       <div className="grid-item-detail-2">
                         <div className="item">
-                          <img src={imgVehicle} alt="vehicles-img" />
+                          <img src={imgVehicle3} alt="vehicles-img" />
                         </div>
                       </div>
                       <div className="grid-item-arrow">
@@ -137,7 +150,7 @@ class VehicleDetail extends React.Component {
                     <div className="div-content">
                       <h1>{name}</h1>
                       <h2>{city}</h2>
-                      <p className="available">Available</p>
+                      <p className="available">{status}</p>
                       <p className="noPrepayment">No prepayment</p>
                       <p className="capacity">Capacity : {capacity} person</p>
                       <p className="type">Type : {type}</p>
@@ -180,8 +193,7 @@ class VehicleDetail extends React.Component {
                     detailVehicle: this.state.detailVehicle,
                     counter: this.state.counter,
                     price: this.state.price,
-                    // imgVehicle: this.state.imgVehicle
-                  }
+                  },
                 }}
               >
                 <button className="reservation" type="button">

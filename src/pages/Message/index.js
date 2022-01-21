@@ -62,7 +62,7 @@ function Message() {
                   </p>
                 </div>
                 <div className="msg-time col-lg-1 col-md-2 col-sm-2 col-3">
-                  <p>Just now</p>
+                  <p className="time-msg">Just now</p>
                   <p className="qty-msg">1</p>
                 </div>
               </div>
@@ -82,7 +82,7 @@ function Message() {
                 <p className="chat-preview-old">Thank you</p>
               </div>
               <div className="msg-time col-lg-1 col-md-2 col-sm-2 col-3">
-                <p>Yesterday</p>
+                <p className="time-msg">Yesterday</p>
               </div>
             </div>
           </div>
@@ -102,7 +102,7 @@ function Message() {
                 </p>
               </div>
               <div className="msg-time col-lg-1 col-md-2 col-sm-2 col-3">
-                <p>Just now</p>
+                <p className="time-msg">Just now</p>
                 <p className="qty-msg">1</p>
               </div>
             </div>
@@ -121,7 +121,7 @@ function Message() {
                 <p className="chat-preview-old">Thank you</p>
               </div>
               <div className="msg-time col-lg-1 col-md-2 col-sm-2 col-3">
-                <p>Yesterday</p>
+                <p className="time-msg">Yesterday</p>
               </div>
             </div>
           </div>

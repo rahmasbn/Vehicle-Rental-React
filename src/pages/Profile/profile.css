@@ -159,6 +159,39 @@
   background-color: #bbb3b3;
 }
 
+/* Modal */
+.modal-header .btn-close {
+  margin: 0;
+}
+.form-container {
+  margin: auto;
+  width: 100%;
+  padding: 0 25px;
+}
+.new,
+.current,
+.confirm {
+  height: 10vh;
+  margin: auto;
+  width: 100%;
+  margin-bottom: 3%;
+  box-shadow: rgba(47, 47, 85, 0.4) 5px 5px 9px 1px;
+  border-radius: 6px;
+}
+.current-pass,
+.new-pass, .confirm-pass {
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+}
+.changePass > button {
+  width: 100%;
+  padding: 12px 0;
+  color: #393939;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+}
+
 /* Responsive */
 @media (max-width: 425px) {
   .icon-edit {

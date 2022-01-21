@@ -5,10 +5,11 @@ import "./card.css";
 
 function VehicleCard(props) {
   const vehicleData = props.vehicleData;
-  // console.log("card", vehicleData);
+  // console.log("card", JSON.parse(vehicleData[0].images)[0], 'test=', `/${JSON.parse(vehicleData[0].images)[0]}`);
   const card = [];
+  // let photos = JSON.parse()
   for (let idx = 0; idx < vehicleData.length; idx++) {
-    const imgURL = process.env.REACT_APP_HOST + `/${vehicleData[idx].image}`;
+    const imgURL = process.env.REACT_APP_HOST + `/${JSON.parse(vehicleData[idx].images)[0]}`;
     const id = vehicleData[idx].id;
     const vehicle = vehicleData[idx].vehicle;
     const city = vehicleData[idx].city;

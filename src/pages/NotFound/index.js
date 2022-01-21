@@ -21,7 +21,7 @@ function NotFound() {
       <p className="text-center" style={{ color: "coral", fontSize: "1.5rem" }}>
         The page you are looking for can't be found.{" "}
         <Link to="/" style={{ textDecoration: "none" }}>
-          Go home!
+          Back to home.
         </Link>
       </p>
     </>

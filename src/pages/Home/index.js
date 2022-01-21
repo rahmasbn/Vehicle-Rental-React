@@ -93,7 +93,7 @@ class Home extends React.Component {
           <div className="container">
             <h2>Popular in Town</h2>
             <div className="view-more" style={{ textAlign: "right" }}>
-              <Link to="/vehicle-type/popular">View More {">"} </Link>
+              <Link to="/vehicles/popular">View All {">"} </Link>
             </div>
             <div className="row">
               <VehicleCard vehicleData={this.state.vehicleData}/>

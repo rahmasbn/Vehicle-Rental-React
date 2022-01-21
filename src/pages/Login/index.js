@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginAction } from "../../redux/actions/auth";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import google from "../../assets/icons/google-logo.png";
 
@@ -10,7 +12,6 @@ import Footer from "../../components/Footer/index";
 import "./login.css";
 
 class Login extends React.Component {
-  // console.log(process.env.REACT_APP_HOST);
   submitHandler = (e) => {
     e.preventDefault();
     const body = {
@@ -44,8 +45,13 @@ class Login extends React.Component {
       );
       localStorage["vehicle-rental-photoUser"] = this.props.auth.userData.photo;
       localStorage["vehicle-rental-roleUser"] = this.props.auth.userData.role;
+      toast.success("Login success", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 3000,
+      });
       this.props.history.push("/");
     }
+    // console.log('token', this.props.auth.userData.token)
   }
 
   render() {

@@ -18,10 +18,10 @@ export const vehicleType = () => {
 };
 
 // popular
-const popularURL = process.env.REACT_APP_HOST + "/vehicles/popular?order=desc";
-export const popular = () => {
-  return axios.get(popularURL);
-};
+// const popularURL = process.env.REACT_APP_HOST + "/vehicles/popular?order=desc";
+// export const popular = () => {
+//   return axios.get(popularURL);
+// };
 
 
 const vehiclesURL = process.env.REACT_APP_HOST + "/vehicles";
@@ -49,7 +49,7 @@ export const vehicles = (URL) => {
 
 // card popular
 const cardURL =
-  process.env.REACT_APP_HOST + "/vehicles/popular?order=desc&page=1&limit=4";
+  process.env.REACT_APP_HOST + "/vehicles/popular?page=1&limit=4";
 export const popularCard = () => {
   return axios.get(cardURL);
 };

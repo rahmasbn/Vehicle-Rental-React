@@ -18,8 +18,8 @@ class Reservation extends React.Component {
   };
 
   componentDidMount() {
-    const image = this.detailVehicle.detailVehicle.image;
-    // console.log(image);
+    const image = JSON.parse(this.detailVehicle.detailVehicle.images)[0];
+    // console.log('reservation', image);
     if (image !== null && typeof image !== "undefined") {
       this.setState({
         imgVehicle: process.env.REACT_APP_HOST + "/" + image,
@@ -55,6 +55,8 @@ class Reservation extends React.Component {
       style: "currency",
       currency: "IDR",
     }).format(this.state.price);
+
+    console.log('detail', this.detailVehicle)
 
     return (
       <div>

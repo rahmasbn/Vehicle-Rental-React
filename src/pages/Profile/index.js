@@ -1,13 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import axios from "axios";
+import { Modal } from "react-bootstrap";
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // import profilePic from "../../assets/images/girl-with-red-clothes.webp";
 import iconEdit from "../../assets/icons/edit-profile.png";
 
 import Header from "../../components/Header/index";
 import Footer from "../../components/Footer/index";
-import { profile } from "../../utils/https/users";
+import { profile, editProfile } from "../../utils/https/users";
 import "./profile.css";
 
 class Profile extends React.Component {
@@ -20,6 +23,9 @@ class Profile extends React.Component {
     profilePic: require("../../assets/images/avatar.jpg"),
     selectedGender: "",
     selectedFile: null,
+    show: false,
+    // input: {},
+    // errorMsg: {},
   };
 
   getUserData = () => {
@@ -65,11 +71,11 @@ class Profile extends React.Component {
     });
   };
 
-  // edit data
+  // edit data profile
   submitHandler = (e) => {
     e.preventDefault();
-    const URL = process.env.REACT_APP_HOST + "/users/profile";
-    const token = JSON.parse(localStorage.getItem("vehicle-rental-token"));
+    // const URL = process.env.REACT_APP_HOST + "/users/profile";
+    // const token = JSON.parse(localStorage.getItem("vehicle-rental-token"));
     const body = new FormData();
     if (this.state.selectedFile !== null) {
       body.append(
@@ -85,21 +91,77 @@ class Profile extends React.Component {
     body.append("phone_number", e.target.phone.value);
     body.append("dob", e.target.dob.value);
 
-    axios
-      .patch(URL, body, {
-        headers: {
-          "x-access-token": token,
-        },
-      })
+    // axios
+    //   .patch(URL, body, {
+    //     headers: {
+    //       "x-access-token": token,
+    //     },
+    //   })
+    editProfile(body)
       .then((res) => {
         // console.log(res.data.result.result.image);
         const image = res.data.result.result.image;
         if (image !== null && typeof image !== "undefined") {
           localStorage.setItem("vehicle-rental-photoUser", image);
         }
+        toast.success("Profile updated successfully", {
+          position: toast.POSITION.TOP_RIGHT
+        });
         this.getUserData();
       })
       .catch((err) => console.error(err));
+  };
+
+  // edit password
+  // changeHandler = (e) => {
+  //   let password = this.state.input;
+  //   password[e.target.name] = e.target.value;
+  //   this.setState({
+  //     password,
+  //   });
+  // };
+
+  // validation = (e) => {
+  //   let msg = {};
+  //   if (this.state.input["newPass"] !== this.state.input["confirmPass"]) {
+  //     msg["confirmPass"] = "Password Doesn't Match";
+  //   }
+  //   this.setState({
+  //     errorMsg: msg,
+  //   });
+  // };
+
+  submitPasswordHandler = (e) => {
+    e.preventDefault();
+    // if(this.validation()) {
+      const data = {
+        currentPass: e.target.currentPass.value,
+        newPass: e.target.newPass.value,
+      };
+      const URL = process.env.REACT_APP_HOST + "/users/edit-password";
+      const token = JSON.parse(localStorage.getItem("vehicle-rental-token"));
+  
+      axios
+        .patch(URL, data, {
+          headers: {
+            "x-access-token": token,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          // props.history.push("/login");
+
+        })
+        .catch((err) => {
+          // let msg={}
+          // msg["currentPass"]="Password is invalid";
+          // this.setState({
+          //   errorMsg: msg
+          // })
+          console.error(err)
+        });
+    // }
+   
   };
 
   cancelHandler = (e) => {
@@ -157,11 +219,11 @@ class Profile extends React.Component {
                     className="radio-input"
                     type="radio"
                     name="gender"
-                    id="gender"
+                    id="male"
                     defaultValue={1}
                     // defaultChecked={isMale}
                     checked={isMale}
-                    onChange={this.handleChange.bind(this)}
+                    onChange={this.handleChange}
                   />
                   <label className="radio-label" htmlFor="inlineRadio1">
                     Male
@@ -172,11 +234,11 @@ class Profile extends React.Component {
                     className="radio-input"
                     type="radio"
                     name="gender"
-                    id="gender"
+                    id="female"
                     defaultValue={2}
                     // defaultChecked={!isMale}
                     checked={!isMale}
-                    onChange={this.handleChange.bind(this)}
+                    onChange={this.handleChange}
                   />
                   <label className="radio-label" htmlFor="inlineRadio2">
                     Female
@@ -195,7 +257,7 @@ class Profile extends React.Component {
                   type="file"
                   onChange={this.fileSelectedHandler}
                   ref={this.target}
-                  style={{display: "none"}}
+                  style={{ display: "none" }}
                 />
                 <h3>Contacts</h3>
                 <div className="form-group">
@@ -270,17 +332,136 @@ class Profile extends React.Component {
                   <button type="submit" className="save ">
                     Save Changes
                   </button>
-                  <Link to="/edit-password">
-                    <button type="button" className="edit-pass">
-                      Edit Password
-                    </button>
-                  </Link>
+                  {/* <div className="modal-editPass"> */}
+                  <button
+                    type="button"
+                    className="edit-pass"
+                    onClick={() => {
+                      this.setState({ show: !this.state.show });
+                    }}
+                  >
+                    Edit Password
+                  </button>
+                  {/* <Modal
+                      show={this.state.show}
+                      className="modal-edit-password"
+                      onHide={() => {
+                        this.setState({ show: !this.state.show });
+                      }}
+                      ref={this.edit}
+                    >
+                      <Modal.Header closeButton>
+                        <Modal.Title className="mx-auto">
+                          EDIT PASSWORD
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body className="modal-body-editPass">
+                        <form
+                          className="form-container"
+                          onSubmit={this.submitPasswordHandler}
+                        >
+                          <label htmlFor="currentPass" className="current-pass">
+                            Current Password :
+                          </label>
+                          <input
+                            className="form-control current mb-3"
+                            type="password"
+                            name="currentPass"
+                          />
+                          <label htmlFor="newPass" className="new-pass">
+                            New Password :
+                          </label>
+                          <input
+                            className="form-control new"
+                            type="password"
+                            name="newPass"
+                          />
+                          <label htmlFor="confirmPass" className="confirm-pass">
+                            Confirm New Password :
+                          </label>
+                          <input
+                            className="form-control confirm"
+                            type="password"
+                            name="confirmNewPass"
+                          />
+                          <div className="col-md-12 text-center mt-5 changePass">
+                            <button type="submit" className="btn btn-warning">
+                              Change Password
+                            </button>
+                          </div>
+                        </form>
+                      </Modal.Body>
+                    </Modal> */}
+                  {/* </div> */}
+                  {/* <Link to="/edit-password"> */}
+                  {/* </Link> */}
                   <button type="reset" className="cancel">
                     Cancel
                   </button>
+                  {/* <ToastContainer/> */}
+
                 </div>
               </div>
             </form>
+
+            {/* Modal */}
+            <div className="modal-editPass">
+              <Modal
+                show={this.state.show}
+                className="modal-edit-password"
+                onHide={() => {
+                  this.setState({ show: !this.state.show });
+                }}
+                // ref={this.target}
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title className="mx-auto">EDIT PASSWORD</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="modal-body-editPass">
+                  <form
+                    className="form-container"
+                    onSubmit={this.submitPasswordHandler}
+                  >
+                    <label htmlFor="currentPass" className="current-pass">
+                      Current Password :
+                    </label>
+                    <input
+                      className="form-control current mb-3"
+                      type="password"
+                      name="currentPass"
+                      // value={this.state.input.currentPass}
+                      // onChange={this.changeHandler}
+                    />
+                    {/* <div className="text-danger"></div> */}
+                    <label htmlFor="newPass" className="new-pass">
+                      New Password :
+                    </label>
+                    <input
+                      className="form-control new"
+                      type="password"
+                      name="newPass"
+                      // value={this.state.input.newPass}
+                      // onChange={this.changeHandler}
+                    />
+                    <label htmlFor="confirmPass" className="confirm-pass">
+                      Confirm New Password :
+                    </label>
+                    <input
+                      className="form-control confirm"
+                      type="password"
+                      name="confirmNewPass"
+                      // value={this.state.input.confirmNewPass}
+                      // onChange={this.changeHandler}
+                    />
+                    <div className="col-md-12 text-center mt-5 changePass">
+                      <button type="submit" className="btn btn-warning">
+                        Change Password
+                      </button>
+                    </div>
+                  </form>
+                </Modal.Body>
+              </Modal>
+            </div>
           </div>
         </div>
 
@@ -289,5 +470,6 @@ class Profile extends React.Component {
     );
   }
 }
+
 
 export default Profile;
