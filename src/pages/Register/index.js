@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import google from "../../assets/icons/google-logo.png";
 
@@ -8,7 +9,7 @@ import { register } from "../../utils/https/auth";
 import "./register.css";
 
 function Register(props) {
-  // let navigate = useNavigate();
+
   const submitHandler = (e) => {
     e.preventDefault();
     const body = {
@@ -20,6 +21,10 @@ function Register(props) {
     register(body)
       .then((res) => {
         // console.log(res.data);
+        toast.success("Registration successful!", {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 3000,
+        });
         props.history.push("/login");
       })
       .catch((err) => console.error(err));
@@ -62,11 +67,9 @@ function Register(props) {
               />
             </div>
             <div className="register">
-              {/* <Link to="/login"> */}
               <button type="submit" className="register">
                 Sign Up
               </button>
-              {/* </Link> */}
             </div>
             <div className="register-google">
               {/* <Link to="#"> */}

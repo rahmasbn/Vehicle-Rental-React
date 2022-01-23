@@ -8,3 +8,17 @@ export const loginAction = (body) => {
   };
 };
 
+export const logoutAction = () => {
+  return {
+    type: ACTION_STRING.authLogout,
+  };
+};
+
+export const updateUserPhoto = (image) => {
+  return {
+    type: ACTION_STRING.authUserPhoto,
+    payload: image,
+  }
+}
+
+

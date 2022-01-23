@@ -4,9 +4,12 @@
   grid-template-rows: auto;
   grid-gap: 3%;
 }
-.img-arrow > a > img {
+.img-arrow > img {
   width: 30px;
   height: 30px;
+}
+.header-title >.img-arrow > img:hover {
+  cursor: pointer;
 }
 .detail-title > h1 {
   font-size: 2rem;

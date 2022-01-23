@@ -17,6 +17,20 @@
   color: #ffc61f;
   text-align: center;
 }
+.form-select-status-edit {
+  width: max(100%, 200px);
+  border: none;
+  background-color: #e3e3e7;
+  padding: 12px 0;
+  border-radius: 6px;
+  color: #818386;
+}
+.form-select-status-edit option:nth-child(1) {
+  color: green;
+}
+.form-select-status-edit option:nth-child(2) {
+  color: red;
+}
 
 .btn-edit-item > button.save-changes-vehicles {
   margin-left: 12%;

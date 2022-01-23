@@ -11,21 +11,35 @@ import Footer from "../../components/Footer/index";
 import VehicleCard from "../../components/Card/index";
 import { popularCard } from "../../utils/https/vehicles";
 import "./Home.css";
+import { connect } from "react-redux";
 
 class Home extends React.Component {
   state = {
     vehicleData: [],
-  }
+    isOwner: false,
+  };
   componentDidMount() {
-        popularCard()
-          .then((res) => {
-            // console.log("response", res.data.result);
-            this.setState({
-              vehicleData: res.data.result.data,
-            });
-          })
-          .catch((err) => console.error(err));
-      }
+    this.getRole();
+    popularCard()
+      .then((res) => {
+        // console.log("response", res.data.result);
+        this.setState({
+          vehicleData: res.data.result.data,
+        });
+      })
+      .catch((err) => console.error(err));
+  }
+
+  getRole = () => {
+    // console.log('roles', this.props.role);
+    const role_id = this.props.role;
+    if (role_id === 2) {
+      this.setState({ isOwner: true });
+    } else {
+      this.setState({ isOwner: false });
+    }
+  };
+
   render() {
     return (
       <>
@@ -96,10 +110,19 @@ class Home extends React.Component {
               <Link to="/vehicles/popular">View All {">"} </Link>
             </div>
             <div className="row">
-              <VehicleCard vehicleData={this.state.vehicleData}/>
+              <VehicleCard vehicleData={this.state.vehicleData} />
             </div>
           </div>
         </main>
+        {this.state.isOwner && (
+          <div className="container">
+            <div className="add-btn">
+              <Link to="/vehicle/new">
+                <button className="add-new-item-vehicle">Add new item</button>
+              </Link>
+            </div>
+          </div>
+        )}
 
         {/* Testimoni */}
         <section className="testimonial-section d-flex align-items-center">
@@ -235,4 +258,10 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    role: state.auth.userData.role,
+  };
+};
+
+export default connect(mapStateToProps)(Home);

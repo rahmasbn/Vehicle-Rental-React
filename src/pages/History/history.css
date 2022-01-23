@@ -1,3 +1,7 @@
+.history-wrapper {
+  width: 100%;
+}
+
 .form > input {
   margin-top: 5%;
   /* background-color: grey; */
@@ -87,7 +91,7 @@
 }
 .history-container > p {
   font-size: 1.3rem;
-  color: #817e7e;
+  color: #130d0d;
   font-family: "Nunito", sans-serif;
 }
 .card-history {
@@ -101,36 +105,188 @@
   object-fit: cover;
   object-position: center;
 }
-.info-history-vehicle, .down {
+.info-history-vehicle,
+.down {
   position: absolute;
   left: 35%;
   top: 57%;
   font-family: "Poppins", sans-serif;
 }
 .down {
-    top: 95%;
-  }
+  top: 95%;
+}
 .info-history-vehicle > p.rental-date {
-    margin-top: -7%;
-    margin-bottom: 13%;
+  margin-top: -7%;
+  margin-bottom: 13%;
 }
 .info-history-vehicle > p.status-history {
-    margin-top: -7%;
-    color: green;
+  margin-top: -7%;
+  color: green;
 }
 .select-box {
-    position: absolute;
-    right: 33%;
-    top: 65%;
+  position: absolute;
+  right: 33%;
+  top: 65%;
 }
 .two {
-    position: absolute;
-    right: 33%;
-    top: 100%;
+  position: absolute;
+  right: 33%;
+  top: 100%;
+}
+.btn-modal {
+  width: 100%;
+  margin-top: 2%;
+  color: #393939;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  padding: 10px;
+}
+.modal-container {
+  margin-left: 3%;
 }
 
-/* @media (max-width:768px) {
+.modal-btn {
+  display: flex;
+  margin-top: 10%;
+  width: 100%;
+  position: relative;
+}
+
+.modal h1 {
+  text-align: center;
+  font-size: 2.34375vw;
+  font-weight: 700;
+  font-family: "Nunito";
+}
+/* .modal .btn-warning {
+  width: 45%;
+  background-color: rgba(255, 205, 97, 1);
+  color: rgba(57, 57, 57, 1);
+  font-size: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.modal .btn-secondary {
+  width: 45%;
+  position: absolute;
+  right: 0%;
+  background-color: rgba(57, 57, 57, 1);
+  color: rgba(255, 205, 97, 1);
+  font-size: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+} */
+
+@media (max-width: 1024px) {
+  .form .fa-search {
+    top: 16%;
+  }
+  .checkbox {
+    top: 12%;
+    font-size: 1.1rem;
+  }
+  .checkbox > input {
+    left: 12%;
+  }
+  .card-container {
+    width: 25%;
+  }
+  .info-history-vehicle {
+    top: 50%;
+  }
+  .down {
+    top: 90%;
+  }
+  .select-box {
+    top: 55%;
+  }
+  .two {
+    top: 95%;
+  }
+  .btn-modal {
+    width: 90%;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
   aside.card-container {
     display: none;
   }
-} */
+  .checkbox {
+    left: 85%;
+    top: 17%;
+  }
+  .checkbox > .form-check-label {
+    margin-left: -7%;
+  }
+  .form > input {
+    padding: 13px 20px;
+  }
+  .form .fa-search {
+    right: 23%;
+    top: 21%;
+    font-size: 2.7vw;
+  }
+  .dropdown > .filter {
+    margin-top: 2%;
+    width: 15%;
+  }
+  .history-container {
+    width: 100%;
+  }
+  .history-container > p {
+    font-size: 1.2rem;
+  }
+  .card-history {
+    width: 100%;
+    height: 40%;
+  }
+  .card-history > .img > img {
+    width: 100%;
+  }
+  .info-history-vehicle {
+    top: 60%;
+    left: 50%;
+  }
+  .down {
+    top: 100%;
+    left: 50%;
+  }
+  .select-box {
+    top: 70%;
+    right: 13%;
+  }
+  .two {
+    top: 115%;
+  }
+  .btn-modal {
+    width: 90%;
+    margin-top: 0;
+    margin-bottom: 0%;
+  }
+  /* .modal-dialog {
+    margin: 0;
+  } */
+}
+
+@media (max-width: 425px) {
+  .checkbox {
+    top: 12%;
+    font-size: 1rem;
+  }
+  .checkbox > .form-check-label {
+    margin-left: -30%;
+  }
+  .form .fa-search {
+    right: 23%;
+    top: 16%;
+    font-size: 5vw;
+  }
+  .dropdown > .filter {
+    margin-top: 2%;
+    width: 25%;
+  }
+  /* .modal-dialog {
+    margin: 0;
+  } */
+}

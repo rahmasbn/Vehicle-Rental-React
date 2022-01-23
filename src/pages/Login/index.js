@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginAction } from "../../redux/actions/auth";
 import { toast } from "react-toastify";
+// import Swal from "sweetalert2";
 import "react-toastify/dist/ReactToastify.css";
 
 import google from "../../assets/icons/google-logo.png";
@@ -40,18 +41,17 @@ class Login extends React.Component {
 
   componentDidUpdate() {
     if (this.props.auth.isFulfilled === true) {
-      localStorage["vehicle-rental-token"] = JSON.stringify(
-        this.props.auth.userData.token
-      );
-      localStorage["vehicle-rental-photoUser"] = this.props.auth.userData.photo;
-      localStorage["vehicle-rental-roleUser"] = this.props.auth.userData.role;
-      toast.success("Login success", {
+      toast.success("Login successful", {
         position: toast.POSITION.TOP_RIGHT,
-        autoClose: 3000,
+        autoClose: 5000,
       });
-      this.props.history.push("/");
     }
-    // console.log('token', this.props.auth.userData.token)
+    if (this.props.auth.isRejected === true) {
+      toast.error("Invalid Email/Password", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 5000,
+      });
+    }
   }
 
   render() {

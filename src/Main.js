@@ -8,6 +8,8 @@ import {
 import { connect } from "react-redux";
 // import store from "./redux/store";
 import { ToastContainer } from "react-toastify";
+import { PersistGate } from "redux-persist/es/integration/react";
+import { persistor } from "./redux/store";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -28,20 +30,21 @@ import Message from "./pages/Message/index";
 import ChatDetail from "./pages/Message/ChatDetail";
 import Payment from "./pages/Payment";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/scrollToTop";
 
 // import Counter from "./components/Counter";
 
- function Main (props) {
-
-  const accessToken = JSON.parse(localStorage.getItem("vehicle-rental-token"));
-  // const accessToken = props.token;
-  // console.log('token main', props.token)
+function Main(props) {
+  // const accessToken = JSON.parse(localStorage.getItem("vehicle-rental-token"));
+  const accessToken = props.token;
+  // console.log("token main", props.token);
 
   return (
     <>
-      {/* <Provider store={store}> */}
+      <PersistGate loading={null} persistor={persistor}>
         <Router>
           <ToastContainer />
+          <ScrollToTop />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route
@@ -68,23 +71,23 @@ import NotFound from "./pages/NotFound";
             <Route exact path="/vehicle-type" component={VehicleType} />
             <Route path="/vehicles/popular" component={Popular} />
             <Route path="/vehicles/:category" component={Vehicles} />
-            <Route path="/vehicle/:id" component={VehicleDetail} />
             <Route path="/about" component={About} />
             <Route path="/edit-password" component={EditPass} />
             <Route
-              path="/add-vehicle"
+              path="/vehicle/new"
               render={(routerProps) => {
                 if (!accessToken) return <Redirect to="/login" />;
                 return <AddVehicle {...routerProps} />;
               }}
             />
             <Route
-              path="/edit-vehicle"
+              path="/vehicle/edit/:id"
               render={(routerProps) => {
                 if (!accessToken) return <Redirect to="/login" />;
                 return <EditVehicle {...routerProps} />;
               }}
             />
+            <Route exact path="/vehicle/:id" component={VehicleDetail} />
             <Route
               path="/history"
               render={(routerProps) => {
@@ -135,14 +138,11 @@ import NotFound from "./pages/NotFound";
               }}
             />
             <Route path="*" component={NotFound} />
-
-            {/* <Route path="/counter" component={Counter} /> */}
           </Switch>
         </Router>
-      {/* </Provider> */}
+      </PersistGate>
     </>
   );
-            
 }
 const mapStateToProps = (state) => {
   return {

@@ -6,8 +6,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import React, { Component } from "react";
 import { Navbar, Nav, Button, Container, NavDropdown } from "react-bootstrap";
 import { NavLink, Link } from "react-router-dom";
+import { connect } from "react-redux";
+import Swal from "sweetalert2";
 
 import "./header.css";
+import { logoutAction } from "../../redux/actions/auth";
 
 class Header extends Component {
   state = {
@@ -18,31 +21,48 @@ class Header extends Component {
   };
 
   onLogout = () => {
-    localStorage.removeItem("vehicle-rental-token");
-    localStorage.removeItem("vehicle-rental-photoUser");
-    localStorage.removeItem("vehicle-rental-roleUser");
+    Swal.fire({
+      icon: "warning",
+      title: "Are you sure want to logout?",
+      showCancelButton: true,
+      confirmButtonText: "Logout",
+      cancelButtonText: `Cancel`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.props.dispatch(logoutAction());
 
-    this.setState({
-      userToken: "",
-      isLogin: false,
+        this.setState({
+          userToken: "",
+          isLogin: false,
+        });
+
+        Swal.fire({
+          title: "Logout Successful",
+          text: "You have successfully logged out",
+          icon: "success",
+        });
+        setTimeout(() => {
+          window.location.reload(false);
+        }, 5000);
+      }
     });
-
   };
 
   componentDidMount() {
-    const token = localStorage.getItem("vehicle-rental-token");
-    const image = localStorage.getItem("vehicle-rental-photoUser");
+    const token = this.props.token;
+    const image = this.props.photo;
 
-      if (image !== 'null') {
-        this.setState({
-          profilePic: process.env.REACT_APP_HOST +`/${image}`,
-        });
-      }
-      if(token) {
-        this.setState({
-          userToken: JSON.parse(token),
-          isLogin: true,
-        });
+    if (image !== null) {
+      // this.props.dispatch(updateUserPhoto(image));
+      this.setState({
+        profilePic: process.env.REACT_APP_HOST + `/${image}`,
+      });
+    }
+    if (token) {
+      this.setState({
+        userToken: token,
+        isLogin: true,
+      });
     }
   }
 
@@ -140,4 +160,12 @@ class Header extends Component {
     );
   }
 }
-export default Header;
+
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth.userData.token,
+    photo: state.auth.userData.photo,
+    // image: state.userPhoto.userPhoto
+  };
+};
+export default connect(mapStateToProps)(Header);

@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const getProfile = process.env.REACT_APP_HOST + "/users/profile";
-const token = JSON.parse(localStorage.getItem("vehicle-rental-token"));
-export const profile = () => {
+// const token = JSON.parse(localStorage.getItem("vehicle-rental-token"));
+export const profile = (token) => {
   return axios.get(getProfile, {
     headers: {
       "x-access-token": token,
@@ -12,8 +12,17 @@ export const profile = () => {
 
 // const editProfile = process.env.REACT_APP_HOST + "/users/profile";
 // const token = JSON.parse(localStorage.getItem("vehicle-rental-token"));
-export const editProfile = (body) => {
+export const editProfile = (body, token) => {
   return axios.patch(getProfile, body, {
+    headers: {
+      "x-access-token": token,
+    },
+  });
+};
+
+const editPassURL = process.env.REACT_APP_HOST + "/users/edit-password";
+export const editPassword = (data, token) => {
+  return axios.patch(editPassURL, data, {
     headers: {
       "x-access-token": token,
     },

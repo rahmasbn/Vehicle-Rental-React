@@ -6,6 +6,7 @@ const initialState = {
     token: JSON.parse(localStorage["vehicle-rental-token"] || null),
     photo: '',
     role: 0,
+    id: 0,
   },
 
   isPending: false,
@@ -15,7 +16,7 @@ const initialState = {
 };
 const authReducer = (prevState = initialState, action) => {
   // const {Pending, Fulfilled, Rejected} = ActionType
-  const { authLogin, pending, fulfilled, rejected } = ACTION_STRING;
+  const { authLogin, authUserPhoto, pending, fulfilled, rejected } = ACTION_STRING;
   switch (action.type) {
     // case authLogin.concat("_", Pending):
     case authLogin + pending:
@@ -34,6 +35,7 @@ const authReducer = (prevState = initialState, action) => {
         token: data.result.token,
         photo: data.result.image,
         role: data.result.roles,
+        id: data.result.id,
       };
       return {
         ...prevState,
@@ -50,6 +52,16 @@ const authReducer = (prevState = initialState, action) => {
         isRejected: true,
         err,
       };
+
+      case authUserPhoto: 
+      const newPhoto = action.payload;
+      return {
+        ...prevState,
+        userData: {
+          ...prevState.userData,
+          photo: newPhoto,
+        }
+      }
 
     default:
       return prevState;

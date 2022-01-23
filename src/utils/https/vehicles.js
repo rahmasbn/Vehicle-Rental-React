@@ -29,27 +29,46 @@ export const vehicles = (URL) => {
  return axios.get(vehiclesURL+URL)
 }
 
-// motorbike
-// const motorbikeURL = process.env.REACT_APP_HOST + "/vehicles?type=motorbike";
-// export const motorbike = () => {
-//   return axios.get(motorbikeURL);
-// };
-
-// // cars
-// const carURL = process.env.REACT_APP_HOST + "/vehicles?type=car";
-// export const cars = () => {
-//   return axios.get(carURL);
-// };
-
-// // bike
-// const bikeURL = process.env.REACT_APP_HOST + "/vehicles?type=bike";
-// export const bike = () => {
-//   return axios.get(bikeURL);
-// };
 
 // card popular
 const cardURL =
   process.env.REACT_APP_HOST + "/vehicles/popular?page=1&limit=4";
 export const popularCard = () => {
   return axios.get(cardURL);
+};
+
+// detail vehicle
+export const getDetailVehicle = (vehicleId) => {
+  const detailURL = process.env.REACT_APP_HOST + `/vehicles/`+vehicleId;
+  return axios.get(detailURL)
+}
+
+// post vehicle
+const postVehicleURL = process.env.REACT_APP_HOST + "/vehicles";
+export const postVehicle = (body, token) => {
+  return axios.post(postVehicleURL, body, {
+    headers: {
+      "x-access-token": token,
+    },
+  });
+};
+
+// update vehicle
+export const updateVehicle = (vehicleId, body, token) => {
+  const updateVehicleURL = process.env.REACT_APP_HOST + "/vehicles/"+vehicleId;
+  return axios.patch(updateVehicleURL, body, {
+    headers: {
+      "x-access-token": token,
+    },
+  });
+};
+
+// delete vehicle
+export const deleteVehicle = (vehicleId, token) => {
+  const deleteVehicleURL = process.env.REACT_APP_HOST + "/vehicles/"+vehicleId;
+  return axios.delete(deleteVehicleURL, {
+    headers: {
+      "x-access-token": token,
+    },
+  });
 };

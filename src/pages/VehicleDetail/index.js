@@ -7,14 +7,9 @@ import heartIcon from "../../assets/icons/yellow-heart.png";
 import Header from "../../components/Header/index";
 import Footer from "../../components/Footer";
 import "./detail.css";
-import axios from "axios";
-
-// const numberFormat = (value) => {
-//   new Intl.NumberFormat("id-ID", {
-//     style: "currency",
-//     currency: "IDR",
-//   }).format(value);
-// };
+// import axios from "axios";
+import { getDetailVehicle } from "../../utils/https/vehicles";
+import { connect } from "react-redux";
 
 class VehicleDetail extends React.Component {
   state = {
@@ -30,7 +25,7 @@ class VehicleDetail extends React.Component {
     const newCounter = this.state.counter;
     const stock = this.state.detailVehicle.stock;
     const newPrice = this.state.detailVehicle.price;
-    // console.log('stock ', stock)
+    console.log("detail ", this.state.detailVehicle);
     this.setState({
       counter: newCounter + 1 > stock ? stock : newCounter + 1,
       price: newPrice * (newCounter + 1 > stock ? stock : newCounter + 1),
@@ -48,9 +43,9 @@ class VehicleDetail extends React.Component {
 
   componentDidMount() {
     const { match } = this.props;
-    const URL = process.env.REACT_APP_HOST + `/vehicles/` + match.params.id;
-    axios
-      .get(URL)
+    const vehicleId = match.params.id;
+
+    getDetailVehicle(vehicleId)
       .then((res) => {
         // console.log(JSON.parse(res.data.result[0].images)[1]);
         const image = JSON.parse(res.data.result[0].images);
@@ -79,14 +74,18 @@ class VehicleDetail extends React.Component {
   }
 
   render() {
-    const { name, type, city, capacity, status } = this.state.detailVehicle;
+    const { name, type, city, capacity, status, user_id } =
+      this.state.detailVehicle;
     const { imgVehicle1, imgVehicle2, imgVehicle3 } = this.state;
+    const { match } = this.props;
+    const vehicleId = match.params.id;
+
     const formatPrice = new Intl.NumberFormat("id-ID", {
       style: "currency",
       currency: "IDR",
     }).format(this.state.price);
     // console.log(formatPrice)
-    // console.log(this.state.price)
+
     return (
       <div>
         <Header />
@@ -94,9 +93,11 @@ class VehicleDetail extends React.Component {
         <div className="container py-5">
           <header className="header-title">
             <div className="img-arrow">
-              <Link to="#">
-                <img src={leftArrowIcon} alt="left arrow" />
-              </Link>
+                <img
+                  src={leftArrowIcon}
+                  alt="left arrow"
+                  onClick={() => this.props.history.goBack()}
+                />
             </div>
             <div className="detail-title">
               <h1 className="mb-8">Detail</h1>
@@ -185,21 +186,28 @@ class VehicleDetail extends React.Component {
               </button>
             </div>
             <div className="button2">
-              {/* <Link to="/reservation"> */}
-              <Link
-                to={{
-                  pathname: "/reservation",
-                  state: {
-                    detailVehicle: this.state.detailVehicle,
-                    counter: this.state.counter,
-                    price: this.state.price,
-                  },
-                }}
-              >
-                <button className="reservation" type="button">
-                  Reservation
-                </button>
-              </Link>
+              {user_id === this.props.idUser ? (
+                <Link to={`/vehicle/edit/${vehicleId}`}>
+                  <button className="reservation" type="button">
+                    Edit item
+                  </button>
+                </Link>
+              ) : (
+                <Link
+                  to={{
+                    pathname: "/reservation",
+                    state: {
+                      detailVehicle: this.state.detailVehicle,
+                      counter: this.state.counter,
+                      price: this.state.price,
+                    },
+                  }}
+                >
+                  <button className="reservation" type="button">
+                    Reservation
+                  </button>
+                </Link>
+              )}
             </div>
             <div className="button3">
               <button className="like" type="button">
@@ -216,4 +224,10 @@ class VehicleDetail extends React.Component {
   }
 }
 
-export default VehicleDetail;
+const mapStateToProps = (state) => {
+  return {
+    idUser: state.auth.userData.id,
+  };
+};
+
+export default connect(mapStateToProps)(VehicleDetail);

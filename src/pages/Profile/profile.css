@@ -251,4 +251,7 @@
     left: 55%;
     margin-top: -12%;
   }
+  .modal-dialog {
+    margin: auto;
+  }
 }

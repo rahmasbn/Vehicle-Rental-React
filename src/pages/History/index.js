@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button, Modal } from "react-bootstrap";
 
 import Lamborghini from "../../assets/images/lamborghini.jpg";
 import whiteJeep from "../../assets/images/white_jeep.jpg";
@@ -7,21 +8,20 @@ import vespa from "../../assets/images/vespa-matic.jpg";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "./history.css";
-import { Button, Modal } from "react-bootstrap";
 
 class History extends Component {
   state = {
     show: false,
   };
+
   render() {
     return (
       <>
         <Header />
-
-        <div className="container">
+        <div className="container history-wrapper">
           <div className="search-container">
             <div className="row">
-              <div className="search-bar-history col-lg-8">
+              <div className="search-bar-history col-lg-8 col-md-10 col-sm-10 col-10">
                 <div className="form">
                   <i className="fa fa-search" />
                   <input
@@ -31,8 +31,8 @@ class History extends Component {
                   />
                 </div>
               </div>
-              <div className="checkbox col-lg-2">
-                <label htmlFor="" className="from-check-label">
+              <div className="checkbox col-lg-2 col-md-2 col-sm-2 col-2">
+                <label htmlFor="" className="form-check-label">
                   Select
                 </label>{" "}
                 <input
@@ -102,7 +102,7 @@ class History extends Component {
           <div className="history-container">
             <p>A week ago</p>
             <div className="card-history d-flex">
-              <div className="img col-lg-5">
+              <div className="img col-lg-5 col-md-5 col-sm-12">
                 <img src={vespa} alt="vespa matic" />
               </div>
               <div className="info-history-vehicle">
@@ -128,8 +128,8 @@ class History extends Component {
               </div>
             </div>
             <div className="card-history d-flex">
-              <div className="img col-lg-5">
-                <img src={vespa} alt="vespa matic" />
+              <div className="img col-lg-5 col-md-5 col-sm-12">
+                <img src={vespa} alt="vespa matic" className="img2" />
               </div>
               <div className="info-history-vehicle down">
                 <p className="vehicle-name">
@@ -163,7 +163,7 @@ class History extends Component {
               >
                 Delete selected item
               </Button>
-              <Modal show={this.state.show} className="modal">
+              <Modal show={this.state.show} className="modal modal-history">
                 <Modal.Body className="modal-body">
                   <h1>Are you sure do you want to delete selected item?</h1>
                   <div className="modal-btn">
