@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import authReducer from "./auth";
 import { ACTION_STRING } from "../actions/actionString";
 import storage from "redux-persist/lib/storage";
-import userReducer from "./users";
+// import userReducer from "./users";
 
 // const rootReducer = combineReducers({
 //   auth: authReducer,
