@@ -47,6 +47,7 @@ const authReducer = (prevState = initialState, action) => {
     // case authLogin.concat("_", Rejected):
     case authLogin + rejected:
       const err = action.payload;
+      console.log('rejected redux')
       return {
         isPending: false,
         isRejected: true,

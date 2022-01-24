@@ -34,4 +34,62 @@ function VehicleCard(props) {
   return card;
 }
 
+
+export function historyCard(props) {
+  return (
+    <>
+    <div className="card-history d-flex">
+              <div className="img">
+                <img src={props.image} alt="img vehicle" />
+              </div>
+              <div className="info-history-vehicle">
+                <p className="vehicle-name">
+                  <strong>{props.name}</strong>
+                </p>
+                <p className="rental-date">{props.start_date} to {props.return_date}</p>
+                <p className="total-price">
+                  <strong>Prepayment: Rp. {props.total_payment}</strong>
+                </p>
+                <p className="status-history">{props.status}</p>
+              </div>
+            </div>
+            <div className="select-box">
+              <div className="checkbox">
+                <input
+                  className="form-check-input check"
+                  type="checkbox"
+                  id="checkboxNoLabel"
+                  value=""
+                />
+              </div>
+            </div>
+
+    {/* <div className="card-history">
+        <div className="img">
+          <img src={props.image} alt="vehicle" />
+        </div>
+        <p className="vehicle">
+          <strong>{props.name} </strong> <br />
+          {props.date}
+        </p>
+        <p className="rating">
+          Rating : <strong>{props.rating}</strong>{" "}
+        </p>
+        <p className="price">
+          <strong>Prepayment : Rp. {props.price} </strong>
+        </p>
+        <p className="status">
+          {" "}
+          <strong>{props.status}</strong>{" "}
+        </p>
+        <div className="aka">
+          <div className="checkbox">
+            <input class="form-check-input check" type="checkbox" id="checkboxNoLabel" value="" aria-label="..." />
+          </div>
+        </div>
+      </div> */}
+    </>
+  )
+}
+
 export default VehicleCard;

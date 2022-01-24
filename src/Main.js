@@ -36,8 +36,12 @@ import ScrollToTop from "./components/scrollToTop";
 
 function Main(props) {
   // const accessToken = JSON.parse(localStorage.getItem("vehicle-rental-token"));
-  const accessToken = props.token;
-  // console.log("token main", props.token);
+  if (!props.auth.userData) {
+    return null;
+  }
+  const accessToken = props.auth.userData.token;
+ 
+  // console.log("token main",props.auth);
 
   return (
     <>
@@ -50,7 +54,7 @@ function Main(props) {
             <Route
               path="/login"
               render={(routerProps) => {
-                if (accessToken) return <Redirect to="/" />;
+                // if (accessToken) return <Redirect to="/" />;
                 return <Login {...routerProps} />;
               }}
             />
@@ -102,13 +106,6 @@ function Main(props) {
                 return <Profile {...routerProps} />;
               }}
             />
-            {/* <Route
-            path="/edit-pass"
-            render={(routerProps) => {
-              if (!token) return <Redirect to="/login" />;
-              return <EditPass {...routerProps} />;
-            }}
-          /> */}
             <Route
               path="/message"
               render={(routerProps) => {
@@ -146,7 +143,7 @@ function Main(props) {
 }
 const mapStateToProps = (state) => {
   return {
-    token: state.auth.userData.token,
+    auth: state.auth,
   };
 };
 

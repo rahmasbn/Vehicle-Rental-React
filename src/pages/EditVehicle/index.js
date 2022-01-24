@@ -62,23 +62,23 @@ class EditVehicle extends React.Component {
     });
   };
 
-  // fileSelectedHandler2 = (e) => {
-  //   // console.log(e.target.files[0]);
-  //   const uploaded = e.target.files[0];
-  //   this.setState({
-  //     selectedFile: e.target.files[0],
-  //     image2: URL.createObjectURL(uploaded),
-  //   });
-  // };
+  fileSelectedHandler2 = (e) => {
+    // console.log(e.target.files[0]);
+    const uploaded = e.target.files[0];
+    this.setState({
+      selectedFile2: e.target.files[0],
+      image2: URL.createObjectURL(uploaded),
+    });
+  };
 
-  // fileSelectedHandler3 = (e) => {
-  //   // console.log(e.target.files[0]);
-  //   const uploaded = e.target.files[0];
-  //   this.setState({
-  //     selectedFile: e.target.files[0],
-  //     image3: URL.createObjectURL(uploaded),
-  //   });
-  // };
+  fileSelectedHandler3 = (e) => {
+    // console.log(e.target.files[0]);
+    const uploaded = e.target.files[0];
+    this.setState({
+      selectedFile3: e.target.files[0],
+      image3: URL.createObjectURL(uploaded),
+    });
+  };
 
   submitHandler = (e) => {
     e.preventDefault();
@@ -95,21 +95,25 @@ class EditVehicle extends React.Component {
         this.state.selectedFile1,
         this.state.selectedFile1.name
       );
+      console.log("file1")
     }
-    // if (this.state.selectedFile2 !== null) {
-    //   body.append(
-    //     "imgVehicle",
-    //     this.state.selectedFile2,
-    //     this.state.selectedFile2.name
-    //   );
-    // }
-    // if (this.state.selectedFile3 !== null) {
-    //   body.append(
-    //     "imgVehicle",
-    //     this.state.selectedFile3,
-    //     this.state.selectedFile3.name
-    //   );
-    // }
+    if (this.state.selectedFile2 !== null) {
+      body.append(
+        "imgVehicle",
+        this.state.selectedFile2,
+        this.state.selectedFile2.name
+      );
+      console.log("file2")
+
+    }
+    if (this.state.selectedFile3 !== null) {
+      body.append(
+        "imgVehicle",
+        this.state.selectedFile3,
+        this.state.selectedFile3.name
+      );
+      console.log("file3")
+    }
     // for( let i =0; i<files.length; i++) {
     //   body.append(`imgVehicle[${i}]`, files[i])
     // }
@@ -218,7 +222,8 @@ class EditVehicle extends React.Component {
         <div className="container py-5">
           <header className="addVehicle-header">
             <div className="img-arrow">
-              <img src={leftArrowIcon} alt="left arrow" />
+                  
+              <img src={leftArrowIcon} alt="left arrow" onClick={() => this.props.history.goBack()} />
             </div>
             <div className="addVehicle-text">
               <h1 className="mb-8">Edit item</h1>
@@ -244,17 +249,6 @@ class EditVehicle extends React.Component {
                         }}
                         onClick={() => this.inputFileRef1.current.click()}
                       />
-                      {/* <div className="iconCancel d-flex">
-                        <img
-                          src={cancelIcon}
-                          alt="cancel icon"
-                          style={{
-                            width: "20px",
-                            height: "15px",
-                            position: "absolute",
-                          }}
-                        />
-                      </div> */}
                     </div>
                     <div className="add-image-vehicle">
                       <div className="inside-wrapper-add-vehicle">
@@ -268,17 +262,8 @@ class EditVehicle extends React.Component {
                               height: "100%",
                               borderRadius: "6px",
                             }}
-                            // onClick={() => this.inputFileRef2.current.click()}
+                            onClick={() => this.inputFileRef2.current.click()}
                           />
-                          {/* <div className="iconCancel-1 d-flex">
-                            <img
-                              src={cancelIcon}
-                              alt="cancel icon"
-                              style={{
-                                position: "absolute",
-                              }}
-                            />
-                          </div> */}
                         </div>
                         <div className="vehicle-slider-2">
                           <img
@@ -290,17 +275,8 @@ class EditVehicle extends React.Component {
                               height: "100%",
                               borderRadius: "6px",
                             }}
-                            // onClick={() => this.inputFileRef3.current.click()}
+                            onClick={() => this.inputFileRef3.current.click()}
                           />
-                          {/* <div className="iconCancel-2 d-flex">
-                            <img
-                              src={cancelIcon}
-                              alt="cancel icon"
-                              style={{
-                                position: "absolute",
-                              }}
-                            />
-                          </div> */}
                         </div>
                       </div>
                     </div>
@@ -315,7 +291,7 @@ class EditVehicle extends React.Component {
                       style={{ display: "none" }}
                       multiple={true}
                     />
-                    {/* <input
+                    <input
                       type="file"
                       onChange={this.fileSelectedHandler2}
                       ref={this.inputFileRef2}
@@ -326,7 +302,7 @@ class EditVehicle extends React.Component {
                       onChange={this.fileSelectedHandler3}
                       ref={this.inputFileRef3}
                       style={{ display: "none" }}
-                    /> */}
+                    />
                     <input
                       type="text"
                       name="name"
@@ -391,8 +367,8 @@ class EditVehicle extends React.Component {
                         <option value="Available" className="available">
                           Available
                         </option>
-                        <option value="Unavailable" className="full-booked">
-                          Unavailable
+                        <option value="full-booked" className="full-booked">
+                          Full Booked
                         </option>
                       </select>
                     </div>
@@ -425,10 +401,10 @@ class EditVehicle extends React.Component {
                     className="edit-item"
                     defaultValue={detailVehicle.type_id}
                   >
-                    <option value="" disable="true" hidden>
+                    <option  disable="true" hidden>
                       Add item to
                     </option>
-                    <option value="" className="choose-category" disabled>
+                    <option className="choose-category" disabled>
                       Choose category
                     </option>
                     <option value="1" className="select-cars">

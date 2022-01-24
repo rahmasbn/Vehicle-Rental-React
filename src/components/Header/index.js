@@ -50,7 +50,7 @@ class Header extends Component {
 
   componentDidMount() {
     const token = this.props.token;
-    const image = this.props.photo;
+    const image = this.props.auth.userData.photo;
 
     if (image !== null) {
       // this.props.dispatch(updateUserPhoto(image));
@@ -164,7 +164,7 @@ class Header extends Component {
 const mapStateToProps = (state) => {
   return {
     token: state.auth.userData.token,
-    photo: state.auth.userData.photo,
+    auth: state.auth,
     // image: state.userPhoto.userPhoto
   };
 };

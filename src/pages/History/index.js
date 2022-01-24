@@ -3,17 +3,34 @@ import { Button, Modal } from "react-bootstrap";
 
 import Lamborghini from "../../assets/images/lamborghini.jpg";
 import whiteJeep from "../../assets/images/white_jeep.jpg";
-import vespa from "../../assets/images/vespa-matic.jpg";
+// import vespa from "../../assets/images/vespa-matic.jpg";
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "./history.css";
+import { connect } from "react-redux";
+import { history } from "../../utils/https/history";
+import { historyCard } from "../../components/Card";
 
 class History extends Component {
   state = {
     show: false,
+    history: [],
   };
 
+  componentDidMount() {
+    const token = this.props.auth.userData.token;
+    history(token)
+    .then((res)=> {
+      // console.log(res.data.result.data);
+      this.setState({
+        history: res.data.result.data
+      })
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+  }
   render() {
     return (
       <>
@@ -101,7 +118,7 @@ class History extends Component {
 
           <div className="history-container">
             <p>A week ago</p>
-            <div className="card-history d-flex">
+            {/* <div className="card-history d-flex">
               <div className="img col-lg-5 col-md-5 col-sm-12">
                 <img src={vespa} alt="vespa matic" />
               </div>
@@ -152,7 +169,7 @@ class History extends Component {
                   aria-label="..."
                 />
               </div>
-            </div>
+            </div> */}
 
             <div className="modal-container">
               <Button
@@ -196,4 +213,10 @@ class History extends Component {
   }
 }
 
-export default History;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  }
+}
+
+export default connect(mapStateToProps)(History);

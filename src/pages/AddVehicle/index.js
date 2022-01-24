@@ -58,7 +58,7 @@ class AddVehicle extends React.Component {
     // console.log(e.target.files[0]);
     const uploaded = e.target.files[0];
     this.setState({
-      selectedFile: e.target.files[0],
+      selectedFile2: e.target.files[0],
       image2: URL.createObjectURL(uploaded),
     });
   };
@@ -67,14 +67,14 @@ class AddVehicle extends React.Component {
     // console.log(e.target.files[0]);
     const uploaded = e.target.files[0];
     this.setState({
-      selectedFile: e.target.files[0],
+      selectedFile3: e.target.files[0],
       image3: URL.createObjectURL(uploaded),
     });
   };
 
   submitHandler = (e) => {
     e.preventDefault();
-
+    console.log(this.state)
     const token = this.props.token;
     const body = new FormData();
     if (this.state.selectedFile1 !== null) {
@@ -83,6 +83,7 @@ class AddVehicle extends React.Component {
         this.state.selectedFile1,
         this.state.selectedFile1.name
       );
+      // console.log("file1")
     }
     if (this.state.selectedFile2 !== null) {
       body.append(
@@ -90,6 +91,8 @@ class AddVehicle extends React.Component {
         this.state.selectedFile2,
         this.state.selectedFile2.name
       );
+      // console.log("file2")
+
     }
     if (this.state.selectedFile3 !== null) {
       body.append(
@@ -97,6 +100,8 @@ class AddVehicle extends React.Component {
         this.state.selectedFile3,
         this.state.selectedFile3.name
       );
+      // console.log("file3")
+
     }
     body.append("name", e.target.name.value);
     body.append("capacity", e.target.capacity.value);
@@ -106,6 +111,7 @@ class AddVehicle extends React.Component {
     body.append("type_id", e.target.category.value);
     body.append("city_id", e.target.location.value);
 
+    // console.log(body.getAll("imgVehicle"))
     postVehicle(body, token)
       .then((res) => {
         console.log("response addVehicle", res.data.result);
@@ -260,8 +266,8 @@ class AddVehicle extends React.Component {
                         <option value="Available" className="available">
                           Available
                         </option>
-                        <option value="Unavailable" className="full-booked">
-                          Unavailable
+                        <option value="full-booked" className="full-booked">
+                          Full Booked
                         </option>
                       </select>
                     </div>

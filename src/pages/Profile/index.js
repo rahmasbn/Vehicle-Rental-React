@@ -14,6 +14,7 @@ import { profile, editProfile, editPassword } from "../../utils/https/users";
 import "./profile.css";
 import { connect } from "react-redux";
 import { logoutAction, updateUserPhoto } from "../../redux/actions/auth";
+import Swal from "sweetalert2";
 
 class Profile extends React.Component {
   constructor(props) {
@@ -150,13 +151,13 @@ class Profile extends React.Component {
     e.preventDefault();
     if (this.validate()) {
       let input = {};
-        input["currentPass"]='';
-        input["newPass"]='';
+      input["currentPass"] = "";
+      input["newPass"] = "";
       input["confirmPass"] = "";
       this.setState({ input: input });
 
       const { currentPass, newPass } = this.state.input;
-      console.log(this.state.input);
+      // console.log(this.state.input);
 
       const data = {
         currentPass: currentPass,
@@ -167,12 +168,27 @@ class Profile extends React.Component {
       editPassword(data, token)
         .then((res) => {
           // console.log(res);
-          toast.success("Password Updated Successfully", {
-            position: toast.POSITION.TOP_RIGHT,
-            autoClose: 3000,
+          // toast.success("Password Updated Successfully", {
+          //   position: toast.POSITION.TOP_RIGHT,
+          //   autoClose: 3000,
+          // });
+          // this.props.dispatch(logoutAction());
+          Swal.fire({
+            icon: "success",
+            title: "Password Updated Successfully",
+            text: "Please login again to continue",
+            showCancelButton: false,
+            confirmButtonText: "Ok",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.props.dispatch(logoutAction());
+              this.props.history.push("/login");
+
+              setTimeout(() => {
+                window.location.reload(false);
+              }, 5000);
+            }
           });
-          this.props.dispatch(logoutAction());
-          this.props.history.push("/login");
         })
         .catch((err) => {
           let errors = {};
@@ -395,7 +411,7 @@ class Profile extends React.Component {
                       className="form-control current mb-3"
                       type="password"
                       name="currentPass"
-                      value={this.state.input.currentPass || ''}
+                      value={this.state.input.currentPass || ""}
                       onChange={this.changeHandler}
                     />
                     <div className="text-danger mb-2">
@@ -408,7 +424,7 @@ class Profile extends React.Component {
                       className="form-control new"
                       type="password"
                       name="newPass"
-                      value={this.state.input.newPass || ''}
+                      value={this.state.input.newPass || ""}
                       onChange={this.changeHandler}
                     />
                     <label htmlFor="confirmPass" className="confirm-pass">
@@ -418,7 +434,7 @@ class Profile extends React.Component {
                       className="form-control confirm"
                       type="password"
                       name="confirmPass"
-                      value={this.state.input.confirmPass || ''}
+                      value={this.state.input.confirmPass || ""}
                       onChange={this.changeHandler}
                     />
                     <div className="text-danger mb-2">
