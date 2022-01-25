@@ -72,7 +72,7 @@ function Main(props) {
                 return <ForgotPass {...routerProps} />;
               }}
             />
-            <Route exact path="/vehicle-type" component={VehicleType} />
+            <Route exact path="/vehicles" component={VehicleType} />
             <Route path="/vehicles/popular" component={Popular} />
             <Route path="/vehicles/:category" component={Vehicles} />
             <Route path="/about" component={About} />

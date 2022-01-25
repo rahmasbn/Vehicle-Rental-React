@@ -93,7 +93,7 @@ class Header extends Component {
               >
                 Home
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/vehicle-type" className="mx-3">
+              <Nav.Link as={NavLink} to="/vehicles" className="mx-3">
                 Vehicle Type
               </Nav.Link>
               <Nav.Link as={NavLink} to="/history" className="mx-3">
