@@ -62,23 +62,23 @@ class EditVehicle extends React.Component {
     });
   };
 
-  fileSelectedHandler2 = (e) => {
-    // console.log(e.target.files[0]);
-    const uploaded = e.target.files[0];
-    this.setState({
-      selectedFile2: e.target.files[0],
-      image2: URL.createObjectURL(uploaded),
-    });
-  };
+  // fileSelectedHandler2 = (e) => {
+  //   // console.log(e.target.files[0]);
+  //   const uploaded = e.target.files[0];
+  //   this.setState({
+  //     selectedFile2: e.target.files[0],
+  //     image2: URL.createObjectURL(uploaded),
+  //   });
+  // };
 
-  fileSelectedHandler3 = (e) => {
-    // console.log(e.target.files[0]);
-    const uploaded = e.target.files[0];
-    this.setState({
-      selectedFile3: e.target.files[0],
-      image3: URL.createObjectURL(uploaded),
-    });
-  };
+  // fileSelectedHandler3 = (e) => {
+  //   // console.log(e.target.files[0]);
+  //   const uploaded = e.target.files[0];
+  //   this.setState({
+  //     selectedFile3: e.target.files[0],
+  //     image3: URL.createObjectURL(uploaded),
+  //   });
+  // };
 
   submitHandler = (e) => {
     e.preventDefault();
@@ -97,23 +97,23 @@ class EditVehicle extends React.Component {
       );
       console.log("file1")
     }
-    if (this.state.selectedFile2 !== null) {
-      body.append(
-        "imgVehicle",
-        this.state.selectedFile2,
-        this.state.selectedFile2.name
-      );
-      console.log("file2")
+    // if (this.state.selectedFile2 !== null) {
+    //   body.append(
+    //     "imgVehicle",
+    //     this.state.selectedFile2,
+    //     this.state.selectedFile2.name
+    //   );
+    //   console.log("file2")
 
-    }
-    if (this.state.selectedFile3 !== null) {
-      body.append(
-        "imgVehicle",
-        this.state.selectedFile3,
-        this.state.selectedFile3.name
-      );
-      console.log("file3")
-    }
+    // }
+    // if (this.state.selectedFile3 !== null) {
+    //   body.append(
+    //     "imgVehicle",
+    //     this.state.selectedFile3,
+    //     this.state.selectedFile3.name
+    //   );
+    //   console.log("file3")
+    // }
     // for( let i =0; i<files.length; i++) {
     //   body.append(`imgVehicle[${i}]`, files[i])
     // }
@@ -262,7 +262,7 @@ class EditVehicle extends React.Component {
                               height: "100%",
                               borderRadius: "6px",
                             }}
-                            onClick={() => this.inputFileRef2.current.click()}
+                            // onClick={() => this.inputFileRef2.current.click()}
                           />
                         </div>
                         <div className="vehicle-slider-2">
@@ -275,7 +275,7 @@ class EditVehicle extends React.Component {
                               height: "100%",
                               borderRadius: "6px",
                             }}
-                            onClick={() => this.inputFileRef3.current.click()}
+                            // onClick={() => this.inputFileRef3.current.click()}
                           />
                         </div>
                       </div>
@@ -291,7 +291,7 @@ class EditVehicle extends React.Component {
                       style={{ display: "none" }}
                       multiple={true}
                     />
-                    <input
+                    {/* <input
                       type="file"
                       onChange={this.fileSelectedHandler2}
                       ref={this.inputFileRef2}
@@ -302,7 +302,7 @@ class EditVehicle extends React.Component {
                       onChange={this.fileSelectedHandler3}
                       ref={this.inputFileRef3}
                       style={{ display: "none" }}
-                    />
+                    /> */}
                     <input
                       type="text"
                       name="name"
