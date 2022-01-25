@@ -5,13 +5,31 @@ import leftArrowIcon from "../../assets/icons/left-arrow.png";
 
 import Header from "../../components/Header/index";
 import Footer from "../../components/Footer/index";
+import { profile } from "../../utils/https/users";
 import "./payment.css";
+import { connect } from "react-redux";
 
 class Payment extends React.Component {
   transactionData = this.props.location.state;
 
   state = {
     imgVehicle: require("../../assets/images/default-cars.jpeg"),
+    userData: {},
+  };
+
+  getUserData = () => {
+    const token = this.props.token;
+    // console.log(token)
+
+    profile(token)
+      .then((res) => {
+        // console.log(res.data.result[0]);
+        const data = res.data.result[0];
+        this.setState({
+          userData: data
+        })
+      })
+      .catch((err) => console.error(err));
   };
 
   componentDidMount() {
@@ -22,15 +40,20 @@ class Payment extends React.Component {
         imgVehicle: process.env.REACT_APP_HOST + "/" + image,
       });
     }
-    // const duration
+    
+    this.getUserData()
   }
 
   render() {
     const moment = require("moment");
-    // console.log('transaction', this.transactionData)
+    console.log('transaction', this.transactionData)
     const { name, city, type } = this.transactionData.transactionData;
-    const { counter, reservationDate } = this.transactionData;
+    const { counter, reservationDate, totalPayment } = this.transactionData;
     let date = moment(reservationDate).format("YYYY-MM-DD");
+    const formatPrice = new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+    }).format(totalPayment);
     return (
       <>
         <Header />
@@ -121,13 +144,14 @@ class Payment extends React.Component {
                 <h4>Price details :</h4>
                 <p>1 bike: Rp. 78.000</p>
                 <p>1 bike: Rp. 78.000</p>
+                <p>Total : {formatPrice}</p>
               </div>
             </div>
             <div className="payment-wrapper col-lg-7 col-md-7">
               <div className="identity-buyer">
                 <h4>Identity :</h4>
-                <p>Samantha Doe (+6290987682)</p>
-                <p>samanthadoe@mail.com</p>
+                <p>{this.state.userData.name} ({this.state.userData.phone_number})</p>
+                <p>{this.state.userData.email}</p>
               </div>
             </div>
           </div>
@@ -156,4 +180,9 @@ class Payment extends React.Component {
   }
 }
 
-export default Payment;
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth.userData.token
+  }
+}
+export default connect(mapStateToProps)(Payment);
