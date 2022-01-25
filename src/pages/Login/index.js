@@ -39,25 +39,24 @@ class Login extends React.Component {
     this.props.dispatch(loginAction(body));
   };
 
-
-  // componentDidUpdate() {
-  //   // console.log(this.props.auth.isRejected)
-  //   if (this.props.auth.isFulfilled === true) {
-  //     toast.success("Login successful", {
-  //       position: toast.POSITION.TOP_RIGHT,
-  //       autoClose: 5000,
-  //     });
-  //     this.props.history.push("/")
-  //   }
-  //   // console.log("reject before", this.props.auth.isRejected)
-  //   // if (this.props.auth.isRejected === true) {
-  //   //   toast.error("Invalid Email/Password", {
-  //   //     position: toast.POSITION.TOP_RIGHT,
-  //   //     autoClose: 5000,
-  //   //   });
-  //   // }
-  //   // console.log("reject after", this.props.auth.isRejected)
-  // }
+  componentDidUpdate() {
+    // console.log(this.props.auth.isRejected)
+    if (this.props.auth.isFulfilled === true) {
+      toast.success("Login successful", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 5000,
+      });
+      this.props.history.push("/");
+    }
+    // console.log("reject before", this.props.auth.isRejected)
+    if (this.props.auth.isRejected === true) {
+      toast.error("Invalid Email/Password", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 5000,
+      });
+    }
+    // console.log("reject after", this.props.auth.isRejected)
+  }
 
   render() {
     return (

@@ -10,7 +10,7 @@ import Footer from "../../components/Footer";
 import "./history.css";
 import { connect } from "react-redux";
 import { history } from "../../utils/https/history";
-import { historyCard } from "../../components/Card";
+import { historyCard as HistoryCard } from "../../components/Card";
 
 class History extends Component {
   state = {
@@ -18,11 +18,13 @@ class History extends Component {
     history: [],
   };
 
+
   componentDidMount() {
     const token = this.props.auth.userData.token;
+  
     history(token)
     .then((res)=> {
-      // console.log(res.data.result.data);
+      console.log(res.data.result.data);
       this.setState({
         history: res.data.result.data
       })
@@ -31,6 +33,7 @@ class History extends Component {
       console.error(err)
     })
   }
+
   render() {
     return (
       <>
@@ -118,6 +121,10 @@ class History extends Component {
 
           <div className="history-container">
             <p>A week ago</p>
+            <HistoryCard history={this.state.history} />
+            {/* {history.map((history, idx) => {
+              <historyCard image={`${process.env.REACT_APP_HOST}/${JSON.parse(history.images)[0]}`} />
+            })} */}
             {/* <div className="card-history d-flex">
               <div className="img col-lg-5 col-md-5 col-sm-12">
                 <img src={vespa} alt="vespa matic" />
@@ -181,8 +188,8 @@ class History extends Component {
                 Delete selected item
               </Button>
               <Modal show={this.state.show} className="modal modal-history">
-                <Modal.Body className="modal-body">
-                  <h1>Are you sure do you want to delete selected item?</h1>
+                <Modal.Body>
+                  <h1>Are you sure you want to delete selected item?</h1>
                   <div className="modal-btn">
                     <Button
                       className="btn btn-warning"

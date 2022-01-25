@@ -49,6 +49,7 @@ const authReducer = (prevState = initialState, action) => {
       const err = action.payload;
       console.log('rejected redux')
       return {
+        ...prevState,
         isPending: false,
         isRejected: true,
         err,

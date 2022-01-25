@@ -54,7 +54,7 @@ function Main(props) {
             <Route
               path="/login"
               render={(routerProps) => {
-                // if (accessToken) return <Redirect to="/" />;
+                if (accessToken) return <Redirect to="/" />;
                 return <Login {...routerProps} />;
               }}
             />

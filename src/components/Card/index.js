@@ -9,7 +9,8 @@ function VehicleCard(props) {
   const card = [];
   // let photos = JSON.parse()
   for (let idx = 0; idx < vehicleData.length; idx++) {
-    const imgURL = process.env.REACT_APP_HOST + `/${JSON.parse(vehicleData[idx].images)[0]}`;
+    const imgURL =
+      process.env.REACT_APP_HOST + `/${JSON.parse(vehicleData[idx].images)[0]}`;
     const id = vehicleData[idx].id;
     const vehicle = vehicleData[idx].vehicle;
     const city = vehicleData[idx].city;
@@ -20,11 +21,11 @@ function VehicleCard(props) {
       >
         <div className="card border-0 bg-light">
           <Link to={`/vehicle/${id}`}>
-            <img src={imgURL} className="card-img-top" alt="vehicle-img"/>
-          <div className="card-body d-flex flex-column">
-            <h3 className="card-title">{vehicle}</h3>
-            <p className="card-text">{city}</p>
-          </div>
+            <img src={imgURL} className="card-img-top" alt="vehicle-img" />
+            <div className="card-body d-flex flex-column">
+              <h3 className="card-title">{vehicle}</h3>
+              <p className="card-text">{city}</p>
+            </div>
           </Link>
         </div>
       </div>
@@ -34,62 +35,62 @@ function VehicleCard(props) {
   return card;
 }
 
-
 export function historyCard(props) {
-  return (
-    <>
-    <div className="card-history d-flex">
-              <div className="img">
-                <img src={props.image} alt="img vehicle" />
-              </div>
-              <div className="info-history-vehicle">
-                <p className="vehicle-name">
-                  <strong>{props.name}</strong>
-                </p>
-                <p className="rental-date">{props.start_date} to {props.return_date}</p>
-                <p className="total-price">
-                  <strong>Prepayment: Rp. {props.total_payment}</strong>
-                </p>
-                <p className="status-history">{props.status}</p>
-              </div>
-            </div>
-            <div className="select-box">
-              <div className="checkbox">
-                <input
-                  className="form-check-input check"
-                  type="checkbox"
-                  id="checkboxNoLabel"
-                  value=""
-                />
-              </div>
-            </div>
+  const history = props.history;
+  const historyCard = [];
 
-    {/* <div className="card-history">
-        <div className="img">
-          <img src={props.image} alt="vehicle" />
-        </div>
-        <p className="vehicle">
-          <strong>{props.name} </strong> <br />
-          {props.date}
-        </p>
-        <p className="rating">
-          Rating : <strong>{props.rating}</strong>{" "}
-        </p>
-        <p className="price">
-          <strong>Prepayment : Rp. {props.price} </strong>
-        </p>
-        <p className="status">
-          {" "}
-          <strong>{props.status}</strong>{" "}
-        </p>
-        <div className="aka">
-          <div className="checkbox">
-            <input class="form-check-input check" type="checkbox" id="checkboxNoLabel" value="" aria-label="..." />
+ 
+  for (let idx = 0; idx < history.length; idx++) {
+    const moment = require("moment");
+    const formatPrice = new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+    }).format(history[idx].total_payment);
+    const imgURL =
+      process.env.REACT_APP_HOST + `/${JSON.parse(history[idx].images)[0]}`;
+    const vehicle = history[idx].vehicle;
+    const start_date = moment(history[idx].start_date).format("DD-MM-YYYY");
+    const return_date = moment(history[idx].return_date).format("DD-MM-YYYY");
+    const payment = formatPrice;
+    const status = history[idx].status;
+    // const rating = history[idx].rating;
+    const element = (
+      <>
+        <div className="card-history" key={"history" + idx}>
+          <div className="img">
+            <img src={imgURL} alt="img vehicle" />
+          </div>
+          <div className="info-history-vehicle">
+            <p className="vehicle-name">
+              <strong>{vehicle}</strong>
+            </p>
+            <p className="rental-date">
+              {start_date} to {return_date}
+            </p>
+            <p className="total-price">
+              <strong>Prepayment: {payment}</strong>
+            </p>
+            <p className="status-history">{status}</p>
+            {/* <p className="rating-vehicle">
+              <strong>Rating: {rating}</strong>{" "}
+            </p> */}
+          </div>
+          <div className="select-box">
+            <div className="checkbox">
+              <input
+                className="form-check-input check"
+                type="checkbox"
+                id="checkboxNoLabel"
+                value=""
+              />
+            </div>
           </div>
         </div>
-      </div> */}
-    </>
-  )
+      </>
+    );
+    historyCard.push(element);
+  }
+  return historyCard;
 }
 
 export default VehicleCard;

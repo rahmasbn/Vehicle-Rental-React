@@ -1,20 +1,22 @@
 .history-wrapper {
-  width: 100%;
+  width: 90%;
+  margin: 2% auto 2% auto;
+  /* background-color: sienna; */
 }
-
-.form > input {
-  margin-top: 5%;
+.search-bar-history > .form > input[type="text"] {
+  margin-top: 0;
   /* background-color: grey; */
   border: 1px solid #b1b1a9;
   background-color: #f3f3f3;
   padding: 16px 20px;
 }
-.form .fa-search {
+
+.form > .fa-search {
   position: absolute;
   right: 38%;
-  top: 18%;
+  top: 17%;
   color: rgba(92, 88, 88, 0.8);
-  font-size: 2vw;
+  font-size: 1.8vw;
 }
 .checkbox {
   position: absolute;
@@ -85,56 +87,18 @@
   border-radius: 0 7px 6px 0;
 }
 .history-container {
-  width: 75%;
+  width: 80%;
   height: 100vh;
   margin-top: 5%;
+  overflow-y: scroll;
 }
 .history-container > p {
   font-size: 1.3rem;
   color: #130d0d;
   font-family: "Nunito", sans-serif;
 }
-.card-history {
-  width: 90%;
-  height: 40%;
-}
-.card-history > .img > img {
-  width: 100%;
-  height: 85%;
-  border-radius: 10px;
-  object-fit: cover;
-  object-position: center;
-}
-.info-history-vehicle,
-.down {
-  position: absolute;
-  left: 35%;
-  top: 57%;
-  font-family: "Poppins", sans-serif;
-}
-.down {
-  top: 95%;
-}
-.info-history-vehicle > p.rental-date {
-  margin-top: -7%;
-  margin-bottom: 13%;
-}
-.info-history-vehicle > p.status-history {
-  margin-top: -7%;
-  color: green;
-}
-.select-box {
-  position: absolute;
-  right: 33%;
-  top: 65%;
-}
-.two {
-  position: absolute;
-  right: 33%;
-  top: 100%;
-}
 .btn-modal {
-  width: 100%;
+  width: 95%;
   margin-top: 2%;
   color: #393939;
   font-weight: 700;
@@ -144,41 +108,40 @@
 .modal-container {
   margin-left: 3%;
 }
-
+.modal-body > h1 {
+  font-size: 1.7rem;
+  text-align: center;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+}
 .modal-btn {
   display: flex;
   margin-top: 10%;
   width: 100%;
   position: relative;
 }
-
-.modal h1 {
-  text-align: center;
-  font-size: 2.34375vw;
-  font-weight: 700;
-  font-family: "Nunito";
+.modal-btn > .btn-warning {
+  width: 35%;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #ffc61f;
+  color: #393939;
+  box-shadow: rgba(0, 0, 0, 0.25);
+  margin: auto;
 }
-/* .modal .btn-warning {
-  width: 45%;
-  background-color: rgba(255, 205, 97, 1);
-  color: rgba(57, 57, 57, 1);
-  font-size: 20px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+.modal-btn > .btn-secondary {
+  width: 35%;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #393939;
+  color: #ffc61f;
+  box-shadow: rgba(0, 0, 0, 0.25);
+  margin: auto;
 }
-
-.modal .btn-secondary {
-  width: 45%;
-  position: absolute;
-  right: 0%;
-  background-color: rgba(57, 57, 57, 1);
-  color: rgba(255, 205, 97, 1);
-  font-size: 20px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-} */
 
 @media (max-width: 1024px) {
-  .form .fa-search {
-    top: 16%;
+  .form > .fa-search {
+    top: 14%;
   }
   .checkbox {
     top: 12%;
@@ -190,22 +153,16 @@
   .card-container {
     width: 25%;
   }
-  .info-history-vehicle {
-    top: 50%;
-  }
-  .down {
-    top: 90%;
-  }
-  .select-box {
-    top: 55%;
-  }
-  .two {
-    top: 95%;
-  }
   .btn-modal {
     width: 90%;
     margin-top: 0;
   }
+  .history-container {
+  width: 80%;
+  height: 100vh;
+  margin-top: 5%;
+  overflow-y: scroll;
+}
 }
 
 @media (max-width: 768px) {
@@ -222,7 +179,7 @@
   .form > input {
     padding: 13px 20px;
   }
-  .form .fa-search {
+  .form > .fa-search {
     right: 23%;
     top: 21%;
     font-size: 2.7vw;
@@ -237,36 +194,11 @@
   .history-container > p {
     font-size: 1.2rem;
   }
-  .card-history {
-    width: 100%;
-    height: 40%;
-  }
-  .card-history > .img > img {
-    width: 100%;
-  }
-  .info-history-vehicle {
-    top: 60%;
-    left: 50%;
-  }
-  .down {
-    top: 100%;
-    left: 50%;
-  }
-  .select-box {
-    top: 70%;
-    right: 13%;
-  }
-  .two {
-    top: 115%;
-  }
   .btn-modal {
     width: 90%;
     margin-top: 0;
     margin-bottom: 0%;
   }
-  /* .modal-dialog {
-    margin: 0;
-  } */
 }
 
 @media (max-width: 425px) {

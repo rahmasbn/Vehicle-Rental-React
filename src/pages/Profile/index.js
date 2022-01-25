@@ -79,8 +79,7 @@ class Profile extends React.Component {
   // edit data profile
   submitHandler = (e) => {
     e.preventDefault();
-    // const URL = process.env.REACT_APP_HOST + "/users/profile";
-    // const token = JSON.parse(localStorage.getItem("vehicle-rental-token"));
+    
     const body = new FormData();
     const token = this.props.token;
     if (this.state.selectedFile !== null) {
@@ -97,12 +96,7 @@ class Profile extends React.Component {
     body.append("phone_number", e.target.phone.value);
     body.append("dob", e.target.dob.value);
 
-    // axios
-    //   .patch(URL, body, {
-    //     headers: {
-    //       "x-access-token": token,
-    //     },
-    //   })
+ 
     editProfile(body, token)
       .then((res) => {
         // console.log(res.data.result.result.image);
