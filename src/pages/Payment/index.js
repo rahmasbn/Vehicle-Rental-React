@@ -1,5 +1,6 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import leftArrowIcon from "../../assets/icons/left-arrow.png";
 
@@ -7,7 +8,6 @@ import Header from "../../components/Header/index";
 import Footer from "../../components/Footer/index";
 import { profile } from "../../utils/https/users";
 import "./payment.css";
-import { connect } from "react-redux";
 
 class Payment extends React.Component {
   transactionData = this.props.location.state;
@@ -171,7 +171,9 @@ class Payment extends React.Component {
             </div>
           </div>
           <div className="btn-finish-payment col-lg-12">
+            <Link to="/history">
             <button>Finish Payment</button>
+            </Link>
           </div>
         </div>
         <Footer />

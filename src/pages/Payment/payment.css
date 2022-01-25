@@ -17,7 +17,7 @@
 }
 .vehicle-title {
   font-family: "Playfair Display", serif;
-  color: white;
+  color: black;
   padding-top: 3%;
 }
 .vehicle-title > h1 {
@@ -164,7 +164,7 @@
   background-color: #e0e2e6;
   border: #e0e2e6;
 }
-.btn-finish-payment > button {
+.btn-finish-payment > a >  button {
   width: 100%;
   padding: 20px 0;
   border-radius: 6px;
