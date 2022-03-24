@@ -2,7 +2,7 @@ import axios from "axios";
 
 // vehicleType
 const getPopular = axios.get(
-  process.env.REACT_APP_HOST + "/vehicles/popular?order=desc&page=1&limit=4"
+  process.env.REACT_APP_HOST + "/vehicles/popular?page=1&limit=4&order=desc"
 );
 const getCar = axios.get(
   process.env.REACT_APP_HOST + "/vehicles?page=1&limit=4&type=car"
@@ -17,29 +17,21 @@ export const vehicleType = () => {
   return axios.all([getPopular, getCar, getMotorbike, getBike]);
 };
 
-// popular
-// const popularURL = process.env.REACT_APP_HOST + "/vehicles/popular?order=desc";
-// export const popular = () => {
-//   return axios.get(popularURL);
-// };
-
-
 const vehiclesURL = process.env.REACT_APP_HOST + "/vehicles";
 export const vehicles = (URL) => {
  return axios.get(vehiclesURL+URL)
 }
 
-
 // card popular
 const cardURL =
-  process.env.REACT_APP_HOST + "/vehicles/popular?page=1&limit=4";
+  process.env.REACT_APP_HOST + "/vehicles/popular?page=1&limit=4&order=desc";
 export const popularCard = () => {
   return axios.get(cardURL);
 };
 
 // detail vehicle
 export const getDetailVehicle = (vehicleId) => {
-  const detailURL = process.env.REACT_APP_HOST + `/vehicles/`+vehicleId;
+  const detailURL = process.env.REACT_APP_HOST + `/vehicles/detail/`+vehicleId;
   return axios.get(detailURL)
 }
 

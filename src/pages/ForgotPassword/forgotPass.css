@@ -1,13 +1,13 @@
 .forget-password {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   background-image: url("../../assets/images/jeep-in-road.jpg");
   background-size: cover;
   background-position: center;
-  box-shadow: inset 0 0 0 2000px rgba(100, 93, 97, 0.5);
+  box-shadow: inset 0 0 0 2000px rgba(94, 88, 91, 0.5);
 }
-.img-arrow > a > img {
-  width: 25px;
+.arrow-back > a > img {
+  width: 30px;
   height: 35px;
   margin-top: 4%;
   margin-left: -2%;
@@ -26,16 +26,21 @@
   font-family: "Playfair Display", serif;
   margin-top: 20px;
 }
+.forgotPass-title > p {
+  font-size: 1.1rem;
+}
 .forgotPass-title > h1 {
   margin-top: 3%;
   font-weight: bold;
   font-size: 3.5rem;
 }
-.body-forgotPass > input[type="email"] {
+.body-forgotPass > input[type="email"],
+.body-forgotPass > input[type="password"],
+.body-forgotPass > input[type="text"] {
   width: 61%;
   text-align: center;
   border-radius: 10px;
-  opacity: 0.7;
+  opacity: 0.8;
   box-sizing: border-box;
 }
 .body-forgotPass {
@@ -69,88 +74,177 @@
   opacity: 0.9;
 }
 
-@media (max-width: 1024px) {
-    .img-arrow > a > img {
-      width: 25px;
-      height: 35px;
-      margin-top: 4%;
-      margin-left: 4%;
-    }
-    .back-title > p {
-      font-size: 1.8rem;
-      margin-top: -40px;
-      margin-left: 10%;
-    }
-    .forgotPass-title > h1 {
-        margin-top: 5%;
-      font-size: 3.3rem;
-    }
-    .body-forgotPass > input[type="email"] {
-      width: 80%;
-    }
-    .body-forgotPass {
-      margin-left: 40%;
-      /* margin-top: -5%; */
-      margin-right: 5%;
-    }
-    .send-link,
-    .resend-link {
-      margin-left: 23%;
-      width: 68%;
-    }
+/* verify */
+.input-otp {
+  margin-top: -10%;
+  justify-content: center;
+  display: flex;
+  margin-left: 25%;
+}
+.forgotPass-countdown {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #393939;
+  color: #ffcd61;
+  font-weight: 700;
+  width: 80px;
+  padding: 5px 15px;
+}
+.resend-link {
+  margin-left: 23.5%;
+  width: 53%;
+}
+.toggle-reset1 {
+  position: absolute;
+  top: 300px;
+  right: 510px;
+  color: #6e6e6e;
+}
+.toggle-reset2 {
+  position: absolute;
+  top: 405px;
+  right: 510px;
+  color: #6e6e6e;
+}
+.error-reset {
+  width: 61%;
+  opacity: 0.9;
+}
+
+
+/* responsive */
+@media (max-width: 1440px) {
+  .toggle-reset1 {
+    top: 345px;
+    right: 545px;
   }
+  .toggle-reset2 {
+    top: 415px;
+    right: 545px;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1390px) {
+  .toggle-reset1 {
+    top: 330px;
+    right: 510px;
+  }
+  .toggle-reset2 {
+    top: 405px;
+    right: 510px;
+  }
+  .toggle-error {
+    top: 465px;
+  }
+}
+@media (max-width: 1024px) {
+  .toggle-reset1 {
+    top: 325px;
+    right: 350px;
+  }
+  .toggle-reset2 {
+    top: 395px;
+    right: 350px;
+  }
+  .arrow-back > a > img {
+    width: 25px;
+    height: 35px;
+    margin-top: 4%;
+    margin-left: 4%;
+  }
+  .back-title > p {
+    font-size: 1.8rem;
+    margin-top: -40px;
+    margin-left: 10%;
+  }
+  .forgotPass-title > h1 {
+    margin-top: 5%;
+    font-size: 3.3rem;
+  }
+  .body-forgotPass > input[type="email"],
+  .body-forgotPass > input[type="password"],
+  .body-forgotPass > input[type="text"] {
+    width: 80%;
+  }
+  .body-forgotPass {
+    margin-left: 40%;
+    margin-right: 5%;
+  }
+  .send-link,
+  .resend-link {
+    margin-left: 23%;
+    width: 68%;
+  }
+}
 
 @media (max-width: 768px) {
-    .img-arrow > a > img {
-      width: 20px;
-      height: 30px;
-      margin-top: 4%;
-      margin-left: 2%;
-    }
-    .back-title > p {
-      font-size: 1.7rem;
-      margin-top: -35px;
-      margin-left: 10%;
-    }
-    .forgotPass-title > h1 {
-      font-size: 3rem;
-    }
-    .body-forgotPass > input[type="email"] {
-      width: 70%;
-    }
-    .body-forgotPass {
-      margin-left: 25%;
-      margin-top: 3%;
-      margin-right: 5%;
-    }
-    .send-link,
-    .resend-link {
-      margin-left: 14%;
-      width: 72%;
-    }
+  .toggle-reset1 {
+    top: 295px;
+    right: 215px;
   }
-  @media (max-width: 576px) {
-    .forgotPass-title > h1 {
-      font-size: 2.7rem;
-    }
-    .body-forgotPass > input[type="email"] {
-      width: 85%;
-    }
-    .body-forgotPass {
-      margin-left: 15%;
-    }
-    .send-link,
-    .resend-link {
-      margin-left: 7%;
-      width: 85%;
-    }
-    .forget-password {
-        height: 105vh;
-      }
+  .toggle-reset2 {
+    top: 370px;
+    right: 215px;
   }
+  .arrow-back > a > img {
+    width: 20px;
+    height: 30px;
+    margin-top: 4%;
+    margin-left: 2%;
+  }
+  .back-title > p {
+    font-size: 1.7rem;
+    margin-top: -35px;
+    margin-left: 10%;
+  }
+  .forgotPass-title > h1 {
+    font-size: 3rem;
+  }
+  .body-forgotPass > input[type="email"],
+  .body-forgotPass > input[type="password"],
+  .body-forgotPass > input[type="text"] {
+    width: 70%;
+  }
+  .body-forgotPass {
+    margin-left: 25%;
+    margin-top: 3%;
+    margin-right: 5%;
+  }
+  .send-link,
+  .resend-link {
+    margin-left: 14%;
+    width: 71.5%;
+  }
+}
+@media (max-width: 576px) {
+  .forgotPass-title > h1 {
+    font-size: 2.7rem;
+  }
+  .body-forgotPass > input[type="email"] {
+    width: 85%;
+  }
+  .body-forgotPass {
+    margin-left: 15%;
+  }
+  .send-link,
+  .resend-link {
+    margin-left: 7%;
+    width: 85%;
+  }
+  .forget-password {
+    height: 105vh;
+  }
+}
 
 @media (max-width: 425px) {
-  .img-arrow > a > img {
+  .toggle-reset1 {
+    top: 297px;
+    right: 45px;
+  }
+  .toggle-reset2 {
+    top: 370px;
+    right: 45px;
+  }
+  .arrow-back > a > img {
     width: 15px;
     height: 25px;
     margin-top: 4%;
@@ -163,7 +257,9 @@
   .forgotPass-title > h1 {
     font-size: 2.5rem;
   }
-  .body-forgotPass > input[type="email"] {
+  .body-forgotPass > input[type="email"],
+  .body-forgotPass > input[type="password"],
+  .body-forgotPass > input[type="text"] {
     width: 95%;
   }
   .body-forgotPass {
@@ -177,5 +273,19 @@
     width: 98%;
   }
 }
-
-
+@media (max-width: 375px) {
+  .toggle-reset1 {
+    top: 290px;
+  }
+  .toggle-reset2 {
+    top: 360px;
+  }
+}
+@media (max-width: 320px) {
+  .toggle-reset1 {
+    top: 280px;
+  }
+  .toggle-reset2 {
+    top: 350px;
+  }
+}

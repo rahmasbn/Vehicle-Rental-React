@@ -11,7 +11,7 @@ import Footer from "../../components/Footer/index";
 import "./addVehicle.css";
 import { postVehicle } from "../../utils/https/vehicles";
 import { getCities } from "../../utils/https/city";
-
+import { logoutAction } from "../../redux/actions/auth";
 
 class AddVehicle extends React.Component {
   constructor(props) {
@@ -74,7 +74,7 @@ class AddVehicle extends React.Component {
 
   submitHandler = (e) => {
     e.preventDefault();
-    console.log(this.state)
+    console.log(this.state);
     const token = this.props.token;
     const body = new FormData();
     if (this.state.selectedFile1 !== null) {
@@ -92,7 +92,6 @@ class AddVehicle extends React.Component {
         this.state.selectedFile2.name
       );
       // console.log("file2")
-
     }
     if (this.state.selectedFile3 !== null) {
       body.append(
@@ -101,7 +100,6 @@ class AddVehicle extends React.Component {
         this.state.selectedFile3.name
       );
       // console.log("file3")
-
     }
     body.append("name", e.target.name.value);
     body.append("capacity", e.target.capacity.value);
@@ -115,16 +113,26 @@ class AddVehicle extends React.Component {
     postVehicle(body, token)
       .then((res) => {
         console.log("response addVehicle", res.data.result);
-        this.props.history.push("/vehicle/"+res.data.result.data.id);
+        this.props.history.push("/vehicle/" + res.data.result.data.id);
         toast.success("Data added successfully", {
           position: toast.POSITION.TOP_RIGHT,
         });
       })
       .catch((err) => {
         console.error(err);
-        toast.error("Add vehicle is failed", {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        if (err.response.data.err_code) {
+          if (
+            err.response.data.err_code === "TOKEN_EXPIRED" ||
+            err.response.data.err_code === "INVALID_TOKEN"
+          ) {
+            this.props.dispatch(logoutAction());
+            toast.warning("Token Expired");
+          }
+        } else {
+          toast.error("Add vehicle is failed", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
       });
   };
 

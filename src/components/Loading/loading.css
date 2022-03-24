@@ -1,0 +1,26 @@
+.loadingWrapper {
+    /* width: 100%; */
+    height: 85vh;
+    margin-left: 9%;
+    margin-right: 9%;
+    margin-top: 5%;
+    margin-bottom: 30px;
+    animation: skeleton 1s ease infinite alternate;
+}
+
+@keyframes skeleton {
+    to {
+        opacity: 0.5;
+    }
+}
+.titleSkeleton {
+    background-color: #999898;
+    width: 450px;
+    height: 60px;
+}
+.contentSkeleton {
+    margin-top: 2%;
+    background-color: #999898;
+    width: 100%;
+    height: 85%;
+}

@@ -7,10 +7,11 @@ import React, { Component } from "react";
 import { Navbar, Nav, Button, Container, NavDropdown } from "react-bootstrap";
 import { NavLink, Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { logoutAction } from "../../redux/actions/auth";
+import { logout } from "../../utils/https/auth";
 import Swal from "sweetalert2";
 
 import "./header.css";
-import { logoutAction } from "../../redux/actions/auth";
 
 class Header extends Component {
   state = {
@@ -29,18 +30,23 @@ class Header extends Component {
       cancelButtonText: `Cancel`,
     }).then((result) => {
       if (result.isConfirmed) {
+        const token = this.props.token;
+        logout(token)
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err));
         this.props.dispatch(logoutAction());
+
+        Swal.fire({
+          icon: "success",
+          title: "Logout Success",
+          text: "You have successfully logged out",
+        });
 
         this.setState({
           userToken: "",
           isLogin: false,
         });
 
-        Swal.fire({
-          title: "Logout Successful",
-          text: "You have successfully logged out",
-          icon: "success",
-        });
         setTimeout(() => {
           window.location.reload(false);
         }, 5000);
@@ -66,6 +72,16 @@ class Header extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    // console.log('props', prevProps)
+    const image = this.props.auth.userData.photo;
+    // console.log('imgHeader', image)
+    if (image !== prevProps.auth.userData.photo) {
+      this.setState({
+        profilePic: process.env.REACT_APP_HOST + `/${image}`,
+      });
+    }
+  }
   render() {
     const { isLogin } = this.state;
     // console.log(isLogin);
@@ -114,6 +130,11 @@ class Header extends Component {
                         className="profilePic"
                         src={this.state.profilePic}
                         alt="user pic"
+                        onError={({ currentTarget }) => {
+                          console.log(currentTarget);
+                          currentTarget.onerror = null;
+                          currentTarget.src = require("../../assets/images/default-img.png");
+                        }}
                       />
                     }
                     id="basic-nav-dropdown"

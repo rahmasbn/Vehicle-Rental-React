@@ -8,6 +8,7 @@ import React from "react";
 
 import Header from "../../components/Header/index";
 import Footer from "../../components/Footer/index";
+import Loading from "../../components/Loading";
 import VehicleCard from "../../components/Card/index";
 import { popularCard } from "../../utils/https/vehicles";
 import "./Home.css";
@@ -17,14 +18,17 @@ class Home extends React.Component {
   state = {
     vehicleData: [],
     isOwner: false,
+    isLoading: false,
   };
   componentDidMount() {
     this.getRole();
+    this.setState({ isLoading: true });
     popularCard()
       .then((res) => {
         // console.log("response", res.data.result);
         this.setState({
           vehicleData: res.data.result.data,
+          isLoading: false,
         });
       })
       .catch((err) => console.error(err));
@@ -64,7 +68,7 @@ class Home extends React.Component {
                   <div className="wrapper-banner">
                     <div className="inside-wrapper-banner">
                       <select id="location" className="form-select">
-                        <option value="">Location</option>
+                        <option value="" hidden>Location</option>
                         <option value="Bali">Bali</option>
                         <option value="Yogyakarta">Yogyakarta</option>
                         <option value="Jakarta">Jakarta</option>
@@ -74,23 +78,28 @@ class Home extends React.Component {
                     </div>
                     <div className="inside-wrapper-banner">
                       <select id="type" className="form-select">
-                        <option value="">Type</option>
-                        <option value="Cars">Cars</option>
-                        <option value="Motorbikes">Motorbikes</option>
-                        <option value="Bikes">Bikes</option>
+                        <option value="" hidden>Type</option>
+                        <option value="Cars">Car</option>
+                        <option value="Motorbikes">Motorbike</option>
+                        <option value="Bikes">Bike</option>
                       </select>
                     </div>
                   </div>
                   <div className="wrapper-banner">
                     <div className="inside-wrapper-banner">
-                      <select id="payment" className="form-select">
-                        <option value="Payment">Payment</option>
-                        {/* <option value="Cash">Cash</option>
-                        <option value="DP">DP</option> */}
+                      <select id="order" className="form-select">
+                        <option value="order" hidden>Order</option>
+                        <option value="name">Name</option>
+                        <option value="price">Price</option>
                       </select>
                     </div>
                     <div className="inside-wrapper-banner">
-                      <input type="date" className="form-select" />
+                      {/* <input type="date" className="form-select" /> */}
+                      <select id="sort" className="form-select">
+                        <option value="sort" hidden>Sort</option>
+                        <option value="asc">Ascending</option>
+                        <option value="desc">Descending</option>
+                      </select>
                     </div>
                   </div>
                 </form>
@@ -103,17 +112,21 @@ class Home extends React.Component {
         </div>
 
         {/* Popular */}
-        <main className="main-content">
-          <div className="container">
-            <h2>Popular in Town</h2>
-            <div className="view-more" style={{ textAlign: "right" }}>
-              <Link to="/vehicles/popular">View All {">"} </Link>
+        {!this.state.isLoading ? (
+          <main className="main-content">
+            <div className="container">
+              <h2>Popular in Town</h2>
+              <div className="view-more" style={{ textAlign: "right" }}>
+                <Link to="/vehicles/popular">View All {">"} </Link>
+              </div>
+              <div className="row">
+                <VehicleCard vehicleData={this.state.vehicleData} />
+              </div>
             </div>
-            <div className="row">
-              <VehicleCard vehicleData={this.state.vehicleData} />
-            </div>
-          </div>
-        </main>
+          </main>
+        ) : (
+          <Loading />
+        )}
         {this.state.isOwner && (
           <div className="container">
             <div className="add-btn">

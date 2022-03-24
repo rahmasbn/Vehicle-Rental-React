@@ -19,6 +19,7 @@ import { getCities } from "../../utils/https/city";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { connect } from "react-redux";
+import { logoutAction } from "../../redux/actions/auth";
 
 class EditVehicle extends React.Component {
   constructor(props) {
@@ -30,11 +31,15 @@ class EditVehicle extends React.Component {
       counter: 1,
       detailVehicle: "",
       selectedFile1: null,
-      // selectedFile2: null,
-      // selectedFile3: null,
+      selectedFile2: null,
+      selectedFile3: null,
       image1: require("../../assets/images/default-cars.jpeg"),
       image2: require("../../assets/images/default-cars.jpeg"),
       image3: require("../../assets/images/default-cars.jpeg"),
+      // imgVehicle1: typeof 'undefined',
+      // imgVehicle2: typeof 'undefined',
+      // imgVehicle3: typeof 'undefined',
+      image: "",
       city: null,
     };
   }
@@ -62,61 +67,61 @@ class EditVehicle extends React.Component {
     });
   };
 
-  // fileSelectedHandler2 = (e) => {
-  //   // console.log(e.target.files[0]);
-  //   const uploaded = e.target.files[0];
-  //   this.setState({
-  //     selectedFile2: e.target.files[0],
-  //     image2: URL.createObjectURL(uploaded),
-  //   });
-  // };
+  fileSelectedHandler2 = (e) => {
+    // console.log(e.target.files[0]);
+    const uploaded = e.target.files[0];
+    this.setState({
+      selectedFile2: e.target.files[0],
+      image2: URL.createObjectURL(uploaded),
+    });
+  };
 
-  // fileSelectedHandler3 = (e) => {
-  //   // console.log(e.target.files[0]);
-  //   const uploaded = e.target.files[0];
-  //   this.setState({
-  //     selectedFile3: e.target.files[0],
-  //     image3: URL.createObjectURL(uploaded),
-  //   });
-  // };
+  fileSelectedHandler3 = (e) => {
+    // console.log(e.target.files[0]);
+    const uploaded = e.target.files[0];
+    this.setState({
+      selectedFile3: e.target.files[0],
+      image3: URL.createObjectURL(uploaded),
+    });
+  };
 
   submitHandler = (e) => {
     e.preventDefault();
 
     const token = this.props.token;
-    const vehicleId = this.state.detailVehicle.vehicleId;
+    const vehicleId = this.state.detailVehicle.id;
     // console.log("id", vehicleId);
     const body = new FormData();
 
-    // console.log('files', files)
+    console.log("img", this.state.selectedFile1);
     if (this.state.selectedFile1 !== null) {
       body.append(
         "imgVehicle",
         this.state.selectedFile1,
         this.state.selectedFile1.name
       );
-      console.log("file1")
-    }
-    // if (this.state.selectedFile2 !== null) {
-    //   body.append(
-    //     "imgVehicle",
-    //     this.state.selectedFile2,
-    //     this.state.selectedFile2.name
-    //   );
-    //   console.log("file2")
 
-    // }
-    // if (this.state.selectedFile3 !== null) {
-    //   body.append(
-    //     "imgVehicle",
-    //     this.state.selectedFile3,
-    //     this.state.selectedFile3.name
-    //   );
-    //   console.log("file3")
-    // }
-    // for( let i =0; i<files.length; i++) {
-    //   body.append(`imgVehicle[${i}]`, files[i])
-    // }
+      console.log("file1", this.state.selectedFile1);
+    }
+    if (this.state.selectedFile2 !== null) {
+      body.append(
+        "imgVehicle",
+        this.state.selectedFile2,
+        this.state.selectedFile2.name
+      );
+      // console.log("file2", this.state.selectedFile2);
+    }
+    if (this.state.selectedFile3 !== null) {
+      body.append(
+        "imgVehicle",
+        this.state.selectedFile3,
+        this.state.selectedFile3.name
+      );
+      // console.log("file3", this.state.selectedFile3);
+    } else {
+      body.append("imgVehicle", this.state.imgVehicle3);
+    }
+
     body.append("name", e.target.name.value);
     body.append("capacity", e.target.capacity.value);
     body.append("stock", this.state.counter);
@@ -127,17 +132,27 @@ class EditVehicle extends React.Component {
 
     updateVehicle(vehicleId, body, token)
       .then((res) => {
-        console.log("response addVehicle", res.data.result);
-        this.props.history.push("/vehicle/" + res.data.result.data.id);
+        console.log("response editVehicle", res.data);
+        this.props.history.push("/vehicle/" + res.data.result.result.vehicleId);
         toast.success("Data updated successfully", {
           position: toast.POSITION.TOP_RIGHT,
         });
       })
       .catch((err) => {
         console.error(err);
-        toast.error("Update vehicle is failed", {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        if (err.response.data.err_code) {
+          if (
+            err.response.data.err_code === "TOKEN_EXPIRED" ||
+            err.response.data.err_code === "INVALID_TOKEN"
+          ) {
+            this.props.dispatch(logoutAction());
+            toast.warning("Token Expired");
+          }
+        } else {
+          toast.error("Update vehicle is failed", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
       });
   };
 
@@ -175,31 +190,36 @@ class EditVehicle extends React.Component {
   componentDidMount() {
     const { match } = this.props;
     const vehicleId = match.params.id;
+    // console.log('idveh', vehicleId)
 
     getDetailVehicle(vehicleId)
       .then((res) => {
-        console.log(JSON.parse(res.data.result[0].images)[1]);
-        console.log("detail", res.data.result[0]);
+        // console.log(JSON.parse(res.data.result[0].images)[1]);
+        // console.log("detail", res.data.result[0]);
         const image = JSON.parse(res.data.result[0].images);
         // console.log('image', image[0])
         if (image[0] !== null && typeof image[0] !== "undefined") {
           this.setState({
             image1: process.env.REACT_APP_HOST + "/" + image[0],
+            // imgVehicle1: image[0],
           });
         }
         if (image[1] !== null && typeof image[1] !== "undefined") {
           this.setState({
             image2: process.env.REACT_APP_HOST + "/" + image[1],
+            // imgVehicle2: image[1],
           });
         }
         if (image[2] !== null && typeof image[2] !== "undefined") {
           this.setState({
             image3: process.env.REACT_APP_HOST + "/" + image[2],
+            // imgVehicle3: image[2],
           });
         }
         this.setState({
           detailVehicle: res.data.result[0],
           counter: parseInt(res.data.result[0].stock),
+          image: image,
         });
       })
       .catch((err) => console.error(err));
@@ -212,18 +232,25 @@ class EditVehicle extends React.Component {
         });
       })
       .catch((err) => console.error("error city", err));
+
+    // console.log('detail', this.state.detailVehicle)
   }
 
   render() {
-    const { counter, image1, image2, image3, city, detailVehicle } = this.state;
+    const { counter, image1, image2, image3, city, detailVehicle, image } =
+      this.state;
+    console.log("image", image[0]);
     return (
       <>
         <Header />
         <div className="container py-5">
           <header className="addVehicle-header">
             <div className="img-arrow">
-                  
-              <img src={leftArrowIcon} alt="left arrow" onClick={() => this.props.history.goBack()} />
+              <img
+                src={leftArrowIcon}
+                alt="left arrow"
+                onClick={() => this.props.history.goBack()}
+              />
             </div>
             <div className="addVehicle-text">
               <h1 className="mb-8">Edit item</h1>
@@ -262,7 +289,7 @@ class EditVehicle extends React.Component {
                               height: "100%",
                               borderRadius: "6px",
                             }}
-                            // onClick={() => this.inputFileRef2.current.click()}
+                            onClick={() => this.inputFileRef2.current.click()}
                           />
                         </div>
                         <div className="vehicle-slider-2">
@@ -275,7 +302,7 @@ class EditVehicle extends React.Component {
                               height: "100%",
                               borderRadius: "6px",
                             }}
-                            // onClick={() => this.inputFileRef3.current.click()}
+                            onClick={() => this.inputFileRef3.current.click()}
                           />
                         </div>
                       </div>
@@ -291,7 +318,7 @@ class EditVehicle extends React.Component {
                       style={{ display: "none" }}
                       multiple={true}
                     />
-                    {/* <input
+                    <input
                       type="file"
                       onChange={this.fileSelectedHandler2}
                       ref={this.inputFileRef2}
@@ -302,7 +329,7 @@ class EditVehicle extends React.Component {
                       onChange={this.fileSelectedHandler3}
                       ref={this.inputFileRef3}
                       style={{ display: "none" }}
-                    /> */}
+                    />
                     <input
                       type="text"
                       name="name"
@@ -401,7 +428,7 @@ class EditVehicle extends React.Component {
                     className="edit-item"
                     defaultValue={detailVehicle.type_id}
                   >
-                    <option  disable="true" hidden>
+                    <option disable="true" hidden>
                       Add item to
                     </option>
                     <option className="choose-category" disabled>
@@ -427,7 +454,11 @@ class EditVehicle extends React.Component {
                   </button>
                 </div>
                 <div className="btn-edit-item mb-5 col-lg-3 col-md-3 col-sm-12 col-12">
-                  <button className="delete" type="button" onClick={this.onDelete}>
+                  <button
+                    className="delete"
+                    type="button"
+                    onClick={this.onDelete}
+                  >
                     Delete
                   </button>
                 </div>

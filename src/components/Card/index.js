@@ -5,25 +5,38 @@ import "./card.css";
 
 function VehicleCard(props) {
   const vehicleData = props.vehicleData;
+  console.log(vehicleData);
   // console.log("card", JSON.parse(vehicleData[0].images)[0], 'test=', `/${JSON.parse(vehicleData[0].images)[0]}`);
   const card = [];
   // let photos = JSON.parse()
   for (let idx = 0; idx < vehicleData.length; idx++) {
     const imgURL =
-      process.env.REACT_APP_HOST + `/${JSON.parse(vehicleData[idx].images)[0]}`;
+      vehicleData[idx].images !== null
+        ? process.env.REACT_APP_HOST +
+          `/${JSON.parse(vehicleData[idx].images)[0]}`
+        : require("../../assets/images/default-cars.jpeg");
+
     const id = vehicleData[idx].id;
-    const vehicle = vehicleData[idx].vehicle;
+    const name = vehicleData[idx].name;
     const city = vehicleData[idx].city;
     const element = (
       <div
-        className="col-lg-3 col-md-3 col-sm-6 col-6 d-flex align-item-stretch cardVehicle"
+        className="col-lg-3 col-md-3 col-sm-6 col-6 d-flex cardVehicle"
         key={"card" + idx}
       >
         <div className="card border-0 bg-light">
           <Link to={`/vehicle/${id}`}>
-            <img src={imgURL} className="card-img-top" alt="vehicle-img" />
+            <img
+              src={imgURL}
+              className="card-img-top"
+              alt="vehicle-img"
+              onError={({ currentTarget }) => {
+                currentTarget.onerror = null;
+                currentTarget.src = require("../../assets/images/default-cars.jpeg");
+              }}
+            />
             <div className="card-body d-flex flex-column">
-              <h3 className="card-title">{vehicle}</h3>
+              <h3 className="card-title">{name}</h3>
               <p className="card-text">{city}</p>
             </div>
           </Link>
@@ -39,7 +52,6 @@ export function historyCard(props) {
   const history = props.history;
   const historyCard = [];
 
- 
   for (let idx = 0; idx < history.length; idx++) {
     const moment = require("moment");
     const formatPrice = new Intl.NumberFormat("id-ID", {

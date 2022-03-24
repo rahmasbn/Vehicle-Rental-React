@@ -19,7 +19,6 @@ import Vehicles from "./pages/VehicleType/Vehicles";
 import History from "./pages/History";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
-import EditPass from "./pages/EditPassword";
 import VehicleDetail from "./pages/VehicleDetail";
 import Popular from "./pages/VehicleType/popular";
 import AddVehicle from "./pages/AddVehicle";
@@ -41,7 +40,7 @@ function Main(props) {
   }
   const accessToken = props.auth.userData.token;
  
-  // console.log("token main",props.auth);
+  // console.log("token main",accessToken);
 
   return (
     <>
@@ -76,18 +75,17 @@ function Main(props) {
             <Route path="/vehicles/popular" component={Popular} />
             <Route path="/vehicles/:category" component={Vehicles} />
             <Route path="/about" component={About} />
-            <Route path="/edit-password" component={EditPass} />
             <Route
               path="/vehicle/new"
               render={(routerProps) => {
-                if (!accessToken) return <Redirect to="/login" />;
+                if (!accessToken) return <Redirect to="/" />;
                 return <AddVehicle {...routerProps} />;
               }}
             />
             <Route
               path="/vehicle/edit/:id"
               render={(routerProps) => {
-                if (!accessToken) return <Redirect to="/login" />;
+                if (!accessToken) return <Redirect to="/" />;
                 return <EditVehicle {...routerProps} />;
               }}
             />
@@ -95,28 +93,28 @@ function Main(props) {
             <Route
               path="/history"
               render={(routerProps) => {
-                if (!accessToken) return <Redirect to="/login" />;
+                if (!accessToken) return <Redirect to="/" />;
                 return <History {...routerProps} />;
               }}
             />
             <Route
               path="/profile"
               render={(routerProps) => {
-                if (!accessToken) return <Redirect to="/login" />;
+                if (!accessToken) return <Redirect to="/" />;
                 return <Profile {...routerProps} />;
               }}
             />
             <Route
               path="/message"
               render={(routerProps) => {
-                if (!accessToken) return <Redirect to="/login" />;
+                if (!accessToken) return <Redirect to="/" />;
                 return <Message {...routerProps} />;
               }}
             />
             <Route
               path="/room-chat"
               render={(routerProps) => {
-                if (!accessToken) return <Redirect to="/login" />;
+                if (!accessToken) return <Redirect to="/" />;
                 return <ChatDetail {...routerProps} />;
               }}
             />

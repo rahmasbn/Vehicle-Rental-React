@@ -54,7 +54,18 @@ class Profile extends React.Component {
           selectedGender: res.data.result[0].gender_id,
         });
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        if (err.response.data.err_code) {
+          if (
+            err.response.data.err_code === 'TOKEN_EXPIRED' ||
+            err.response.data.err_code === 'INVALID_TOKEN'
+          ) {
+            this.props.dispatch(logoutAction());
+            toast.warning('Token Expired');
+          }
+        }
+      });
   };
 
   componentDidMount() {
@@ -62,8 +73,9 @@ class Profile extends React.Component {
   }
 
   handleChange = (e) => {
+    console.log(e.target.value);
     this.setState({
-      selectedGender: e.target.value,
+      selectedGender: parseInt(e.target.value),
     });
   };
 
@@ -79,7 +91,7 @@ class Profile extends React.Component {
   // edit data profile
   submitHandler = (e) => {
     e.preventDefault();
-    
+
     const body = new FormData();
     const token = this.props.token;
     if (this.state.selectedFile !== null) {
@@ -96,7 +108,6 @@ class Profile extends React.Component {
     body.append("phone_number", e.target.phone.value);
     body.append("dob", e.target.dob.value);
 
- 
     editProfile(body, token)
       .then((res) => {
         // console.log(res.data.result.result.image);
@@ -109,7 +120,9 @@ class Profile extends React.Component {
         });
         this.getUserData();
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   // edit password
@@ -210,8 +223,8 @@ class Profile extends React.Component {
   render() {
     const { name, email, dob, address, phone_number } = this.state.userData;
     const { profilePic, selectedGender } = this.state;
-    let isMale = false;
-    if (selectedGender === 1 || selectedGender === "1") isMale = true;
+    // let isMale = false;
+    // if (selectedGender === 1 || selectedGender === "1") isMale = true;
     // console.log("isMale ", isMale);
     // console.log("selectedGender ", typeof selectedGender, selectedGender);
     return (
@@ -227,6 +240,10 @@ class Profile extends React.Component {
                 src={profilePic}
                 className="rounded-circle img-profile"
                 alt="girl-with-red-clothes"
+                onError={({ currentTarget }) => {
+                  currentTarget.onerror = null;
+                  currentTarget.src = require("../../assets/images/default-img.png");
+                }}
               />
               <img
                 src={iconEdit}
@@ -253,7 +270,7 @@ class Profile extends React.Component {
                     id="male"
                     defaultValue={1}
                     // defaultChecked={isMale}
-                    checked={isMale}
+                    checked={selectedGender === 1}
                     onChange={this.handleChange}
                   />
                   <label className="radio-label" htmlFor="inlineRadio1">
@@ -268,7 +285,7 @@ class Profile extends React.Component {
                     id="female"
                     defaultValue={2}
                     // defaultChecked={!isMale}
-                    checked={!isMale}
+                    checked={selectedGender === 2}
                     onChange={this.handleChange}
                   />
                   <label className="radio-label" htmlFor="inlineRadio2">

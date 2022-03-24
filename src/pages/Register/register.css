@@ -1,8 +1,9 @@
 .signIn {
+  text-align: center;
   background-color: #393939;
   border: 4px solid #393939;
   border-radius: 10px;
-  padding: 2px;
+  padding: 4px;
 }
 .signIn > a > .signIn {
   text-decoration: none;
@@ -12,8 +13,11 @@
   font-weight: bold;
 }
 .signIn:hover {
-  opacity: 0.8;
+  opacity: 0.9;
   cursor: pointer;
+}
+.body-register {
+  margin-top: 30px;
 }
 .register > .register,
 .register-google > .register-google {
@@ -40,9 +44,43 @@
   opacity: 0.9;
   cursor: pointer;
 }
+.icon-toggle {
+  position: absolute;
+  right: 19%;
+  top: 112%;
+  color: #6e6e6e;
+}
+.toggles {
+  margin-top: 70px;
+}
 
 /* Responsive */
+@media (min-width: 325px) {
+  .icon-toggle {
+    right: 17%;
+    top: 102%;
+  }
+}
+@media (min-width: 380px) {
+  .icon-toggle {
+    top: 91%;
+  }
+}
+@media (min-width: 576px) {
+  .icon-toggle {
+    right: 11%;
+  }
+}
+@media (min-width: 768px) {
+  .icon-toggle {
+    right: 8%;
+  }
+}
 @media (min-width: 992px) {
+  .icon-toggle {
+    top: 35%;
+    right: 14%;
+  }
   .signIn {
     width: 95%;
     padding: 6px;
@@ -60,9 +98,24 @@
     margin-left: -20%;
   }
 }
-
 @media (min-width: 1024px) {
   .signIn {
     width: 90%;
+  }
+  .icon-toggle {
+    top: 41%;
+    right: 15%;
+  }
+}
+@media (min-width: 1200px) {
+  .icon-toggle {
+    right: 16%;
+    top: 49%;
+  }
+}
+@media (min-width: 1440px) {
+  .icon-toggle {
+    right: 17%;
+    top: 35%;
   }
 }

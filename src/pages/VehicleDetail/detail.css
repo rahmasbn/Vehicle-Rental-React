@@ -190,8 +190,18 @@
   font-weight: bold;
   border-radius: 10px;
 }
+.editBtn {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 10px;
+  width: 98%;
+  padding: 18px;
+  /* margin-left: 25%; */
+}
 .chat,
-.like {
+.like,
+.editBtn {
   background-color: #393939;
   color: #ffcd61;
   border: #393939;
@@ -207,7 +217,8 @@
 }
 .chat:hover,
 .like:hover,
-.reservation:hover {
+.reservation:hover,
+.editBtn {
   opacity: 0.9;
 }
 

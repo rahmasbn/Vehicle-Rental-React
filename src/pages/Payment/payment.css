@@ -29,11 +29,12 @@
   font-size: 1.5rem;
   padding-top: 15px;
 }
-.btn-payment-deadline {
+.payment-deadline {
+  display: flex;
+  justify-content: center;
   text-align: center;
-  /* width: 50%; */
 }
-.btn-deadline {
+.deadline {
   width: 40%;
   background-color: white;
   border: none;
@@ -42,7 +43,7 @@
   color: #393933;
   font-family: "Nunito", sans-serif;
   font-size: 1.1rem;
-  padding: 16px;
+  padding-top: 5px;
 }
 .code-title > p {
   margin-top: 5%;
@@ -140,6 +141,9 @@
   margin-left: 15%;
   font-family: "Poppins", sans-serif;
 }
+.date-reservation {
+  margin-left: -10%;
+}
 .btn-transfer,
 .btn-cash {
   margin-top: 5%;
@@ -164,7 +168,7 @@
   background-color: #e0e2e6;
   border: #e0e2e6;
 }
-.btn-finish-payment > a >  button {
+.btn-finish-payment >  button {
   width: 100%;
   padding: 20px 0;
   border-radius: 6px;

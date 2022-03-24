@@ -9,3 +9,12 @@ export const history = (token) => {
     },
   });
 };
+
+export const createTransaction = (token, body) => {
+  const URL = process.env.REACT_APP_HOST + "/transaction";
+  return axios.post(URL, body, {
+    headers: {
+      "x-access-token": token,
+    },
+  });
+};

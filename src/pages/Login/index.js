@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../redux/actions/auth";
 import { toast } from "react-toastify";
 // import Swal from "sweetalert2";
@@ -9,60 +9,86 @@ import "react-toastify/dist/ReactToastify.css";
 import google from "../../assets/icons/google-logo.png";
 
 import Footer from "../../components/Footer/index";
-// import { login } from "../../utils/https/auth";
+import { validateLogin } from "../../helpers/validation";
 import "./login.css";
 
-class Login extends React.Component {
-  submitHandler = (e) => {
+function Login(props) {
+  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState("far fa-eye-slash");
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState({});
+  const [isFetching, setIsFetching] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(false);
+
+  const handleChange = (e) => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const submitHandler = (e) => {
     e.preventDefault();
+    setError(validateLogin(values));
+    const validateBody = validateLogin(values);
+
     const body = {
       email: e.target.email.value,
       password: e.target.password.value,
     };
-
-    // login(body)
-    //   .then((res) => {
-    //     // console.log(res.data.result.image);
-    //     const token = res.data.result.token;
-    //     const photo = res.data.result.image;
-    //     const roleUser = res.data.result.roles;
-
-    //     localStorage.setItem("vehicle-rental-token", JSON.stringify(token));
-    //     localStorage.setItem("vehicle-rental-photoUser", photo);
-    //     localStorage.setItem("vehicle-rental-roleUser", roleUser);
-
-    //     props.history.push("/");
-    //     // navigate("/");
-    //   })
-    //   .catch((err) => console.error(err));
-
-    this.props.dispatch(loginAction(body));
+    if (Object.keys(validateBody).length === 0) {
+      setIsSubmit(true);
+      dispatch(loginAction(body));
+    }
   };
 
-  componentDidUpdate() {
-    // console.log(this.props.auth.isRejected)
-    if (this.props.auth.isFulfilled === true) {
+  useEffect(() => {
+    if (Object.keys(error).length === 0 && isSubmit) {
+      console.log("isSubmit", isSubmit);
+      console.log("useEff error", error);
+    }
+    if (auth.isPending === true) {
+      setIsFetching(true);
+    }
+    if (auth.isFulfilled === true) {
       toast.success("Login successful", {
         position: toast.POSITION.TOP_RIGHT,
-        autoClose: 5000,
+        autoClose: 3000,
       });
-      this.props.history.push("/");
+      setTimeout(() => props.history.push("/"), 5000);
     }
-    // console.log("reject before", this.props.auth.isRejected)
-    if (this.props.auth.isRejected === true) {
-      toast.error("Invalid Email/Password", {
-        position: toast.POSITION.TOP_RIGHT,
-        autoClose: 5000,
-      });
-    }
-    // console.log("reject after", this.props.auth.isRejected)
-  }
+  }, [auth, error, isSubmit, props]);
 
-  render() {
-    return (
-      <>
-        <div className="grid-container-login-register">
-          <div className="grid-item left">
+  useEffect(() => {
+    if (auth.isRejected === true) {
+      setIsFetching(false);
+      let errors = {};
+      errors.form = "Email/Password is invalid";
+      setError(errors);
+    }
+  }, [auth]);
+
+  const handleToggle = () => {
+    if (type === "password") {
+      setIcon("far fa-eye");
+      setType("text");
+    } else {
+      setIcon("far fa-eye-slash");
+      setType("password");
+    }
+  };
+
+
+  return (
+    <>
+      <div className="grid-container-login-register container-fluid">
+        <div className="row">
+          <div className="col-lg-4">
             <div className="title">
               <h1>
                 Let's Explore <br />
@@ -80,28 +106,66 @@ class Login extends React.Component {
               </Link>
             </div>
           </div>
-          <span></span>
-          <div className="grid-item right">
-            <form onSubmit={this.submitHandler}>
+
+          <span className="col-lg-1"></span>
+          <div className="col-lg-5">
+            <form onSubmit={submitHandler} noValidate>
               <div className="body-login">
-                <label htmlFor="email" className="form-label"></label>
-                <input type="email" placeholder="Email" name="email" required />
-                <label htmlFor="password" className="form-label"></label>
-                <input
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  required
-                />
+                <div className="form-group">
+                  <label htmlFor="email" className="form-label"></label>
+                  {/* <i className="far fa-eye"></i> */}
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    value={values.email}
+                    onChange={handleChange}
+                  />
+                </div>
+                {error.email && (
+                  <div className="text-danger fw-bold error">{error.email}</div>
+                )}
+                <div className="form-group">
+                  <label htmlFor="password" className="form-label"></label>
+                  <input
+                    type={type}
+                    placeholder="Password"
+                    name="password"
+                    value={values.password}
+                    onChange={handleChange}
+                  />
+                  <div
+                    className={error.email ? "icon-style icons" : "icon-style"}
+                    onClick={handleToggle}
+                  >
+                    <i className={icon}></i>
+                  </div>
+                </div>
+                {error.password && (
+                  <div className="text-danger fw-bold error">
+                    {error.password}
+                  </div>
+                )}
+                <Link to="/forgot-password">
+                  <p>Forget password?</p>
+                </Link>
               </div>
-              <Link to="/forgot-password">
-                <p>Forget password?</p>
-              </Link>
+              {error.form && (
+                <div className="text-danger fw-bold error text-center">
+                  {error.form}
+                </div>
+              )}
               <div className="login">
                 {/* <Link to="/"> */}
-                <button type="submit" className="login">
-                  Login
-                </button>
+                {!isFetching ? (
+                  <button type="submit" className="login">
+                    Login
+                  </button>
+                ) : (
+                  <button type="submit" className="login">
+                    <i className="fa fa-spinner fa-spin"></i>
+                  </button>
+                )}
                 {/* </Link> */}
               </div>
               <div className="login-google">
@@ -124,17 +188,11 @@ class Login extends React.Component {
             </form>
           </div>
         </div>
+      </div>
 
-        <Footer />
-      </>
-    );
-  }
+      <Footer />
+    </>
+  );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    auth: state.auth,
-  };
-};
-
-export default connect(mapStateToProps)(Login);
+export default Login;
