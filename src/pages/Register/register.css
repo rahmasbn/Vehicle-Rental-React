@@ -47,7 +47,7 @@
 .icon-toggle {
   position: absolute;
   right: 19%;
-  top: 112%;
+  top: 106%;
   color: #6e6e6e;
 }
 .toggles {
@@ -58,12 +58,12 @@
 @media (min-width: 325px) {
   .icon-toggle {
     right: 17%;
-    top: 102%;
+    top: 96%;
   }
 }
 @media (min-width: 380px) {
   .icon-toggle {
-    top: 91%;
+    top: 86%;
   }
 }
 @media (min-width: 576px) {
@@ -103,19 +103,19 @@
     width: 90%;
   }
   .icon-toggle {
-    top: 41%;
+    top: 39%;
     right: 15%;
   }
 }
 @media (min-width: 1200px) {
   .icon-toggle {
     right: 16%;
-    top: 49%;
+    top: 47%;
   }
 }
 @media (min-width: 1440px) {
   .icon-toggle {
     right: 17%;
-    top: 35%;
+    top: 30%;
   }
 }

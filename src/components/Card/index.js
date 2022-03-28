@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./card.css";
@@ -48,9 +48,10 @@ function VehicleCard(props) {
   return card;
 }
 
-export function historyCard(props) {
+export function HistoryCard(props) {
   const history = props.history;
   const historyCard = [];
+  const [idCheck, setIdCheck] = useState("");
 
   for (let idx = 0; idx < history.length; idx++) {
     const moment = require("moment");
@@ -65,12 +66,21 @@ export function historyCard(props) {
     const return_date = moment(history[idx].return_date).format("DD-MM-YYYY");
     const payment = formatPrice;
     const status = history[idx].status;
+    const id = history[idx].id;
+    // console.log("id history", id);
     // const rating = history[idx].rating;
     const element = (
       <>
         <div className="card-history" key={"history" + idx}>
           <div className="img">
-            <img src={imgURL} alt="img vehicle" />
+            <img
+              src={imgURL}
+              alt="img vehicle"
+              onError={({ currentTarget }) => {
+                currentTarget.onError = null;
+                currentTarget.src = require("../../assets/images/default_vehicle.png");
+              }}
+            />
           </div>
           <div className="info-history-vehicle">
             <p className="vehicle-name">
@@ -94,6 +104,11 @@ export function historyCard(props) {
                 type="checkbox"
                 id="checkboxNoLabel"
                 value=""
+                onChange={(e) => {
+                  if (e.target.checked === true) {
+                    setIdCheck(id);
+                  }
+                }}
               />
             </div>
           </div>

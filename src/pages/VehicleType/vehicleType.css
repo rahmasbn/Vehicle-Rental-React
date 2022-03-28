@@ -18,7 +18,7 @@
     font-size: 1rem;
     font-family: "Nunito", sans-serif;
   } 
-.searchInput {
+.searchInput > input[type="text"] {
   background-color: white;
   border: 1px solid #c4bbbb;
   border-radius: 3px;

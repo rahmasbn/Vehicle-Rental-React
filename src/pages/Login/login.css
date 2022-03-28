@@ -108,7 +108,7 @@ form > .body-login > a > p {
 .icon-style {
   position: absolute;
   right: 19%;
-  top: 99%;
+  top: 94%;
   color: #6e6e6e;
 }
 .icons {
@@ -123,13 +123,13 @@ form > .body-login > a > p {
 /* Responsive */
 @media (min-width: 325px) {
   .icon-style {
-    right: 16%;
-    top: 89%;
+    right: 17%;
+    top: 84%;
   }
 }
 @media (min-width: 380px) {
   .icon-style {
-    top: 78%;
+    top: 73%;
   }
 }
 @media (min-width: 576px) {
@@ -157,14 +157,14 @@ form > .body-login > a > p {
     width: 90%;
   }
   .icon-style {
-    top: 31%;
+    top: 29%;
     right: 15%;
   }
 }
 @media (min-width: 1200px) {
   .icon-style {
     right: 16%;
-    top: 38%;
+    top: 36%;
   }
   span {
     margin-left: 70px;
@@ -173,7 +173,7 @@ form > .body-login > a > p {
 @media (min-width: 1440px) {
   .icon-style {
     right: 17%;
-    top: 27%;
+    top: 23%;
   }
 }
 

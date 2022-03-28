@@ -148,7 +148,7 @@ class Payment extends React.Component {
             </div>
           </header>
         </div>
-        {this.state.isLoading ? (
+        {!this.state.isLoading ? (
           <>
             <div className="container-fluid">
               <div

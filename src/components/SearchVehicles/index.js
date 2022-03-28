@@ -1,44 +1,40 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import ReactPaginate from "react-paginate";
+import { searchVehicles } from "../../utils/https/vehicles";
+import VehicleCard from "../Card";
+import Loading from "../Loading";
 
-import VehicleCard from "../../components/Card";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-// import { popular } from "../../utils/https/vehicles";
-import "./vehicleType.css";
-import { vehicles } from "../../utils/https/vehicles";
-import Loading from "../../components/Loading";
+class SearchVehicles extends Component {
+  state = {
+    isSuccess: false,
+    keyword: null,
+    searchResult: null,
+    meta: null,
+    filter: "",
+    // page: "",
+  };
 
-class Popular extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      vehicleData: [],
-      meta: "",
-      isSuccess: false,
-    };
-  }
-  getVehicles(filter) {
-    const URL = `/popular${filter}`;
-    vehicles(URL)
+  searchVehicle = (keyword, filter) => {
+    searchVehicles(filter)
       .then((res) => {
-        // console.log(res)
+        console.log("search", res.data);
         this.setState({
-          vehicleData: res.data.result.data,
-          meta: res.data.result.meta,
           isSuccess: true,
+          searchResult: res.data.result.data,
+          meta: res.data.result.meta,
+          keyword: keyword,
+          // page: res.data.result.meta.page,
+          filter: filter,
         });
-       
-        // console.log("data", this.state.vehicleData);
-        // console.log("meta", this.state.meta);
       })
-      .catch((err) => console.error(err));
-  }
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   updateFilter = (newFilter) => {
-    // console.log("update pagination", newFilter);
-    this.getVehicles(newFilter);
+    console.log("update", newFilter);
+    this.searchVehicle(null, newFilter);
   };
 
   pagination = (meta) => {
@@ -96,48 +92,49 @@ class Popular extends React.Component {
       );
     }
   };
-
   componentDidMount() {
     const filter = this.props.location.search;
-    this.getVehicles(filter);
+    const searchParams = new URLSearchParams(this.props.filter);
+    const keyword = searchParams.get("keyword");
+    // const page = parseInt(this.props.page)
+    // console.log('filter1', filter)
+    // console.log("keyword", keyword);
+    this.searchVehicle(keyword, filter);
   }
 
   componentDidUpdate(a, b) {
     // console.log('a dan b', a, b)
     const filter = this.props.location.search;
+    const searchParams = new URLSearchParams(this.props.filter);
+    const keyword = searchParams.get("keyword");
     if (a.location.search !== filter) {
-      this.getVehicles(filter);
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      this.searchVehicle(keyword, filter);
     }
   }
   render() {
-    // console.log('location', this.props.location.search)
+    // console.log("result", this.state.searchResult);
+    const { isSuccess, searchResult } = this.state;
     return (
       <>
-        <Header />
-        {this.state.isSuccess ? (
-          <main className="Popular">
-            <div className="container">
-              <h2>Popular in Town</h2>
-              <div className="col-12 text-center click-item">
-                Click item to see details and reservation.
+        {isSuccess ? (
+          <div className="container">
+            {searchResult.length !== 0 ? (
+              <div className="row mt-5">
+                <VehicleCard vehicleData={searchResult} />
               </div>
-              <div className="row">
-                <VehicleCard vehicleData={this.state.vehicleData} />
+            ) : (
+              <div className="col-12 text-center mt-5 fs-5">
+                We can't find anything you're looking for.
               </div>
-            </div>
+            )}
             <div className="mt-5">{this.pagination(this.state.meta)}</div>
-          </main>
+          </div>
         ) : (
           <Loading />
         )}
-        <Footer />
       </>
     );
   }
 }
 
-export default Popular;
+export default SearchVehicles;

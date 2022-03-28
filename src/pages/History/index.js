@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Button, Modal } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 import Lamborghini from "../../assets/images/lamborghini.jpg";
 import whiteJeep from "../../assets/images/white_jeep.jpg";
@@ -7,45 +9,49 @@ import whiteJeep from "../../assets/images/white_jeep.jpg";
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import Loading from "../../components/Loading";
 import "./history.css";
-import { connect } from "react-redux";
 import { history } from "../../utils/https/history";
-import { historyCard as HistoryCard } from "../../components/Card";
+import { HistoryCard } from "../../components/Card";
 import { logoutAction } from "../../redux/actions/auth";
-import { toast } from "react-toastify";
 
 class History extends Component {
   state = {
     show: false,
     history: [],
+    isLoading: false,
+    isDelete: false,
   };
-
 
   componentDidMount() {
     const token = this.props.auth.userData.token;
-  
+    this.setState({
+      isLoading: true,
+    });
     history(token)
-    .then((res)=> {
-      console.log(res.data.result.data);
-      this.setState({
-        history: res.data.result.data
+      .then((res) => {
+        console.log(res.data.result.data);
+        this.setState({
+          history: res.data.result.data,
+          isLoading: false,
+        });
       })
-    })
-    .catch((err) => {
-      console.error(err)
-      if (err.response.data.err_code) {
-        if (
-          err.response.data.err_code === 'TOKEN_EXPIRED' ||
-          err.response.data.err_code === 'INVALID_TOKEN'
-        ) {
-          this.props.dispatch(logoutAction());
-          toast.warning('Token Expired');
+      .catch((err) => {
+        console.error(err);
+        if (err.response.data.err_code) {
+          if (
+            err.response.data.err_code === "TOKEN_EXPIRED" ||
+            err.response.data.err_code === "INVALID_TOKEN"
+          ) {
+            this.props.dispatch(logoutAction());
+            toast.warning("Token Expired");
+          }
         }
-      }
-    })
+      });
   }
 
   render() {
+    console.log("props", this.props.check);
     return (
       <>
         <Header />
@@ -66,13 +72,13 @@ class History extends Component {
                 <label htmlFor="" className="form-check-label">
                   Select
                 </label>{" "}
-                <input
+                {/* <input
                   className="form-check-input"
                   type="checkbox"
                   id="checkboxNoLabel"
                   value=""
                   aria-label="..."
-                />
+                /> */}
               </div>
             </div>
             <div className="dropdown">
@@ -131,97 +137,48 @@ class History extends Component {
           </aside>
 
           <div className="history-container">
-            <p>A week ago</p>
-            <HistoryCard history={this.state.history} />
-            {/* {history.map((history, idx) => {
-              <historyCard image={`${process.env.REACT_APP_HOST}/${JSON.parse(history.images)[0]}`} />
-            })} */}
-            {/* <div className="card-history d-flex">
-              <div className="img col-lg-5 col-md-5 col-sm-12">
-                <img src={vespa} alt="vespa matic" />
-              </div>
-              <div className="info-history-vehicle">
-                <p className="vehicle-name">
-                  <strong>Vespa Matic</strong>
-                </p>
-                <p className="rental-date">Jan 18 to 21 2021</p>
-                <p className="total-price">
-                  <strong>Prepayment: Rp. 245.000</strong>
-                </p>
-                <p className="status-history">Has been returned</p>
-              </div>
-            </div>
-            <div className="select-box">
-              <div className="checkbox">
-                <input
-                  className="form-check-input check"
-                  type="checkbox"
-                  id="checkboxNoLabel"
-                  value=""
-                  aria-label="..."
-                />
-              </div>
-            </div>
-            <div className="card-history d-flex">
-              <div className="img col-lg-5 col-md-5 col-sm-12">
-                <img src={vespa} alt="vespa matic" className="img2" />
-              </div>
-              <div className="info-history-vehicle down">
-                <p className="vehicle-name">
-                  <strong>Vespa Matic</strong>
-                </p>
-                <p className="rental-date">Jan 18 to 21 2021</p>
-                <p className="total-price">
-                  <strong>Prepayment: Rp. 245.000</strong>
-                </p>
-                <p className="status-history">Has been returned</p>
-              </div>
-            </div>
-            <div className="select-box two">
-              <div className="checkbox">
-                <input
-                  className="form-check-input check"
-                  type="checkbox"
-                  id="checkboxNoLabel"
-                  value=""
-                  aria-label="..."
-                />
-              </div>
-            </div> */}
+            {!this.state.isLoading ? (
+              <>
+                <p>A week ago</p>
+                <HistoryCard history={this.state.history} />
 
-            <div className="modal-container">
-              <Button
-                className="btn btn-warning btn-modal"
-                onClick={() => {
-                  this.setState({ show: !this.state.show });
-                }}
-              >
-                Delete selected item
-              </Button>
-              <Modal show={this.state.show} className="modal modal-history">
-                <Modal.Body>
-                  <h1>Are you sure you want to delete selected item?</h1>
-                  <div className="modal-btn">
-                    <Button
-                      className="btn btn-warning"
-                      onClick={() => {
-                        this.setState({ show: !this.state.show });
-                      }}
-                    >
-                      Yes
-                    </Button>
-                    <Button
-                      className="btn btn-secondary"
-                      onClick={() => {
-                        this.setState({ show: !this.state.show });
-                      }}
-                    >
-                      No
-                    </Button>
-                  </div>
-                </Modal.Body>
-              </Modal>
-            </div>
+                <div className="modal-container">
+                  <Button
+                    className="btn btn-warning btn-modal"
+                    onClick={() => {
+                      this.setState({ show: !this.state.show });
+                    }}
+                  >
+                    Delete selected item
+                  </Button>
+                  <Modal show={this.state.show} className="modal modal-history">
+                    <Modal.Body>
+                      <h1>Are you sure you want to delete selected item?</h1>
+                      <div className="modal-btn">
+                        <Button
+                          className="btn btn-warning"
+                          onClick={() => {
+                            this.setState({ show: !this.state.show });
+                          }}
+                        >
+                          Yes
+                        </Button>
+                        <Button
+                          className="btn btn-secondary"
+                          onClick={() => {
+                            this.setState({ show: !this.state.show });
+                          }}
+                        >
+                          No
+                        </Button>
+                      </div>
+                    </Modal.Body>
+                  </Modal>
+                </div>
+              </>
+            ) : (
+              <Loading />
+            )}
           </div>
         </div>
 
@@ -234,7 +191,7 @@ class History extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps)(History);

@@ -3,8 +3,9 @@ import leftArrow from "../../assets/icons/cc-arrow-left-circle-32.png";
 import edwardPic from "../../assets/images/man-with-camera.webp";
 import samanthaPic from "../../assets/images/girl-with-red-clothes.webp";
 
-import { Link } from "react-router-dom";
 import React from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import Header from "../../components/Header/index";
 import Footer from "../../components/Footer/index";
@@ -12,7 +13,6 @@ import Loading from "../../components/Loading";
 import VehicleCard from "../../components/Card/index";
 import { popularCard } from "../../utils/https/vehicles";
 import "./Home.css";
-import { connect } from "react-redux";
 
 class Home extends React.Component {
   state = {
@@ -45,6 +45,12 @@ class Home extends React.Component {
   };
 
   render() {
+    const explore = (e) => {
+      e.preventDefault();
+      const navTo = `/vehicles?city=${e.target.city.value}&type=${e.target.type.value}&sort=${e.target.sort.value}&order=${e.target.order.value}`;
+      // console.log("nav", navTo);
+      this.props.history.push(navTo);
+    };
     return (
       <>
         <Header />
@@ -64,50 +70,60 @@ class Home extends React.Component {
                 <hr />
               </div>
               <div className="grid-item-banner">
-                <form>
+                <form onSubmit={explore}>
                   <div className="wrapper-banner">
                     <div className="inside-wrapper-banner">
-                      <select id="location" className="form-select">
-                        <option value="" hidden>Location</option>
-                        <option value="Bali">Bali</option>
-                        <option value="Yogyakarta">Yogyakarta</option>
-                        <option value="Jakarta">Jakarta</option>
-                        <option value="Kalimantan">Kalimantan</option>
-                        <option value="Malang">Malang</option>
+                      <select name="city" className="form-select">
+                        <option value="" hidden>
+                          Location
+                        </option>
+                        <option value="bali">Bali</option>
+                        <option value="yogyakarta">Yogyakarta</option>
+                        <option value="jakarta">Jakarta</option>
+                        <option value="bandung">Bandung</option>
+                        <option value="malang">Malang</option>
+                        <option value="medan">Medan</option>
+                        <option value="bogor">Bogor</option>
                       </select>
                     </div>
                     <div className="inside-wrapper-banner">
-                      <select id="type" className="form-select">
-                        <option value="" hidden>Type</option>
-                        <option value="Cars">Car</option>
-                        <option value="Motorbikes">Motorbike</option>
-                        <option value="Bikes">Bike</option>
+                      <select name="type" className="form-select">
+                        <option value="" hidden>
+                          Type
+                        </option>
+                        <option value="car">Car</option>
+                        <option value="motorbike">Motorbike</option>
+                        <option value="bike">Bike</option>
                       </select>
                     </div>
                   </div>
                   <div className="wrapper-banner">
                     <div className="inside-wrapper-banner">
-                      <select id="order" className="form-select">
-                        <option value="order" hidden>Order</option>
+                      <select name="sort" className="form-select">
+                        <option value="" hidden>
+                          Sort
+                        </option>
                         <option value="name">Name</option>
                         <option value="price">Price</option>
                       </select>
                     </div>
                     <div className="inside-wrapper-banner">
                       {/* <input type="date" className="form-select" /> */}
-                      <select id="sort" className="form-select">
-                        <option value="sort" hidden>Sort</option>
+                      <select name="order" className="form-select">
+                        <option value="" hidden>
+                          Order
+                        </option>
                         <option value="asc">Ascending</option>
                         <option value="desc">Descending</option>
                       </select>
                     </div>
                   </div>
+                  <button className="explore" type="submit">
+                    Explore
+                  </button>
                 </form>
               </div>
             </div>
-            <button className="explore" type="button">
-              Explore
-            </button>
           </div>
         </div>
 
@@ -117,7 +133,7 @@ class Home extends React.Component {
             <div className="container">
               <h2>Popular in Town</h2>
               <div className="view-more" style={{ textAlign: "right" }}>
-                <Link to="/vehicles/popular">View All {">"} </Link>
+                <Link to="/vehicles/popular?order=desc&page=1&limit=8">View All {">"} </Link>
               </div>
               <div className="row">
                 <VehicleCard vehicleData={this.state.vehicleData} />
