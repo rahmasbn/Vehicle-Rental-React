@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { connect } from "react-redux";
 // import store from "./redux/store";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { PersistGate } from "redux-persist/es/integration/react";
 import { persistor } from "./redux/store";
 

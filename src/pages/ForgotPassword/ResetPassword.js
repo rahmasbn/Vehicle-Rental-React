@@ -19,7 +19,7 @@ function ResetPassword() {
     icon1: "far fa-eye-slash",
     icon2: "far fa-eye-slash",
   });
-  const [isSubmit, setIsSubmit] = useState(false);
+  // const [isSubmit, setIsSubmit] = useState(false);
 
   const handleToggle1 = () => {
     if (visible.type1 === "password") {
@@ -110,7 +110,7 @@ function ResetPassword() {
       password: input.pass,
     };
     if (Object.keys(validateBody).length === 0) {
-      setIsSubmit(true);
+      // setIsSubmit(true);
       resetPass(body)
         .then((res) => {
           Swal.fire({
@@ -137,7 +137,7 @@ function ResetPassword() {
     }
   };
 
-  // useEffect(() => {
+  // useEffectt(() => {
   //   // console.log(errors);
   //   if (Object.keys(errors).length === 0 && isSubmit) {
   //     console.log("isSubmit", isSubmit);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import "./card.css";
@@ -51,7 +51,7 @@ function VehicleCard(props) {
 export function HistoryCard(props) {
   const history = props.history;
   const historyCard = [];
-  const [idCheck, setIdCheck] = useState("");
+  // const [idCheck, setIdCheck] = useState("");
 
   for (let idx = 0; idx < history.length; idx++) {
     const moment = require("moment");
@@ -66,7 +66,7 @@ export function HistoryCard(props) {
     const return_date = moment(history[idx].return_date).format("DD-MM-YYYY");
     const payment = formatPrice;
     const status = history[idx].status;
-    const id = history[idx].id;
+    // const id = history[idx].id;
     // console.log("id history", id);
     // const rating = history[idx].rating;
     const element = (
@@ -104,11 +104,11 @@ export function HistoryCard(props) {
                 type="checkbox"
                 id="checkboxNoLabel"
                 value=""
-                onChange={(e) => {
-                  if (e.target.checked === true) {
-                    setIdCheck(id);
-                  }
-                }}
+                // onChange={(e) => {
+                //   if (e.target.checked === true) {
+                //     setIdCheck(id);
+                //   }
+                // }}
               />
             </div>
           </div>
