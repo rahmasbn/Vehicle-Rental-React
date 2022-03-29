@@ -6,7 +6,7 @@
 [![react-toastify](https://img.shields.io/npm/v/react-toastify?label=react-toastify)](https://www.npmjs.com/package/react-toastify)
 
 
-Vehicle Rental is a website that build using React JS providing service to make it easier for owners and users make transactions anywhere and anytime. This app also equipped with two role access for owner and user. This is the frontend service for this app. You can see the backend service [here](https://github.com/rahmasbn/Vehicle_Rental)
+Vehicle Rental is a website that was built using React JS providing service to make it easier for owners and users make transactions anywhere and anytime. This app also equipped with two role access for owner and user. This is the frontend service for this app. You can see the backend service [here](https://github.com/rahmasbn/Vehicle_Rental)
 
 ## Interface
 ### Home
