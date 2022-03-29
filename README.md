@@ -10,13 +10,13 @@ Vehicle Rental is a website that build using React JS providing service to make 
 
 ## Interface
 ### Home
-![home](https://drive.google.com/file/d/1roVbk289hwka_pIw2DZf_cUpwZFIQtQq/view?usp=sharing)
+![home](https://drive.google.com/uc?export=download&id=1roVbk289hwka_pIw2DZf_cUpwZFIQtQq)
 ### Vehicle Type
-![vehicles](https://drive.google.com/file/d/1f3fVf0frihHLkv63kG4uK4S-SYXu-FH7/view?usp=sharing)
+![vehicles](https://drive.google.com/uc?export=download&id=1f3fVf0frihHLkv63kG4uK4S-SYXu-FH7)
 ### Vehicle Detail
-![detail](https://drive.google.com/file/d/1Gj7J0NrLC2ze28Au5CfgPwcAquQ09BgG/view?usp=sharing)
+![detail](https://drive.google.com/uc?export=download&id=1Gj7J0NrLC2ze28Au5CfgPwcAquQ09BgG)
 ### History
-![history](https://drive.google.com/file/d/1biGo2gi4J17wlBhtWYlJVOz8NOGfrn-a/view?usp=sharing)
+![history](https://drive.google.com/uc?export=download&id=1biGo2gi4J17wlBhtWYlJVOz8NOGfrn-a)
 
 
 ## Features
