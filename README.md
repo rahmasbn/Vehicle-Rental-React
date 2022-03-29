@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# Vehicle Rental
+[![react-router-dom](https://img.shields.io/npm/v/react-router-dom?label=react-router-dom)](https://www.npmjs.com/package/react-router-dom)
+[![axios](https://img.shields.io/npm/v/axios?label=axios)](https://www.npmjs.com/package/axios)
+[![bootstrap](https://img.shields.io/npm/v/bootstrap?label=bootstrap)](https://www.npmjs.com/package/react-bootstrap)
+[![redux](https://img.shields.io/npm/v/redux?label=redux)](https://www.npmjs.com/package/redux)
+[![react-toastify](https://img.shields.io/npm/v/react-toastify?label=react-toastify)](https://www.npmjs.com/package/react-toastify)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Vehicle Rental is a website that build using React JS providing service to make it easier for owners and users make transactions anywhere and anytime. This app also equipped with two role access for owner and user. This is the frontend service for this app. You can see the backend service [here](https://github.com/rahmasbn/Vehicle_Rental)
 
-In the project directory, you can run:
+## Interface
+### Home
+![home](https://drive.google.com/file/d/1roVbk289hwka_pIw2DZf_cUpwZFIQtQq/view?usp=sharing)
+### Vehicle Type
+![vehicles](https://drive.google.com/file/d/1f3fVf0frihHLkv63kG4uK4S-SYXu-FH7/view?usp=sharing)
+### Vehicle Detail
+![detail](https://drive.google.com/file/d/1Gj7J0NrLC2ze28Au5CfgPwcAquQ09BgG/view?usp=sharing)
+### History
+![history](https://drive.google.com/file/d/1biGo2gi4J17wlBhtWYlJVOz8NOGfrn-a/view?usp=sharing)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
+- Login/Register
+- Forgot Password
+- Add/Edit Vehicles
+- Update Profile
+- Transactions
+- History Transaction
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## How to use
+1. Clone the backend repository from the link provided and follow the steps.
+2. Clone this repository with `git clone https://github.com/rahmasbn/Vehicle-Rental-React`.
+3. Run `npm i` to install all modules required.
+4. Set .env file in root:
+    - `REACT_APP_HOST` = http://localhost:PORT
+5. Run `npm start`.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Documentation
+- [Deploy](https://vehicle-rental-react.netlify.app/)
+- [Backend](https://github.com/rahmasbn/Vehicle_Rental)
